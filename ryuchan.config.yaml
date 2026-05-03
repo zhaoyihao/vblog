@@ -109,7 +109,7 @@ github:
   owner: zhaoyihao
   repo: vblog
   branch: main
-  appId: 在部署端配置环境变量
+  appId: 3582308
   encryptKey: wudishiduomejimo
 umami:
   enable: true
@@ -118,7 +118,7 @@ umami:
   websiteId: 3f9afc6c-f0bd-4734-be15-6d053960d34d
   timezone: Asia/Shanghai
 user:
-  name: KoBariDev
+  name: WD
   description: Ciallo～(∠・ω<)⌒★
   site: https://hub.131714.xyz
   avatar: /profile.png
