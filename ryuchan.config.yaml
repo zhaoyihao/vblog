@@ -1,6 +1,6 @@
 site:
-  tab: ok
-  title: xd
+  tab: WD-Blog|我的一个有深度内容的博客
+  title: WD•Blog
   description: 🌸 轻盈、优雅、纯净 —— 用文字与图片记录生活与创意
   language: zh
   favicon: /favicon.png
@@ -118,7 +118,7 @@ umami:
   websiteId: 3f9afc6c-f0bd-4734-be15-6d053960d34d
   timezone: Asia/Shanghai
 user:
-  name: WD1245
+  name: WD-Blog
   description: Ciallo～(∠・ω<)⌒★
   site: https://hub.131714.xyz
   avatar: /profile.png
