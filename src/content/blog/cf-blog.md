@@ -64,6 +64,7 @@ badge: ''
 ![截图](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/1ce70a7b-b00f-44d5-b91a-4f189613f5cc.png)
 
 ### 4、配置Pages环境变量，再重新部署一遍Pages：
+
 ![截图](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/354fda98-a242-4adf-8d5f-1d77023a2e1a.png)
 
 | 变量名称 | 值 |
@@ -77,6 +78,7 @@ badge: ''
 ![截图](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/a34516a8-5874-4f22-9e8e-a87eac93c623.png)
 
 ### 5、为此Github仓库安装GitHub App
+
 ![截图](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/2d03b6f6-cb01-4f63-86aa-86ec887227bc.png)
 
 ![截图](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/ae679fa5-a5f7-420d-806d-64d33cfaf7af.png)
@@ -87,9 +89,11 @@ badge: ''
 ![截图](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/ee785dc0-6156-4a81-bd7c-8aa4403cbfac.png)
 
 (2)、左侧菜单栏找到`General` ，并往下翻找到 Private keys
+
 ![截图](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/1cbadd30-ef8f-487e-9032-55f4758d3bc8.png)
 
 (3)、点击 `Generate private key` 生成私钥
+
 ![截图](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/18576fac-a259-45e2-af80-b7761d2c589e.png)
 
 ![截图](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/c6dcfee8-de7b-4bfc-bb8f-b8c4fb7e5076.png)
