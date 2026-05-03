@@ -109,7 +109,7 @@ github:
   owner: zhaoyihao
   repo: vblog
   branch: main
-  appId: 3582308
+  appId: 
   encryptKey: wudishiduomejimo
 umami:
   enable: true
