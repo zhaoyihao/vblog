@@ -109,6 +109,11 @@ const bannerSubtitle = pageConfig?.subtitle || "";
   {showBanner && <Banner title={bannerTitle} subtitle={bannerSubtitle} />}
   <Navbar />
 
+<!-- 🔥 全局音乐：固定在导航栏下方右侧，所有页面都在这里 -->
+<div class="fixed top-[110px] right-6 z-50">
+  <GlobalAudio />
+</div>
+
   <!-- 移除居中限制，全屏布局 -->
   <div class={`w-full flex-grow page-content-animate ${showBanner ? 'mt-8' : 'mt-24'}`}>
     <div class={`grid grid-cols-1 ${showSidebar ? "lg:grid-cols-[320px_1fr]" : ""} gap-6 px-4 pb-4 h-full`}>
@@ -132,7 +137,6 @@ const bannerSubtitle = pageConfig?.subtitle || "";
   </div>
 
   <MobileTOC headings={headings} showTOC={showTOC} />
-  <GlobalAudio />
 
     <!-- 其余脚本保持不变 -->
   <script define:vars={{ SITE_THEME }} is:inline>
