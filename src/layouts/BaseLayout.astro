@@ -44,143 +44,112 @@ const bannerSubtitle = pageConfig?.subtitle || "";
   data-theme={SITE_THEME.light}
   data-theme-type="light"
 >
-  <head>
-    <ClientRouter />
-    <ElementCrossing />
-    <PointerOnNavigation />
-    <Header
-      title={title}
-      description={SITE_DESCRIPTION}
-      favicon={SITE_FAVICON}
-      image={image}
-    />
-    <title>{`${title} - ${SITE_TAB}`}</title>
+<head>
+  <ClientRouter />
+  <ElementCrossing />
+  <PointerOnNavigation />
+  <Header
+    title={title}
+    description={SITE_DESCRIPTION}
+    favicon={SITE_FAVICON}
+    image={image}
+  />
+  <title>{`${title} - ${SITE_TAB}`}</title>
 
     <!-- Umami分析（自建） -->
-    {
-      umamiConfig.enable && umamiConfig.websiteId && (
-        <script
-          is:inline
-          defer
-          src={`${umamiConfig.baseUrl}/script.js`}
-          data-website-id={umamiConfig.websiteId}
-        />
-      )
-    }
-    {
-      umamiConfig.enable && (
-        <script is:inline defer src="/js/umami-share.js"></script>
-      )
-    }
 
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript" is:inline>
-      (function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            (c[a].q = c[a].q || []).push(arguments);
-          };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "skz108rus8");
-    </script>
+  { umamiConfig.enable && umamiConfig.websiteId && (
+    <script
+      is:inline
+      defer
+      src={`${umamiConfig.baseUrl}/script.js`}
+      data-website-id={umamiConfig.websiteId}
+    />
+  )}
+  { umamiConfig.enable && (
+    <script is:inline defer src="/js/umami-share.js"></script>
+  )}
+
+  <script type="text/javascript" is:inline>
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "skz108rus8");
+  </script>
 
     <!-- 主题管理脚本 -->
-    <script define:vars={{ SITE_THEME }} is:inline>
-      (function () {
-        const storedTheme = localStorage.getItem("theme");
-        const storedBannerMode = localStorage.getItem("banner-mode") || "normal";
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)",
-        ).matches;
-        
-        let theme;
-        if (storedTheme) {
-          theme = storedTheme;
-        } else {
-          theme = SITE_THEME.light;
-          localStorage.setItem("theme", theme);
-        }
-        document.documentElement.setAttribute("data-theme", theme);
-        document.documentElement.setAttribute("data-banner-mode", storedBannerMode);
-        
-        const isDark = theme === SITE_THEME.dark || ['dark', 'synthwave', 'halloween', 'forest', 'black', 'luxury', 'dracula', 'business', 'night', 'coffee'].includes(theme);
-        const themeType = isDark ? "dark" : "light";
-        document.documentElement.setAttribute("data-theme-type", themeType);
-        window
-          .matchMedia("(prefers-color-scheme: dark)")
-          .addEventListener("change", (e) => {
-            if (!localStorage.getItem("theme")) {
-              const newTheme = e.matches ? SITE_THEME.dark : SITE_THEME.light;
-              document.documentElement.setAttribute("data-theme", newTheme);
-              const newThemeType = e.matches ? "dark" : "light";
-              document.documentElement.setAttribute(
-                "data-theme-type",
-                newThemeType,
-              );
-              localStorage.setItem("theme", newTheme);
-            }
-          });
-      })();
-    </script>
-  </head>
+
+  <script define:vars={{ SITE_THEME }} is:inline>
+    (function () {
+      const storedTheme = localStorage.getItem("theme");
+      const storedBannerMode = localStorage.getItem("banner-mode") || "normal";
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      
+      let theme;
+      if (storedTheme) {
+        theme = storedTheme;
+      } else {
+        theme = SITE_THEME.light;
+        localStorage.setItem("theme", theme);
+      }
+      document.documentElement.setAttribute("data-theme", theme);
+      document.documentElement.setAttribute("data-banner-mode", storedBannerMode);
+      
+      const isDark = theme === SITE_THEME.dark || ['dark','synthwave','halloween','forest','black','luxury','dracula','business','night','coffee'].includes(theme);
+      document.documentElement.setAttribute("data-theme-type", isDark ? "dark" : "light");
+    })();
+  </script>
+</head>
 
   <!-- 移除上边距，让Banner从顶部开始 -->
-  <body
-    class="flex flex-col min-h-screen bg-[var(--banner-wave-bg)]"
-    {...isIndexed ? { "data-pagefind-body": true } : {}}
-  >
-    {showBanner && <Banner title={bannerTitle} subtitle={bannerSubtitle} />}
-    <Navbar />
-    <div class={`max-w-blog mx-auto w-full flex-grow page-content-animate ${showBanner ? 'mt-8' : 'mt-24'}`}>
-      <div
-        class={`grid grid-cols-1 ${showSidebar ? "md:grid-cols-5 lg:grid-cols-4" : ""} gap-4 px-4 pb-4 h-full`}
-      >
-        <main
-          class={`col-span-1 ${showSidebar ? "md:col-span-4 lg:col-span-3" : "w-full"} bg-transparent order-1 md:order-2 flex flex-col gap-4`}
-        >
-          <div class="flex-grow flex flex-col gap-4">
-            <slot />
-          </div>
-          <Footer />
-        </main>
-        {
-          showSidebar && (
-            <aside class="col-span-1 bg-transparent order-2 md:order-1 md:top-4 hidden md:block">
-              <Sidebar headings={headings} showTOC={showTOC} />
-              <slot name="sidebar" />
-            </aside>
-          )
-        }
-      </div>
+<body class="flex flex-col min-h-screen bg-[var(--banner-wave-bg)]"
+  {...isIndexed ? { "data-pagefind-body": true } : {}}
+>
+  {showBanner && <Banner title={bannerTitle} subtitle={bannerSubtitle} />}
+  <Navbar />
+
+  <!-- 移除居中限制，全屏布局 -->
+  <div class={`w-full flex-grow page-content-animate ${showBanner ? 'mt-8' : 'mt-24'}`}>
+    <div class={`grid grid-cols-1 ${showSidebar ? "lg:grid-cols-[1fr_320px]" : ""} gap-6 px-4 pb-4 h-full`}>
+      
+      <!-- 内容区域 -->
+      <main class="flex flex-col gap-4">
+        <div class="flex-grow flex flex-col gap-4">
+          <slot />
+        </div>
+        <Footer />
+      </main>
+
+      <!-- 侧边栏在最右侧 -->
+      { showSidebar && (
+        <aside class="hidden lg:block w-[320px] sticky top-4 h-fit">
+          <Sidebar headings={headings} showTOC={showTOC} />
+          <slot name="sidebar" />
+        </aside>
+      )}
     </div>
+  </div>
 
-
-    <MobileTOC headings={headings} showTOC={showTOC} />
-    <GlobalAudio />
+  <MobileTOC headings={headings} showTOC={showTOC} />
+  <GlobalAudio />
 
     <!-- 其余脚本保持不变 -->
-    <script define:vars={{ SITE_THEME }} is:inline>
-      document.addEventListener("astro:after-swap", () => {
-        const storedTheme = localStorage.getItem("theme");
-        const storedBannerMode = localStorage.getItem("banner-mode") || "normal";
-        
-        if (storedTheme) {
-          document.documentElement.setAttribute("data-theme", storedTheme);
-          const isDark = storedTheme === SITE_THEME.dark || ['dark', 'synthwave', 'halloween', 'forest', 'black', 'luxury', 'dracula', 'business', 'night', 'coffee'].includes(storedTheme);
-          const themeType = isDark ? "dark" : "light";
-          document.documentElement.setAttribute("data-theme-type", themeType);
-        }
-        
-        document.documentElement.setAttribute("data-banner-mode", storedBannerMode);
-      });
-    </script>
+  <script define:vars={{ SITE_THEME }} is:inline>
+    document.addEventListener("astro:after-swap", () => {
+      const storedTheme = localStorage.getItem("theme");
+      const storedBannerMode = localStorage.getItem("banner-mode") || "normal";
+      if (storedTheme) {
+        document.documentElement.setAttribute("data-theme", storedTheme);
+        const isDark = storedTheme === SITE_THEME.dark || ['dark','synthwave','halloween','forest','black','luxury','dracula','business','night','coffee'].includes(storedTheme);
+        document.documentElement.setAttribute("data-theme-type", isDark ? "dark" : "light");
+      }
+      document.documentElement.setAttribute("data-banner-mode", storedBannerMode);
+    });
+  </script>
 
-    <script is:inline>
+  <!-- ====================== 你要的复制按钮功能 ====================== -->
+  <script is:inline>
       document.addEventListener("astro:page-load", () => {
         document.querySelectorAll(".btn-copy").forEach((button) => {
           button.addEventListener("click", async () => {
@@ -233,5 +202,5 @@ const bannerSubtitle = pageConfig?.subtitle || "";
         }
       }
     </style>
-  </body>
+</body>
 </html>
