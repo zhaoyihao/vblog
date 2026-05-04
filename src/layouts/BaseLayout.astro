@@ -151,7 +151,7 @@ const bannerSubtitle = pageConfig?.subtitle || "";
         </main>
         {
           showSidebar && (
-            <aside class={`w-[280px] col-span-1 bg-transparent order-2 md:order-1 md:top-4 hidden md:block ${Astro.url.pathname === '/' ? '-ml-[400px]' : ''} pr-2`}>
+            <aside class={`w-[280px] col-span-1 bg-transparent order-2 md:order-1 md:top-4 hidden md:block ${Astro.url.pathname === '/' ? '-ml-[200px]' : ''} pr-2`}>
               <Sidebar headings={headings} showTOC={showTOC} />
               <slot name="sidebar" />
             </aside>
