@@ -113,21 +113,21 @@ const bannerSubtitle = pageConfig?.subtitle || "";
   <div class={`w-full flex-grow page-content-animate ${showBanner ? 'mt-8' : 'mt-24'}`}>
     <div class={`grid grid-cols-1 ${showSidebar ? "lg:grid-cols-[320px_1fr]" : ""} gap-6 px-4 pb-4 h-full`}>
       
-      <!-- 内容区域 -->
-      <main class="flex flex-col gap-4">
-        <div class="flex-grow flex flex-col gap-4">
-          <slot />
-        </div>
-        <Footer />
-      </main>
-
-      <!-- 侧边栏在最右侧 -->
+      <!-- 侧边栏在最左侧（先写） -->
       { showSidebar && (
         <aside class="hidden lg:block w-[320px] sticky top-4 h-fit">
           <Sidebar headings={headings} showTOC={showTOC} />
           <slot name="sidebar" />
         </aside>
       )}
+
+      <!-- 内容区域在右侧（后写） -->
+      <main class="flex flex-col gap-4">
+        <div class="flex-grow flex flex-col gap-4">
+          <slot />
+        </div>
+        <Footer />
+      </main>
     </div>
   </div>
 
