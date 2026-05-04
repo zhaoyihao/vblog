@@ -135,14 +135,14 @@ const bannerSubtitle = pageConfig?.subtitle || "";
   >
     {showBanner && <Banner title={bannerTitle} subtitle={bannerSubtitle} />}
     <Navbar />
-    <div class={`max-w-blog mx-auto w-full flex-grow page-content-animate ${showBanner ? 'mt-8' : 'mt-24'}`}>
+    <div class={`w-full flex-grow page-content-animate ${showBanner ? 'mt-8' : 'mt-24'}`}>
       <div
         class={`grid grid-cols-1 ${showSidebar ? "md:grid-cols-[260px_1fr]" : ""} gap-4 px-4 pb-4 h-full`}
       >
         
-         <main
-           class={`col-span-1 md:col-span-auto bg-transparent order-1 md:order-2 flex flex-col gap-4 ${Astro.url.pathname === '/' ? 'pl-0 pr-0' : ''}`}
-         >
+        <main
+          class={`col-span-1 md:col-span-2 bg-transparent order-1 md:order-2 flex flex-col gap-4`}
+        >
 
           <div class="flex-grow flex flex-col gap-4">
             <slot />
