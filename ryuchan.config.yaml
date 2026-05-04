@@ -13,8 +13,8 @@ site:
     pageSize: 8
 
   banner:
-    randomUrl: https://imgr2.aitc.ccwu.cc/%E5%85%B6%E4%BB%96/b184a1a1-2046-4f43-ba31-3dc08dce2a59.webp
-    height: 60vh
+    randomUrl: https://imgr2.aitc.ccwu.cc/其他/6461b4c9-8dbc-4587-abde-e103224c33bb.webp
+    height: 50vh
     images:
       - https://tc.alcy.cc/q/20250908/b2d656670551cb9ea6eda7b46b6c8ec0.webp    
     
@@ -23,11 +23,6 @@ site:
     home:
       title: WDBlog
       subtitle: 欲买桂花同载酒，终不似，少年游！
-      typewriterTexts:
-        - 🌸 欲买桂花同载酒，终不似，少年游！
-        - 🌸 花有重开日，人无再少年！
-        - 🌿 记录生活的点滴，分享美好的瞬间！
-        - 📚 纸上得来终觉浅，绝知此事要躬行！
     friend:
       title: 友人帐
       subtitle: 记录那些珍贵的友谊，分享彼此的故事
