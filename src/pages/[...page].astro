@@ -21,9 +21,10 @@ const pageLinks = generatePageLinks(totalPages);
 
 <BaseLayout title="我的博客" isIndexed={false}>
 
-<!-- 🔥 搜索框：粉色边框 + 永久显示 + 大小文字调好 + 适配暗黑 -->
-<div class="mb-6 flex justify-start">
-  <form action="/blog/search" method="get" class="relative w-full max-w-8xl">
+<!-- 🔥 同一行：搜索框 + 写作按钮（右边） -->
+<div class="mb-6 flex items-center gap-4">
+  <!-- 搜索框 -->
+  <form action="/blog/search" method="get" class="relative flex-1 max-w-8xl">
     <input
       type="text"
       name="q"
@@ -43,10 +44,9 @@ const pageLinks = generatePageLinks(totalPages);
       <Icon name="lucide:arrow-right" class="w-5 h-5 text-white" />
     </button>
   </form>
-</div>
 
-  <!-- 写作按钮（带上和导航栏一样的图标） -->
-  <a href="/writing" class="btn btn-primary btn-lg rounded-full flex items-center gap-2">
+  <!-- 写作按钮（在搜索框右边） -->
+  <a href="/writing" class="btn btn-primary btn-lg rounded-full flex items-center gap-2 whitespace-nowrap">
     <Icon name="lucide:pencil" class="w-5 h-5" />
     <span>写作</span>
   </a>
