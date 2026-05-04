@@ -129,21 +129,18 @@ const bannerSubtitle = pageConfig?.subtitle || "";
     </script>
   </head>
 
-  <!-- 移除上边距，让Banner从顶部开始 -->
   <body
     class="flex flex-col min-h-screen bg-[var(--banner-wave-bg)]"
     {...isIndexed ? { "data-pagefind-body": true } : {}}
   >
     {showBanner && <Banner title={bannerTitle} subtitle={bannerSubtitle} />}
     <Navbar />
-    <!-- 去掉max-w-blog，改为全屏宽度 -->
-    <div class={`w-full flex-grow page-content-animate ${showBanner ? 'mt-8' : 'mt-24'}`}>
+    <div class={`max-w-blog mx-auto w-full flex-grow page-content-animate ${showBanner ? 'mt-8' : 'mt-24'}`}>
       <div
-        class={`grid grid-cols-1 ${showSidebar ? "md:grid-cols-5 lg:grid-cols-4" : ""} gap-4 px-4 pb-4 h-full`}
+        class={`grid grid-cols-1 ${showSidebar ? "md:grid-cols-[260px_1fr]" : ""} gap-4 px-4 pb-4 h-full`}
       >
-        <!-- 去掉首页的pl-[50px]，让文章卡片整体左移 -->
         <main
-          class={`col-span-1 ${showSidebar ? "md:col-span-4 lg:col-span-3" : "w-full"} bg-transparent order-1 md:order-2 flex flex-col gap-4`}
+          class={`col-span-1 md:col-span-auto bg-transparent order-1 md:order-2 flex flex-col gap-4 ${Astro.url.pathname === '/' ? 'pl-[10px]' : ''}`}
         >
           <div class="flex-grow flex flex-col gap-4">
             <slot />
@@ -152,7 +149,7 @@ const bannerSubtitle = pageConfig?.subtitle || "";
         </main>
         {
           showSidebar && (
-            <aside class={`col-span-1 bg-transparent order-2 md:order-1 md:top-4 hidden md:block ${Astro.url.pathname === '/' ? '-ml-[60px]' : ''}`}>
+            <aside class={`w-[260px] col-span-1 bg-transparent order-2 md:order-1 md:top-4 hidden md:block ${Astro.url.pathname === '/' ? '-ml-[20px]' : ''} pr-2`}>
               <Sidebar headings={headings} showTOC={showTOC} />
               <slot name="sidebar" />
             </aside>
@@ -160,7 +157,6 @@ const bannerSubtitle = pageConfig?.subtitle || "";
         }
       </div>
     </div>
-
 
     <MobileTOC headings={headings} showTOC={showTOC} />
     <GlobalAudio />
