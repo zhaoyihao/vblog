@@ -11,6 +11,13 @@ site:
   date_format: YYYY年MM月DD日 dddd
   blog:
     pageSize: 8
+
+  banner:
+    enableRandom: false
+    height: 45vh
+    images:
+      - https://tc.alcy.cc/q/20250908/b2d656670551cb9ea6eda7b46b6c8ec0.webp
+    
   icp: 萌ICP备20268501号
   pages:
     home:
@@ -112,7 +119,7 @@ umami:
 user:
   name: 我的博客
   description: Ciallo～(∠・ω<)⌒★
-  site: null
+  site: https://hub.131714.xyz
   avatar: /profile.png
   sidebar:
     social:
