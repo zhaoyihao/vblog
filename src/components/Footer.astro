@@ -64,17 +64,13 @@ import { USER_NAME, USER_SITE, USER_FOOTER_SOCIAL_ICONS, SITE_ICP, SITE_ICP_LINK
     </div>
   </div>
 
+
   {/* ICP 单独一行 */}
   {SITE_ICP && (
     <div class="mt-2 text-xs md:text-sm">
-      <a
-        href={SITE_ICP_LINK}
-        target="_blank"
-        rel="noopener"
-        class="font-bold"
-      >
+      <span class="font-bold">
         {SITE_ICP}
-      </a>
+      </span>
     </div>
   )}
 </nav>
