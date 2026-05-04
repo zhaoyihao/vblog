@@ -1,112 +1,81 @@
-import { createInstallationToken, getInstallationId, signAppJwt } from './github-client'
-import { GITHUB_CONFIG } from '@/consts'
 import { toast } from 'sonner'
-import { decrypt,encrypt } from './aes256-util'
-import { useAuthStore } from '@/components/write/hooks/use-auth'
+import { create } from 'zustand'
 
-const GITHUB_TOKEN_CACHE_KEY = 'github_token'
-const GITHUB_PEM_CACHE_KEY = 'p_info'
-
-function getTokenFromCache(): string | null {
-	if (typeof sessionStorage === 'undefined') return null
-	try {
-		return sessionStorage.getItem(GITHUB_TOKEN_CACHE_KEY)
-	} catch {
-		return null
-	}
+// ======================
+// 你自己设定的管理员账号密码
+// ======================
+const ADMIN_CONFIG = {
+  username: "admin",      // 你自己改
+  password: "12345678"    // 你自己改
 }
 
-function saveTokenToCache(token: string): void {
-	if (typeof sessionStorage === 'undefined') return
-	try {
-		sessionStorage.setItem(GITHUB_TOKEN_CACHE_KEY, token)
-	} catch (error) {
-		console.error('Failed to save token to cache:', error)
-	}
+// 登录状态缓存
+const AUTH_KEY = 'admin_logged_in'
+
+// ======================
+// 登录状态管理
+// ======================
+export const useAuthStore = create(() => ({
+  privateKey: null,
+  isAdminLoggedIn: localStorage.getItem(AUTH_KEY) === 'true',
+}))
+
+// ======================
+// 登录函数（账号密码校验）
+// ======================
+export async function adminLogin(username: string, password: string) {
+  if (username === ADMIN_CONFIG.username && password === ADMIN_CONFIG.password) {
+    localStorage.setItem(AUTH_KEY, 'true')
+    useAuthStore.setState({ isAdminLoggedIn: true })
+    toast.success('登录成功！')
+    return true
+  } else {
+    toast.error('账号或密码错误')
+    return false
+  }
 }
 
-function clearTokenCache(): void {
-	if (typeof sessionStorage === 'undefined') return
-	try {
-		sessionStorage.removeItem(GITHUB_TOKEN_CACHE_KEY)
-	} catch (error) {
-		console.error('Failed to clear token cache:', error)
-	}
+// ======================
+// 登出
+// ======================
+export function adminLogout() {
+  localStorage.removeItem(AUTH_KEY)
+  useAuthStore.setState({ isAdminLoggedIn: false })
+  toast.info('已退出登录')
 }
 
-export async function getPemFromCache(): Promise<string | null> {
-	if (typeof sessionStorage === 'undefined') return null
-	try {
-		// 解密缓存中的 pem
-		const encryptedPem = sessionStorage.getItem(GITHUB_PEM_CACHE_KEY)
-		if (!encryptedPem) return null
-		return await decrypt(encryptedPem, GITHUB_CONFIG.ENCRYPT_KEY)
-	} catch {
-		return null
-	}
+// ======================
+// 判断是否是管理员
+// ======================
+export function isAdmin() {
+  return useAuthStore.getState().isAdminLoggedIn
 }
 
-export async function savePemToCache(pem: string): Promise<void> {
-	if (typeof sessionStorage === 'undefined') return
-	try {
-		// 加密 pem 后存储
-		const encryptedPem = await encrypt(pem, GITHUB_CONFIG.ENCRYPT_KEY)
-		sessionStorage.setItem(GITHUB_PEM_CACHE_KEY, encryptedPem)
-	} catch (error) {
-		console.error('Failed to save pem to cache:', error)
-	}
+// ======================
+// 给写作页面用的获取token
+// 现在直接返回固定字符串，不需要GitHub
+// ======================
+export async function getAuthToken() {
+  if (!isAdmin()) {
+    throw new Error('请先登录管理员账号')
+  }
+  return 'admin_token' // 固定值
 }
 
-function clearPemCache(): void {
-	if (typeof sessionStorage === 'undefined') return
-	try {
-		sessionStorage.removeItem(GITHUB_PEM_CACHE_KEY)
-	} catch (error) {
-		console.error('Failed to clear pem cache:', error)
-	}
+// ======================
+// 清理缓存（保留登录状态）
+// ======================
+export function clearAllAuthCache() {
+  // 不清除登录
 }
 
-export function clearAllAuthCache(): void {
-	clearTokenCache()
-	clearPemCache()
+// ======================
+// 判断是否已认证
+// ======================
+export async function hasAuth() {
+  return isAdmin()
 }
 
-export async function hasAuth(): Promise<boolean> {
-	return !!getTokenFromCache() || !!(await getPemFromCache())
-}
-
-/**
- * 统一的认证 Token 获取
- * 自动处理缓存、签发等逻辑
- * @returns GitHub Installation Token
- */
-export async function getAuthToken(): Promise<string> {
-	// 1. 先尝试从缓存获取 token
-	const cachedToken = getTokenFromCache()
-	if (cachedToken) {
-		return cachedToken
-	}
-
-	// 2. 获取私钥（从缓存）
-	const privateKey = useAuthStore.getState().privateKey
-	if (!privateKey) {
-		throw new Error('需要先设置私钥。请使用 useAuth().setPrivateKey()')
-	}
-
-	// 使用单个加载提示替代多个连续提示
-	const toastId = `auth-loading-${Date.now()}`
-	toast.loading('正在进行身份验证...', { id: toastId })
-
-	try {
-		const jwt = signAppJwt(GITHUB_CONFIG.APP_ID, privateKey)
-		const installationId = await getInstallationId(jwt, GITHUB_CONFIG.OWNER, GITHUB_CONFIG.REPO)
-		const token = await createInstallationToken(jwt, installationId)
-
-		saveTokenToCache(token)
-		toast.dismiss(toastId)
-		return token
-	} catch (error) {
-		toast.dismiss(toastId)
-		throw error
-	}
-}
+// 无用的兼容函数
+export async function getPemFromCache() { return null }
+export async function savePemToCache() { }
