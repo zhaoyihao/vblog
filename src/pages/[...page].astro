@@ -75,23 +75,28 @@ const pageLinks = generatePageLinks(totalPages);
   </CardGroup>
 
   <!-- Blog Post List -->
-  <CardGroup cols="3">
-    {
-      page.data.map((blog: Post) => (
-        <PostCard
-          title={blog.data.title}
-          image={blog.data.image}
-          description={blog.data.description}
-          url={"/blog/" + blog.slug}
-          pubDate={blog.data.pubDate}
-          badge={blog.data.badge}
-          categories={blog.data.categories}
-          tags={blog.data.tags}
-          word={blog.remarkPluginFrontmatter.totalCharCount}
-          time={blog.remarkPluginFrontmatter.readingTime}
-        />
-      ))
-    }
-  </CardGroup>
+<CardGroup 
+  cols="4" 
+  class="w-full max-w-none !mx-0 !px-0"
+>
+{
+  page.data.map((blog: Post) => (
+    <PostCard
+      title={blog.data.title}
+      image={blog.data.image}
+      description={blog.data.description}
+      url={"/blog/" + blog.slug}
+      pubDate={blog.data.pubDate}
+      badge={blog.data.badge}
+      categories={blog.data.categories}
+      tags={blog.data.tags}
+      word={blog.remarkPluginFrontmatter.totalCharCount}
+      time={blog.remarkPluginFrontmatter.readingTime}
+      class="h-full"
+    />
+  ))
+}
+</CardGroup>
+
   <Pagination page={page} totalPages={totalPages} pageLinks={pageLinks} baseUrl={``} />
 </BaseLayout>
