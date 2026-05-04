@@ -20,7 +20,9 @@ site:
     
   icp: 萌ICP备20268501号
   pages:
-
+    home:
+      title: 
+      subtitle: 
     friend:
       title: 友人帐
       subtitle: 记录那些珍贵的友谊，分享彼此的故事
