@@ -18,7 +18,7 @@ const totalPages = Math.ceil(page.total / page.size);
 const pageLinks = generatePageLinks(totalPages);
 ---
 
-<BaseLayout title="Blog" isIndexed={false}>
+<BaseLayout title="我的博客" isIndexed={false}>
   <!-- Blog Navigation Cards -->
   <CardGroup cols="2" class="grid-cols-2">
     <!-- Archives Card -->
@@ -75,7 +75,7 @@ const pageLinks = generatePageLinks(totalPages);
   </CardGroup>
 
   <!-- Blog Post List -->
-  <CardGroup cols="1">
+  <CardGroup cols="3">
     {
       page.data.map((blog: Post) => (
         <PostCard
