@@ -20,9 +20,7 @@ site:
     
   icp: 萌ICP备20268501号
   pages:
-    home:
-      title: 首页
-      subtitle: 收集温柔碎片，藏进晚霞里！
+
     friend:
       title: 友人帐
       subtitle: 记录那些珍贵的友谊，分享彼此的故事
