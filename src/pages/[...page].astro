@@ -21,9 +21,9 @@ const pageLinks = generatePageLinks(totalPages);
 
 <BaseLayout title="我的博客" isIndexed={false}>
 
-<!-- 🔥 同一行：搜索框 + 写作按钮（右边） -->
+<!-- 🔥 首页同一行：搜索框 + 写作 + 音乐播放器（和图示位置完全对应） -->
 <div class="mb-6 flex items-center gap-4">
-  <!-- 搜索框 -->
+  <!-- 搜索框（左边） -->
   <form action="/blog/search" method="get" class="relative flex-1 max-w-8xl">
     <input
       type="text"
@@ -45,11 +45,16 @@ const pageLinks = generatePageLinks(totalPages);
     </button>
   </form>
 
-  <!-- 写作按钮（在搜索框右边） -->
+  <!-- 写作按钮（中间偏右） -->
   <a href="/write" class="btn btn-primary btn-lg rounded-full flex items-center gap-2 whitespace-nowrap">
     <Icon name="lucide:pencil" class="w-5 h-5" />
     <span>写作</span>
   </a>
+
+  <!-- 音乐播放器（写作按钮右边，和图示位置完全一致） -->
+  <div class="shrink-0">
+    <GlobalAudio />
+  </div>
 </div>
 
 
