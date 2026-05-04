@@ -20,14 +20,15 @@ const pageLinks = generatePageLinks(totalPages);
 ---
 
 <BaseLayout title="我的博客" isIndexed={false}>
-<!-- 🔥 Banner 下方的独立搜索框，宽度和红框一致，居中显示 -->
-<div class="mb-6 flex justify-center">
-  <form action="/blog/search" method="get" class="relative w-full max-w-3xl">
+
+<!-- 🔥 Banner 下方的独立搜索框（加宽 + 左移 + 常驻阴影） -->
+<div class="mb-6 flex justify-start">
+  <form action="/blog/search" method="get" class="relative w-full max-w-4xl">
     <input
       type="text"
       name="q"
       placeholder="输入关键词，搜索博客内所有文章..."
-      class="input w-full pl-10 pr-12 py-3 text-base bg-base-200 rounded-full shadow-md focus:shadow-lg transition-shadow"
+      class="input w-full pl-10 pr-12 py-3 text-base bg-base-200 rounded-full shadow-lg transition-shadow"
     />
     <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
       <Icon name="lucide:search" class="w-5 h-5 text-base-content/60" />
@@ -40,6 +41,9 @@ const pageLinks = generatePageLinks(totalPages);
     </button>
   </form>
 </div>
+
+
+
 
 
   <!-- Blog Navigation Cards -->
