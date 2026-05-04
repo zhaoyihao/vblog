@@ -1,6 +1,6 @@
 site:
   tab: WDBlog | AI 人工智能与技术创新的深度分享空间
-  title: WD•Blog
+  title: WDBlog
   description: WDBlog 专注 AI 人工智能、技术创新与代码实践，分享科技干货、创意灵感与深度思考，记录成长探索，沉淀有价值的优质内容。
   language: zh
   favicon: /favicon.png
@@ -8,21 +8,13 @@ site:
     light: garden
     dark: dracula
     code: github-dark
-  date_format: ddd MMM DD YYYY
+  date_format: YYYY年MM月DD日 dddd
   blog:
     pageSize: 8
-  banner:
-    enableRandom: true
-    randomUrl: https://t.alcy.cc/ycy
-    randomCount: 5
-    height: 60vh
-    images:
-      - https://tc.alcy.cc/q/20250908/b2d656670551cb9ea6eda7b46b6c8ec0.webp
   icp: 萌ICP备20268501号
-  icp_link: ''
   pages:
     home:
-      title: RyuChan's Blog
+      title: WDBlog
       subtitle: 欲买桂花同载酒，终不似，少年游！
       typewriterTexts:
         - 🌸 欲买桂花同载酒，终不似，少年游！
