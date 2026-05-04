@@ -24,7 +24,7 @@ const pageLinks = generatePageLinks(totalPages);
 <!-- 🔥 按图示调整：搜索框居中占满，写作按钮靠右 -->
 <div class="mb-6 flex items-center gap-6">
   <!-- 搜索框：右侧往里收一些 -->
-  <form action="/blog/search" method="get" class="relative flex-1 max-w-[85%]">
+  <form action="/blog/search" method="get" class="relative flex-1 max-w-[80%]">
     <input
       type="text"
       name="q"
@@ -45,10 +45,10 @@ const pageLinks = generatePageLinks(totalPages);
     </button>
   </form>
 
-  <!-- 写作按钮：变大、变宽、更醒目 -->
-  <a href="/write" class="btn btn-primary btn-lg rounded-full flex items-center gap-3 whitespace-nowrap shrink-0 px-7 py-4 text-lg">
+  <!-- 写作按钮：文字变大 -->
+  <a href="/write" class="btn btn-primary btn-lg rounded-full flex items-center gap-3 whitespace-nowrap shrink-0 px-8 py-4">
     <Icon name="lucide:pencil" class="w-5 h-5" />
-    <span>写作</span>
+    <span class="text-xl font-medium">写作</span>
   </a>
 </div>
 
