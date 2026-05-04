@@ -4,6 +4,7 @@ import PostCard from "@components/PostCard.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Pagination from "@components/widgets/Pagination.astro";
 import CardGroup from "@components/temple/CardGroup.astro";
+import Card from "@components/temple/Card.astro";
 import { Icon } from "astro-icon/components";
 import { t } from "@config";
 import { generatePageLinks } from "@utils/blogUtils";
@@ -19,6 +20,31 @@ const pageLinks = generatePageLinks(totalPages);
 ---
 
 <BaseLayout title="我的博客" isIndexed={false}>
+  <!-- 🔥 红框位置：Banner 下方的独立搜索框 -->
+  <div class="mb-6">
+    <Card class="bg-base-100 shadow-lg rounded-2xl">
+      <div class="p-4">
+        <form action="/blog/search" method="get" class="relative w-full">
+          <input
+            type="text"
+            name="q"
+            placeholder="输入关键词搜索文章..."
+            class="input input-bordered w-full pl-10 pr-12 py-3 text-base"
+          />
+          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <Icon name="lucide:search" class="w-5 h-5 text-base-content/60" />
+          </div>
+          <button
+            type="submit"
+            class="absolute right-2 top-1/2 -translate-y-1/2 btn btn-sm btn-circle btn-ghost"
+          >
+            <Icon name="lucide:arrow-right" class="w-5 h-5" />
+          </button>
+        </form>
+      </div>
+    </Card>
+  </div>
+
   <!-- Blog Navigation Cards -->
   <CardGroup cols="2" class="grid-cols-2">
     <!-- Archives Card -->
@@ -60,65 +86,31 @@ const pageLinks = generatePageLinks(totalPages);
       </div>
     </a>
 
-<!-- Search Box (直接可输入搜索) -->
-<div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-full rounded-2xl overflow-hidden">
-  <div class="card-body p-2 sm:p-4 flex flex-col gap-3">
-    <!-- 标题 + 图标 -->
-    <div class="flex items-center gap-2">
-      <div class="rounded-full bg-info/10 p-2 sm:p-3 flex-shrink-0">
-        <Icon name="lucide:search" class="w-4 h-4 sm:w-6 sm:h-6 text-info" />
-      </div>
-      <div class="min-w-0 flex-1">
-        <h2 class="card-title text-xs sm:text-lg leading-tight mb-0.5">{t("label.searchPage")}</h2>
-        <p class="text-[10px] sm:text-sm opacity-75 truncate">{t("label.searchPageDescription")}</p>
-      </div>
-    </div>
-
-    <!-- 🔥 真正的搜索输入框 -->
-    <form action="/blog/search" method="get" class="relative w-full">
-      <input
-        type="text"
-        name="q"
-        placeholder="输入关键词搜索文章..."
-        class="input input-bordered w-full pl-10 pr-12 py-2 text-sm"
-      />
-      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-        <Icon name="lucide:search" class="w-4 h-4 text-base-content/60" />
-      </div>
-      <button
-        type="submit"
-        class="absolute right-2 top-1/2 -translate-y-1/2 btn btn-sm btn-circle btn-ghost"
-      >
-        <Icon name="lucide:arrow-right" class="w-4 h-4" />
-      </button>
-    </form>
-  </div>
-</div>
   </CardGroup>
 
   <!-- Blog Post List -->
-<CardGroup 
-  cols="4" 
-  class="w-full max-w-none !mx-0 !px-0"
->
-{
-  page.data.map((blog: Post) => (
-    <PostCard
-      title={blog.data.title}
-      image={blog.data.image}
-      description={blog.data.description}
-      url={"/blog/" + blog.slug}
-      pubDate={blog.data.pubDate}
-      badge={blog.data.badge}
-      categories={blog.data.categories}
-      tags={blog.data.tags}
-      word={blog.remarkPluginFrontmatter.totalCharCount}
-      time={blog.remarkPluginFrontmatter.readingTime}
-      class="h-full"
-    />
-  ))
-}
-</CardGroup>
+  <CardGroup 
+    cols="4" 
+    class="w-full max-w-none !mx-0 !px-0 mt-6"
+  >
+    {
+      page.data.map((blog: Post) => (
+        <PostCard
+          title={blog.data.title}
+          image={blog.data.image}
+          description={blog.data.description}
+          url={"/blog/" + blog.slug}
+          pubDate={blog.data.pubDate}
+          badge={blog.data.badge}
+          categories={blog.data.categories}
+          tags={blog.data.tags}
+          word={blog.remarkPluginFrontmatter.totalCharCount}
+          time={blog.remarkPluginFrontmatter.readingTime}
+          class="h-full"
+        />
+      ))
+    }
+  </CardGroup>
 
   <Pagination page={page} totalPages={totalPages} pageLinks={pageLinks} baseUrl={``} />
 </BaseLayout>
