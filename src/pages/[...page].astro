@@ -21,10 +21,10 @@ const pageLinks = generatePageLinks(totalPages);
 
 <BaseLayout title="我的博客" isIndexed={false}>
 
-<!-- 🔥 同一行：搜索框 + 写作按钮（右边） -->
+<!-- 🔥 按图示调整：搜索框居中占满，写作按钮靠右 -->
 <div class="mb-6 flex items-center gap-4">
-  <!-- 搜索框 -->
-  <form action="/blog/search" method="get" class="relative flex-1 max-w-8xl">
+  <!-- 搜索框：居中占满剩余宽度 -->
+  <form action="/blog/search" method="get" class="relative flex-1">
     <input
       type="text"
       name="q"
@@ -45,8 +45,8 @@ const pageLinks = generatePageLinks(totalPages);
     </button>
   </form>
 
-  <!-- 写作按钮（在搜索框右边） -->
-  <a href="/write" class="btn btn-primary btn-lg rounded-full flex items-center gap-2 whitespace-nowrap">
+  <!-- 写作按钮：固定靠右，不随搜索框宽度变化 -->
+  <a href="/write" class="btn btn-primary btn-lg rounded-full flex items-center gap-2 whitespace-nowrap shrink-0">
     <Icon name="lucide:pencil" class="w-5 h-5" />
     <span>写作</span>
   </a>
