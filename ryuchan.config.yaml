@@ -13,9 +13,11 @@ site:
     pageSize: 8
 
   banner:
-    enableRandom: false
+    enableRandom: true  
     height: 45vh
-    images: https://imgr2.aitc.ccwu.cc/%E5%85%B6%E4%BB%96/b184a1a1-2046-4f43-ba31-3dc08dce2a59.webp
+    images:
+      - https://imgr2.aitc.ccwu.cc/%E5%85%B6%E4%BB%96/b184a1a1-2046-4f43-ba31-3dc08dce2a59.webp
+    
     
   icp: 萌ICP备20268501号
   pages:
