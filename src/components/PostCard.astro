@@ -31,6 +31,18 @@ const slug = url ? url.split('/').filter(Boolean).pop() : undefined;
   {
     image && (
       <a href={url} class="relative w-full aspect-video overflow-hidden group">
+
+        <!-- 🔥 标签：默认隐藏，hover 图片时显示在右上角（你要的功能） -->
+        {tags.length > 0 && (
+          <div class="absolute top-2 right-2 z-20 flex gap-1 flex-wrap justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            {tags.slice(0, 2).map((tag) => (
+              <span class="px-2 py-1 text-xs bg-black/70 text-white rounded-md backdrop-blur-sm">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/60 z-10 transition-all duration-300 flex items-center justify-center">
           <Icon
             name="lucide:arrow-right"
@@ -81,7 +93,9 @@ const slug = url ? url.split('/').filter(Boolean).pop() : undefined;
     </div>
 
     <p class="text-sm text-base-content/70 mb-4">{description}</p>
-    <PostFilter categories={categories} tags={tags} />
+
+    <!-- 🔥 只移除 tags，保留 categories，其余完全不动 -->
+    <PostFilter categories={categories} tags={[]} />
   </div>
 
   {slug && umamiConfig.enable && (
