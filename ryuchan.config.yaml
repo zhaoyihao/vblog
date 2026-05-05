@@ -113,7 +113,7 @@ umami:
 user:
   name: 我的博客
   description: 保持热爱，自带光芒✨
-  site: https://inav.ccwu.cc
+  site: https://wdblog.ccwu.cc
   avatar: /profile.png
   sidebar:
     social:
@@ -127,10 +127,10 @@ user:
         svg: ri:mail-line
       - href: '#'
         ariaLabel: QQ
-        title: QQ：550680039        
+        title: QQ：550680039
         svg: ri:qq-line
-      - href: #
-        ariaLabel: WeChat      
+      - href: null
+        ariaLabel: WeChat
         title: 微信：13465318688
         svg: ri:wechat-fill
   footer:
