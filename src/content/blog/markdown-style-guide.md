@@ -1,13 +1,16 @@
 ---
-title: "Markdown Style Guide"
-description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
-pubDate: "Jul 01 2024"
-image: /image/image3.png
+title: Markdown Style Guide
+description: >-
+  Here is a sample of some basic Markdown syntax that can be used when writing
+  Markdown content in Astro.
+pubDate: 2024-07-01T00:00
+image: https://wdblog.cc.cd/image/image1.png
+draft: false
+tags:
+  - Markdown
 categories:
   - Documentation
   - Examples
-tags:
-  - Markdown
 badge: Markdown
 ---
 
