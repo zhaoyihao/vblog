@@ -42,7 +42,7 @@ export async function GET(context: any) {
 
   return rss({
     title: SITE_TITLE,
-    description: `${SITE_DESCRIPTION} feedId:172229198194932736+userId:166528077360436224`,
+    description: `${SITE_DESCRIPTION}`,
     site: context.site,
     stylesheet: '/rss-style.xsl',
     items,
