@@ -117,37 +117,37 @@ user:
   avatar: /profile.png
   sidebar:
     social:
-      - href: https://github.com/maiclezxd
+      - href: https://github.com/DongMaicle
         ariaLabel: Github
         title: Github
         svg: ri:github-line
-      - href: https://maiclezxd@gmail.com
+      - href: mailto:maiclezxd@gmail.com
         ariaLabel: Email
         title: Email
         svg: ri:mail-line
-      - href: '550680039'
+      - href: tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=550680039
         ariaLabel: QQ
         title: QQ
         svg: ri:qq-line
-      - href: MEMA-MALL
-        title: WeChat
+      - href: #
+        title: 微信：MEMA-MALL
         ariaLabel: WeChat
         svg: ri:wechat-fill
   footer:
     social:
-      - href: https://github.com/kobaridev
+      - href: https://github.com/DongMaicle
         ariaLabel: Github
         title: Github
         svg: ri:github-line
-      - href: https://space.bilibili.com/1536411565
+      - href: #
         ariaLabel: BiliBili
         title: BiliBili
         svg: ri:bilibili-line
-      - href: https://x.com/xzz_ya
+      - href: #
         ariaLabel: X(twitter)
         title: X(twitter)
         svg: ri:twitter-line
-      - href: https://t.me/xzz_ya
+      - href: #
         ariaLabel: Telegram
         title: Telegram
         svg: ri:telegram-line
