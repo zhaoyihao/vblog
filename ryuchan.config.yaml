@@ -112,7 +112,7 @@ umami:
   timezone: Asia/Shanghai
 user:
   name: 我的博客
-  description: 保持热爱，自带光芒✨
+  description: 保持热爱，自信放光芒✨
   site: https://wdblog.ccwu.cc
   avatar: /profile.png
   sidebar:
