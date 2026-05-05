@@ -11,18 +11,16 @@ site:
   date_format: YYYY年MM月DD日 dddd
   blog:
     pageSize: 8
-
   banner:
     randomUrl: https://imgr2.aitc.ccwu.cc/其他/6461b4c9-8dbc-4587-abde-e103224c33bb.webp
     height: 50vh
     images:
-      - https://tc.alcy.cc/q/20250908/b2d656670551cb9ea6eda7b46b6c8ec0.webp    
-    
+      - https://tc.alcy.cc/q/20250908/b2d656670551cb9ea6eda7b46b6c8ec0.webp
   icp: 萌ICP备20268501号
   pages:
     home:
-      title: 
-      subtitle: 
+      title: null
+      subtitle: null
     friend:
       title: 友人帐
       subtitle: 记录那些珍贵的友谊，分享彼此的故事
@@ -65,7 +63,7 @@ site:
           target: _self
         - id: External
           text: 站外
-          href: "https://inav.ccwu.cc/"
+          href: https://inav.ccwu.cc/
           svg: material-symbols:open-in-new-rounded
           target: _blank
     - id: entertainment
@@ -81,16 +79,14 @@ site:
           target: _self
         - id: Movies
           text: 影视
-          href: "https://avi.ccwu.cc/"
+          href: https://avi.ccwu.cc/
           svg: material-symbols:movie-outline
           target: _blank
-          
     - id: project
       text: 项目
       href: /project
       svg: material-symbols:code-blocks-outline
       target: _self
-
     - id: about
       text: 关于
       href: /about
@@ -109,35 +105,34 @@ github:
   appId: null
   encryptKey: wudishiduomejimo
 umami:
-  enable: true
+  enable: false
   baseUrl: https://umami.131714.xyz
   shareId: jToXL5Z3hnA1gKUw
   websiteId: 3f9afc6c-f0bd-4734-be15-6d053960d34d
   timezone: Asia/Shanghai
 user:
   name: 我的博客
-  description: Ciallo～(∠・ω<)⌒★
-  site: https://hub.131714.xyz
+  description: 保持热爱，自带光芒✨
+  site: https://inav.ccwu.cc
   avatar: /profile.png
   sidebar:
     social:
-      - href: https://github.com/kobaridev
+      - href: https://github.com/maiclezxd
         ariaLabel: Github
         title: Github
         svg: ri:github-line
-      - href: https://space.bilibili.com/1536411565
-        ariaLabel: BiliBili
-        title: BiliBili
-        svg: ri:bilibili-line
-      - href: >-
-          https://www.douyin.com/user/MS4wLjABAAAAeO0sqJYUgh1a26GkVPtS2yv_IOODjeqvtl4KSjvsntg?from_tab_name=main
-        ariaLabel: Douyin
-        title: Douyin
-        svg: ri:tiktok-line
-      - href: https://weibo.com/u/7579913510
-        title: Weibo
-        ariaLabel: Weibo
-        svg: ri:weibo-fill
+      - href: https://maiclezxd@gmail.com
+        ariaLabel: Email
+        title: Email
+        svg: ri:mail-line
+      - href: '550680039'
+        ariaLabel: QQ
+        title: QQ
+        svg: ri:qq-line
+      - href: MEMA-MALL
+        title: WeChat
+        ariaLabel: WeChat
+        svg: ri:wechat-fill
   footer:
     social:
       - href: https://github.com/kobaridev
@@ -157,7 +152,7 @@ user:
         title: Telegram
         svg: ri:telegram-line
 comments:
-  enable: true
+  enable: false
   type: giscus
   giscus:
     repo: kobaridev/gsc
