@@ -52,27 +52,28 @@ site:
       href: /
       svg: material-symbols:home-outline-rounded
       target: _self
-    - id: write
-      text: 写作
-      href: /write
-      svg: material-symbols:edit-square-outline-rounded
-      target: _self
     - id: navigation
       text: 导航
       href: /navigation
       svg: material-symbols:explore-outline
       target: _self
+      subItems:
+        - id: Internal
+          text: 站内
+          href: /Internal
+          svg: material-symbols:home-rounded
+          target: _self
+        - id: External
+          text: 站外
+          href: /External
+          svg: material-symbols:open-in-new-rounded
+          target: _self
     - id: entertainment
       text: 娱乐
       href: '#'
       svg: material-symbols:play-circle-outline-rounded
       target: _self
       subItems:
-        - id: anime
-          text: 追番
-          href: /anime
-          svg: material-symbols:movie-outline
-          target: _self
         - id: music
           text: 音乐
           href: /music
