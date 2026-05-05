@@ -3,9 +3,13 @@ import { Icon } from "astro-icon/components";
 import { USER_NAME, USER_SITE, USER_FOOTER_SOCIAL_ICONS, SITE_ICP, SITE_ICP_LINK } from "@config";
 ---
 
-<footer class="footer bg-base-100 py-2 px-4 md:p-10 rounded-xl shadow-lg">
-  <div class="w-full text-center">
-    <!-- ICP + RSS 图标 居中 -->
+<!-- 🔥 关键：加了 relative + left-50% + -translate-x-1/2 实现强制居中全屏 -->
+<footer class="footer bg-base-100 py-3 px-4 rounded-xl shadow-lg w-full 
+               relative left-1/2 -translate-x-1/2 
+               max-w-[100vw] md:max-w-[100vw] 
+               text-center">
+  <div class="w-full mx-auto text-center">
+    <!-- ICP + RSS -->
     <div class="text-xs md:text-sm flex items-center justify-center gap-3 mb-2">
       <span class="font-bold">{SITE_ICP}</span>
       <div class="tooltip" data-tip="RSS 订阅">
@@ -15,7 +19,7 @@ import { USER_NAME, USER_SITE, USER_FOOTER_SOCIAL_ICONS, SITE_ICP, SITE_ICP_LINK
       </div>
     </div>
 
-    <!-- 运行时间 居中 -->
+    <!-- 运行时间 -->
     <div id="runtime" class="text-xs md:text-sm"></div>
   </div>
 </footer>
