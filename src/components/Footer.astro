@@ -3,22 +3,15 @@ import { Icon } from "astro-icon/components";
 import { USER_NAME, USER_SITE, USER_FOOTER_SOCIAL_ICONS, SITE_ICP, SITE_ICP_LINK } from "@config";
 ---
 
-<style>
-  .runtime-glow {
-    color: #60a5fa;
-    text-shadow: 0 0 5px #3b82f6, 0 0 10px #3b82f6, 0 0 15px #2563eb;
-  }
-</style>
-
 <footer class="footer bg-base-100 py-3 px-4 rounded-xl shadow-lg w-full">
   <div class="flex items-center justify-center gap-4 text-sm md:text-base w-full">
-    <!-- 运行时间 蓝光霓虹发光 -->
-    <div id="runtime" class="runtime-glow font-medium"></div>
+    <!-- 运行时间：粗体绿色，无蓝光 -->
+    <div id="runtime" class="text-green-600 font-bold"></div>
 
-    <!-- ICP 纯白色 -->
-    <span class="font-bold text-white">{SITE_ICP}</span>
+    <!-- ICP：粗体绿色 -->
+    <span class="font-bold text-green-600">{SITE_ICP}</span>
 
-    <!-- RSS 粉色放大图标 -->
+    <!-- RSS 保持原本粉色不变 -->
     <div class="tooltip" data-tip="RSS 订阅">
       <a href="/rss.xml" aria-label="RSS 订阅">
         <Icon name="ri:rss-line" class="text-2xl md:text-3xl text-pink-500 hover:text-pink-600" />
@@ -35,7 +28,7 @@ function updateRuntime() {
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const minutes =  Math.floor((diff / (1000 * 60)) % 60);
     const seconds = Math.floor((diff / 1000) % 60);
 
     function pad(n) {
