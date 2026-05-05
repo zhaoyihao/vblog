@@ -65,9 +65,9 @@ site:
           target: _self
         - id: External
           text: 站外
-          href: https://inav.ccwu.cc/
+          href: "https://inav.ccwu.cc/"
           svg: material-symbols:open-in-new-rounded
-          target: _self
+          target: _blank
     - id: entertainment
       text: 娱乐
       href: '#'
@@ -79,6 +79,12 @@ site:
           href: /music
           svg: material-symbols:music-note-rounded
           target: _self
+        - id: Movies
+          text: 影视
+          href: "https://avi.ccwu.cc/"
+          svg: material-symbols:movie-camera-rounded
+          target: _blank
+          
     - id: project
       text: 项目
       href: /project
