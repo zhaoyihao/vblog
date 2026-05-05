@@ -140,7 +140,7 @@ const bannerSubtitle = pageConfig?.subtitle || "";
         class={`grid grid-cols-1 ${showSidebar ? "md:grid-cols-[260px_1fr]" : ""} gap-4 px-4 pb-4 h-full`}
       >
         <main
-          class={`col-span-1 md:col-span-auto bg-transparent order-1 md:order-2 flex flex-col gap-4 ${Astro.url.pathname === '/' ? 'w-[1360px] -ml-[255px]' : ''}`}
+          class={`col-span-1 md:col-span-auto bg-transparent order-1 md:order-2 flex flex-col gap-4 ${['/', '/blog'].includes(Astro.url.pathname) ? 'w-[1360px] -ml-[255px]' : ''}`} 
         >
           <div class="flex-grow flex flex-col gap-4">
             <slot />
@@ -149,7 +149,7 @@ const bannerSubtitle = pageConfig?.subtitle || "";
         </main>
         {
           showSidebar && (
-            <aside class={`col-span-1 bg-transparent order-2 md:order-1 md:top-4 hidden md:block ${Astro.url.pathname === '/' ? 'w-[260px] -ml-[260px]' : ''} pr-2`}>
+            <aside class={`col-span-1 bg-transparent order-2 md:order-1 md:top-4 hidden md:block ${['/', '/blog'].includes(Astro.url.pathname) ? 'w-[260px] -ml-[260px]' : ''} pr-2`}>
               <Sidebar headings={headings} showTOC={showTOC} />
               <slot name="sidebar" />
             </aside>
