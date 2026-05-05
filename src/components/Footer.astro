@@ -3,8 +3,8 @@ import { Icon } from "astro-icon/components";
 import { USER_NAME, USER_SITE, USER_FOOTER_SOCIAL_ICONS, SITE_ICP, SITE_ICP_LINK } from "@config";
 ---
 
-<footer class="footer bg-base-100 py-2 px-4 md:p-10 rounded-xl shadow-lg w-full flex flex-col items-center justify-center text-center">
-  <aside class="w-full text-center">
+<footer class="footer bg-base-100 py-2 px-4 md:p-10 rounded-xl shadow-lg">
+  <div class="w-full text-center">
     <!-- ICP + RSS 图标 居中 -->
     <div class="text-xs md:text-sm flex items-center justify-center gap-3 mb-2">
       <span class="font-bold">{SITE_ICP}</span>
@@ -15,12 +15,11 @@ import { USER_NAME, USER_SITE, USER_FOOTER_SOCIAL_ICONS, SITE_ICP, SITE_ICP_LINK
       </div>
     </div>
 
-    <!-- 运行时间 -->
-    <div id="runtime" class="text-xs md:text-sm mb-2"></div>
-  </aside>
+    <!-- 运行时间 居中 -->
+    <div id="runtime" class="text-xs md:text-sm"></div>
+  </div>
 </footer>
 
-<!-- 🔥 加了 is:inline 就绝对不报错 -->
 <script is:inline>
 function updateRuntime() {
     const startTime = new Date("2023-03-17T00:00:00+08:00");
