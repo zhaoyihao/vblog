@@ -1,37 +1,46 @@
-<div class="tooltip" data-tip="RSS 订阅">
-  <button 
-    id="rssBtn"
-    class="text-3xl md:text-4xl text-pink-500 hover:text-pink-600 hover:shadow-[0_0_8px_#ec4899] transition-all"
-    aria-label="打开 RSS 订阅菜单"
-  >
-    <Icon name="ri:rss-line" />
-  </button>
-</div>
+---
+import { Icon } from "astro-icon/components";
+import { USER_NAME, USER_SITE, USER_FOOTER_SOCIAL_ICONS, SITE_ICP, SITE_ICP_LINK } from "@config";
+---
 
-<!-- 订阅菜单（默认隐藏） -->
+<style>
+  .runtime-glow {
+    color: #60a5fa;
+    text-shadow: 0 0 5px #3b82f6, 0 0 10px #3b82f6, 0 0 15px #2563eb;
+  }
+</style>
+
+<footer class="footer bg-base-100 py-3 px-4 rounded-xl shadow-lg w-full">
+  <div class="flex items-center justify-center gap-4 text-sm md:text-base w-full">
+
+    <!-- 运行时间（蓝光霓虹） -->
+    <div id="runtime" class="runtime-glow font-medium"></div>
+
+    <!-- ICP 白色 -->
+    <span class="font-bold text-white">{SITE_ICP}</span>
+
+    <!-- RSS 粉色大图标 + 订阅菜单 -->
+    <div class="tooltip" data-tip="RSS 订阅">
+      <button id="rssBtn" class="text-3xl md:text-4xl text-pink-500 hover:text-pink-600 hover:shadow-[0_0_8px_#ec4899] transition-all">
+        <Icon name="ri:rss-line" />
+      </button>
+    </div>
+
+  </div>
+</footer>
+
+<!-- RSS 订阅菜单 -->
 <div id="rssMenu" class="hidden fixed bottom-16 right-4 bg-base-100 p-4 rounded-xl shadow-xl border border-gray-700 z-50 w-64">
   <p class="text-sm font-medium mb-2">订阅到阅读器</p>
   <ul class="space-y-2 text-sm">
-    <li>
-      <a href="web+feed:${location.origin}/rss.xml" class="block hover:text-blue-400">
-        🔗 默认阅读器
-      </a>
-    </li>
-    <li>
-      <a href="https://feedly.com/i/subscription/feed/${encodeURIComponent(location.origin + '/rss.xml')}" target="_blank" rel="noopener" class="block hover:text-blue-400">
-        📰 Feedly
-      </a>
-    </li>
-    <li>
-      <button id="copyRssLink" class="block w-full text-left hover:text-blue-400">
-        📋 复制订阅链接
-      </button>
-    </li>
+    <li><a href="web+feed:{{import.meta.env.SITE}}/rss.xml" class="block hover:text-blue-400">🔗 默认阅读器</a></li>
+    <li><a href="https://feedly.com/i/subscription/feed/{{import.meta.env.SITE}}/rss.xml" target="_blank" class="block hover:text-blue-400">📰 Feedly 一键订阅</a></li>
+    <li><button id="copyRssLink" class="w-full text-left hover:text-blue-400">📋 复制订阅链接</button></li>
   </ul>
 </div>
 
 <script is:inline>
-  // 菜单开关
+  // RSS 菜单
   const rssBtn = document.getElementById('rssBtn');
   const rssMenu = document.getElementById('rssMenu');
   const copyBtn = document.getElementById('copyRssLink');
@@ -41,17 +50,40 @@
     rssMenu?.classList.toggle('hidden');
   });
 
-  // 点击页面其他地方关闭菜单
   document.addEventListener('click', () => {
     rssMenu?.classList.add('hidden');
   });
 
-  // 复制链接
   copyBtn?.addEventListener('click', () => {
     const url = `${location.origin}/rss.xml`;
     navigator.clipboard.writeText(url).then(() => {
-      copyBtn.textContent = '✅ 已复制';
-      setTimeout(() => copyBtn.textContent = '📋 复制订阅链接', 2000);
+      copyBtn.textContent = "✅ 已复制";
+      setTimeout(() => copyBtn.textContent = "📋 复制订阅链接", 2000);
     });
   });
+</script>
+
+<script is:inline>
+  // 运行时间
+  function updateRuntime() {
+    const startTime = new Date("2023-03-17T00:00:00+08:00");
+    const now = new Date();
+    const diff = now - startTime;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    function pad(n) {
+      return n < 10 ? '0' + n : n;
+    }
+
+    const runtime = document.getElementById("runtime");
+    if (runtime) {
+      runtime.innerText = `⏱️ 已稳定运行 ${days}天 ${pad(hours)}时 ${pad(minutes)}分 ${pad(seconds)}秒`;
+    }
+  }
+  setInterval(updateRuntime, 1000);
+  updateRuntime();
 </script>
