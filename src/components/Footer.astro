@@ -15,13 +15,13 @@ import { USER_NAME, USER_SITE, USER_FOOTER_SOCIAL_ICONS, SITE_ICP, SITE_ICP_LINK
       </div>
     </div>
 
-    <!-- 稳定运行时间（居中显示） -->
+    <!-- 运行时间 -->
     <div id="runtime" class="text-xs md:text-sm mb-2"></div>
   </aside>
 </footer>
 
-<!-- 运行时间JS代码 -->
-<script>
+<!-- 🔥 加了 is:inline 就绝对不报错 -->
+<script is:inline>
 function updateRuntime() {
     const startTime = new Date("2023-03-17T00:00:00+08:00");
     const now = new Date();
