@@ -54,18 +54,18 @@ site:
       target: _self
     - id: navigation
       text: 导航
-      href: /navigation
+      href: '#'
       svg: material-symbols:explore-outline
       target: _self
       subItems:
         - id: Internal
           text: 站内
-          href: /Internal
-          svg: material-symbols:home-rounded
+          href: /navigation
+          svg: material-symbols:web-rounded
           target: _self
         - id: External
           text: 站外
-          href: /External
+          href: https://inav.ccwu.cc/
           svg: material-symbols:open-in-new-rounded
           target: _self
     - id: entertainment
