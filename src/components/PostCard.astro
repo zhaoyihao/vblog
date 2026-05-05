@@ -32,10 +32,10 @@ const slug = url ? url.split('/').filter(Boolean).pop() : undefined;
     image && (
       <a href={url} class="relative w-full aspect-video overflow-hidden group">
 
-        <!-- 🔥 标签：默认隐藏，hover 图片时显示在右上角（你要的功能） -->
+        <!-- 🔥 显示全部标签，无数量限制 -->
         {tags.length > 0 && (
           <div class="absolute top-2 right-2 z-20 flex gap-1 flex-wrap justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            {tags.slice(0, 2).map((tag) => (
+            {tags.map((tag) => (
               <span class="px-2 py-1 text-xs bg-black/70 text-white rounded-md backdrop-blur-sm">
                 {tag}
               </span>
