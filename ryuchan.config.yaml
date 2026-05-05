@@ -34,7 +34,7 @@ site:
       subtitle: 收藏的常用网站和工具链接
     anime:
       title: 私人影院
-      subtitle: 记录和分享我喜欢的动漫作品
+      subtitle: 我的片单，不设公映
     project:
       title: Projects
       subtitle: 展示一些个人搭建的项目，搬运工！
@@ -61,7 +61,7 @@ site:
         - id: Internal
           text: 站内
           href: /navigation
-          svg: material-symbols:language-rounded
+          svg: material-symbols:home-rounded
           target: _self
         - id: External
           text: 站外
