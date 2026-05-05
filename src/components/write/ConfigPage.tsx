@@ -560,7 +560,7 @@ export function ConfigPage() {
                                                 value={parsedConfig?.site?.icp || ''}
                                                 onChange={e => updateConfigValue('site.icp', e.target.value)} />
                                             <input type="text" className="input input-bordered w-full bg-base-100 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
-                                                placeholder="https://beian.miit.gov.cn/"
+                                                placeholder=""
                                                 value={parsedConfig?.site?.icp_link || ''}
                                                 onChange={e => updateConfigValue('site.icp_link', e.target.value)} />
                                         </div>
