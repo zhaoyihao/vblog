@@ -121,17 +121,17 @@ user:
         ariaLabel: Github
         title: Github
         svg: ri:github-line
-      - href: #
+      - href: '#'
         ariaLabel: Email
         title: Email：maiclezxd@gmail.com
         svg: ri:mail-line
-      - href: #
+      - href: '#'
         ariaLabel: QQ
-        title: QQ：550680039
+        title: QQ：550680039        
         svg: ri:qq-line
       - href: #
+        ariaLabel: WeChat      
         title: 微信：MEMA-MALL
-        ariaLabel: WeChat
         svg: ri:wechat-fill
   footer:
     social:
