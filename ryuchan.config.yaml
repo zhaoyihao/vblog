@@ -33,7 +33,7 @@ site:
       title: 网站导航
       subtitle: 收藏的常用网站和工具链接
     anime:
-      title: 追番
+      title: 私人影院
       subtitle: 记录和分享我喜欢的动漫作品
     project:
       title: Projects
@@ -61,7 +61,7 @@ site:
         - id: Internal
           text: 站内
           href: /navigation
-          svg: material-symbols:web-rounded
+          svg: material-symbols:language-rounded
           target: _self
         - id: External
           text: 站外
@@ -82,7 +82,7 @@ site:
         - id: Movies
           text: 影视
           href: "https://avi.ccwu.cc/"
-          svg: material-symbols:movie-camera-rounded
+          svg: material-symbols:movie-outline
           target: _blank
           
     - id: project
