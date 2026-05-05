@@ -121,13 +121,13 @@ user:
         ariaLabel: Github
         title: Github
         svg: ri:github-line
-      - href: mailto:maiclezxd@gmail.com
+      - href: #
         ariaLabel: Email
-        title: Email
+        title: Email：maiclezxd@gmail.com
         svg: ri:mail-line
-      - href: tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=550680039
+      - href: #
         ariaLabel: QQ
-        title: QQ
+        title: QQ：550680039
         svg: ri:qq-line
       - href: #
         title: 微信：MEMA-MALL
