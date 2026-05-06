@@ -771,7 +771,7 @@ export function ConfigPage() {
                                                 <div className="form-control w-full">
                                                     <label className="label"><span className="label-text text-xs text-base-content/60">Server URL</span></label>
                                                     <input type="text" className="input input-bordered w-full bg-base-100 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                                        placeholder="https://your-waline-server.vercel.app"
+                                                        placeholder="https://comment.zxdai.ccwu.cc"
                                                         value={parsedConfig?.comments?.waline?.serverURL || ''}
                                                         onChange={e => updateConfigValue('comments.waline.serverURL', e.target.value)} />
                                                 </div>
