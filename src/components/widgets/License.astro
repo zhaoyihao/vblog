@@ -97,7 +97,7 @@ const socialLinks = [
 
         <div class="flex justify-between items-center mt-4">
           <PostFilter categories={categories} tags={tags} />
-          <button class="btn btn-primary btn-outline" onclick="share_modal.showModal()">  
+          <button class="btn btn-primary btn-outline btn-lg" onclick="share_modal.showModal()">  
             {t("label.share")}  
             <Icon name="ri:share-line" class="w-5 h-5" />  
           </button>
@@ -183,4 +183,11 @@ const socialLinks = [
   .modal-backdrop button { opacity:0; pointer-events:none; }  
   :global(.card-body .btn-category),  
   :global(.card-body .btn-tag) { text-decoration:none; }  
+</style>
+
+  /* 真正去掉“上一篇 / 下一篇”下划线，标题保留 */
+  :global(.card-body a .text-xs) {
+    text-decoration: none !important;
+    border-bottom: none !important;
+  }
 </style>
