@@ -38,10 +38,11 @@ const typedMenu = SITE_MENU as MenuItem[];
     <div id="navbar-bg" class="bg-base-100/80 backdrop-blur-xl border border-white/20 px-6 py-3 rounded-full shadow-2xl transition-colors duration-300">      
       <div class="flex items-center justify-between">      
 
-        <!-- 品牌标识 - 使用主题色 -->        
-        <a href="/" class="flex items-center space-x-2 hover:scale-105 transition-transform duration-300">        
-          <span class="text-3xl font-bold tracking-tight text-primary">{SITE_TITLE}</span>        
-        </a>      
+        <!-- 品牌标识 - 使用主题色 -->
+     <a href="/" class="flex items-center space-x-2 hover:scale-105 transition-transform duration-300">
+       <img src="/wdlogo.png" alt="WDBlog" class="h-9 w-auto object-contain" />
+       <span class="sr-only">{SITE_TITLE}</span>
+     </a>    
               
         <!-- 桌面端水平菜单 - 响应主题颜色 -->      
         <div class="flex items-center space-x-1">      
