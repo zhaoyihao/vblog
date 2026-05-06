@@ -104,29 +104,34 @@ const socialLinks = [
         </div>
       </div>
 
-      <!-- 上一篇 / 下一篇 导航 -->
+      <!-- ============================================== -->
+      <!-- ✅ 内置 上一篇 / 下一篇 导航（和标题同区域） -->
+      <!-- ============================================== -->
       {prevPost || nextPost ? (
-        <div class="mt-6 flex flex-col md:flex-row gap-4 w-full">    
-          {prevPost ? (    
-            <a href={`/blog/${prevPost.slug}`} class="post-nav-item flex-1 flex items-center gap-4 p-4 rounded-xl border border-base-300 bg-base-100/50 transition-all" data-pagefind-ignore>    
-              <Icon name="tabler:chevron-left" class="text-2xl text-base-content/70" />
-              <div class="text-left flex-1">
-                <div class="text-xs opacity-60 mb-1">上一篇</div>
-                <div class="font-medium line-clamp-2">{prevPost.data.title}</div>    
-              </div>    
-            </a>    
-          ) : <div class="hidden md:block flex-1"></div>}    
+        <>
+          <hr class="my-6" />
+          <div class="flex flex-col md:flex-row gap-4 w-full">    
+            {prevPost ? (    
+              <a href={`/blog/${prevPost.slug}`} class="flex-1 flex items-center gap-4 p-4 rounded-xl border border-base-300 bg-base-100/50 hover:border-primary/50 hover:bg-base-200/80 transition-all" data-pagefind-ignore>    
+                <Icon name="tabler:chevron-left" class="text-2xl text-base-content/70" />
+                <div class="text-left flex-1">
+                  <div class="text-xs opacity-60 mb-1 no-underline">  上 一 篇  </div>
+                  <div class="font-medium line-clamp-2">{prevPost.data.title}</div>    
+                </div>    
+              </a>    
+            ) : <div class="hidden md:block flex-1"></div>}    
 
-          {nextPost ? (    
-            <a href={`/blog/${nextPost.slug}`} class="post-nav-item flex-1 flex items-center gap-4 p-4 rounded-xl border border-base-300 bg-base-100/50 transition-all" data-pagefind-ignore>    
-              <div class="text-right flex-1">    
-                <div class="text-xs opacity-60 mb-1">下一篇</div>
-                <div class="font-medium line-clamp-2">{nextPost.data.title}</div>    
-              </div>    
-              <Icon name="tabler:chevron-right" class="text-2xl text-base-content/70" />
-            </a>    
-          ) : <div class="hidden md:block flex-1"></div>}    
-        </div>
+            {nextPost ? (    
+              <a href={`/blog/${nextPost.slug}`} class="flex-1 flex items-center gap-4 p-4 rounded-xl border border-base-300 bg-base-100/50 hover:border-primary/50 hover:bg-base-200/80 transition-all" data-pagefind-ignore>    
+                <div class="text-right flex-1">    
+                  <div class="text-xs opacity-60 mb-1 no-underline">  下 一 篇  </div>
+                  <div class="font-medium line-clamp-2">{nextPost.data.title}</div>    
+                </div>    
+                <Icon name="tabler:chevron-right" class="text-2xl text-base-content/70" />
+              </a>    
+            ) : <div class="hidden md:block flex-1"></div>}    
+          </div>
+        </>
       ) : null}
     </div>  
   </div>  
@@ -177,17 +182,5 @@ const socialLinks = [
 <style>  
   .modal-backdrop button { opacity:0; pointer-events:none; }  
   :global(.card-body .btn-category),  
-  :global(.card-body .btn-tag) { text-decoration:none; }
-
-  /* 导航样式：悬浮变红 */
-  :global(.post-nav-item:hover) {
-    border-color: red !important;
-    color: red !important;
-  }
-  :global(.post-nav-item:hover .font-medium) {
-    color: red !important;
-  }
-  :global(.post-nav-item) {
-    text-decoration: none !important;
-  }
+  :global(.card-body .btn-tag) { text-decoration:none; }  
 </style>
