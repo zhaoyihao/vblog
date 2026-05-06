@@ -152,8 +152,8 @@ user:
         title: Telegram
         svg: ri:telegram-line
 comments:
-  enable: false
-  type: giscus
+  enable: true
+  type: waline
   giscus:
     repo: kobaridev/gsc
     repoId: R_kgDOPTM-mA
