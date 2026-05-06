@@ -1,19 +1,22 @@
 ---  
 import dayjs from "@utils/dayjs";  
 import { USER_NAME, DATE_FORMAT, t, umamiConfig } from "@config";  
-import type { PostData } from "@interfaces/data";  
-import { Icon } from "astro-icon/components";  
-import PostFilter from "./PostFilter.astro";
+import type { PostData } from "@interfaces/data";
 import type { CollectionEntry } from "astro:content";
-
+import { Icon } from "astro-icon/components";  
+import PostFilter from "./PostFilter.astro";  
+  
 const { 
   title, url, pubDate, badge, categories = [], tags = [], word, time,
   prevPost, nextPost
-} = Astro.props as PostData & { prevPost?: CollectionEntry<"blog">; nextPost?: CollectionEntry<"blog"> };
+} = Astro.props as PostData & { 
+  prevPost?: CollectionEntry<"blog">; 
+  nextPost?: CollectionEntry<"blog">; 
+};
 
-const displayDate = pubDate ? dayjs(pubDate).format(DATE_FORMAT) : "";
+const displayDate = pubDate ? dayjs(pubDate).format(DATE_FORMAT) : "";  
 const slug = url ? url.toString().split('/').filter(Boolean).pop() : undefined;  
-
+  
 const socialLinks = [  
   {  
     name: "X (Twitter)",  
@@ -56,11 +59,9 @@ const socialLinks = [
 
   <div class="card bg-base-200 overflow-visible">  
     <div class="card-body relative p-4 sm:p-6 lg:p-8">  
-      <!-- Article Metadata -->  
       <div class="space-y-2">
         <h3 class="text-lg sm:text-xl lg:text-2xl font-bold">{title}</h3>  
 
-        <!-- Stats Row -->  
         <div class="flex flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm opacity-75">  
           {displayDate && (  
             <span class="flex items-center gap-1">  
@@ -94,7 +95,6 @@ const socialLinks = [
           )}   
         </div>  
 
-        <!-- Tags + Share Button -->
         <div class="flex justify-between items-center mt-4">
           <PostFilter categories={categories} tags={tags} />
           <button class="btn btn-primary btn-outline" onclick="share_modal.showModal()">  
@@ -104,40 +104,33 @@ const socialLinks = [
         </div>
       </div>
 
-      <!-- 关键：把上下篇导航放到卡片内部 -->
-      <hr class="my-6 border-base-300" />
-      <div class="post-navigation flex flex-col md:flex-row gap-4 w-full">    
-        {prevPost ? (    
-          <a href={`/blog/${prevPost.slug}`} class="nav-card prev group flex-1 flex items-center gap-4 p-4 rounded-xl border border-base-300 bg-base-100/50 hover:border-primary/50 hover:bg-base-200/80 transition-all duration-300" data-pagefind-ignore>    
-            <div class="nav-arrow flex-shrink-0 text-base-content/70">  
-              <Icon name="tabler:chevron-left" class="text-2xl transition-transform group-hover:-translate-x-1" />
-            </div>  
-            <div class="nav-content text-left flex-1 min-w-0">
-              <div class="nav-label text-xs opacity-60 mb-1">Previous Post</div>
-              <div class="nav-title font-medium line-clamp-2 group-hover:text-primary transition-colors">{prevPost.data.title}</div>    
-            </div>    
-          </a>    
-        ) : (
-          <div class="nav-card empty flex-1 hidden md:block"></div>
-        )}    
-        {nextPost ? (    
-          <a href={`/blog/${nextPost.slug}`} class="nav-card next group flex-1 flex items-center gap-4 p-4 rounded-xl border border-base-300 bg-base-100/50 hover:border-primary/50 hover:bg-base-200/80 transition-all duration-300" data-pagefind-ignore>    
-            <div class="nav-content text-right flex-1 min-w-0">    
-              <div class="nav-label text-xs opacity-60 mb-1">Next Post</div>
-              <div class="nav-title font-medium line-clamp-2 group-hover:text-primary transition-colors">{nextPost.data.title}</div>    
-            </div>    
-            <div class="nav-arrow flex-shrink-0 text-base-content/70">  
-              <Icon name="tabler:chevron-right" class="text-2xl transition-transform group-hover:translate-x-1" />
-            </div>  
-          </a>    
-        ) : (
-          <div class="nav-card empty flex-1 hidden md:block"></div>
-        )}    
-      </div>
+      <!-- 上一篇 / 下一篇 导航 -->
+      {prevPost || nextPost ? (
+        <div class="mt-6 flex flex-col md:flex-row gap-4 w-full">    
+          {prevPost ? (    
+            <a href={`/blog/${prevPost.slug}`} class="flex-1 flex items-center gap-4 p-4 rounded-xl border border-base-300 bg-base-100/50 hover:border-primary/50 hover:bg-base-200/80 transition-all" data-pagefind-ignore>    
+              <Icon name="tabler:chevron-left" class="text-2xl text-base-content/70" />
+              <div class="text-left flex-1">
+                <div class="text-xs opacity-60 mb-1">Previous Post</div>
+                <div class="font-medium line-clamp-2">{prevPost.data.title}</div>    
+              </div>    
+            </a>    
+          ) : <div class="hidden md:block flex-1"></div>}    
+
+          {nextPost ? (    
+            <a href={`/blog/${nextPost.slug}`} class="flex-1 flex items-center gap-4 p-4 rounded-xl border border-base-300 bg-base-100/50 hover:border-primary/50 hover:bg-base-200/80 transition-all" data-pagefind-ignore>    
+              <div class="text-right flex-1">    
+                <div class="text-xs opacity-60 mb-1">Next Post</div>
+                <div class="font-medium line-clamp-2">{nextPost.data.title}</div>    
+              </div>    
+              <Icon name="tabler:chevron-right" class="text-2xl text-base-content/70" />
+            </a>    
+          ) : <div class="hidden md:block flex-1"></div>}    
+        </div>
+      ) : null}
     </div>  
   </div>  
 
-  <!-- Share Modal -->  
   <dialog id="share_modal" class="modal modal-bottom sm:modal-middle">  
     <div class="modal-box max-w-2xl rounded-none sm:rounded-xl relative">  
       <h3 class="font-bold text-lg sm:text-xl mb-6 text-center">  
@@ -145,52 +138,20 @@ const socialLinks = [
       </h3>  
       <div class="flex flex-wrap gap-4 justify-center">  
         {socialLinks.map(({ name, icon, class: bgClass, url }) => (  
-          <a  
-            href={url}  
-            class={`btn btn-circle btn-lg transition-transform hover:scale-110 ${bgClass}`}  
-            target="_blank"  
-            rel="noopener noreferrer"  
-            title={name}  
-          >  
-            <span class="sr-only">{name}</span>  
+          <a href={url} class={`btn btn-circle btn-lg hover:scale-110 ${bgClass}`} target="_blank">  
             <Icon name={icon} class="w-6 h-6 text-white" />  
           </a>  
         ))}
-        <button
-          class="btn btn-circle btn-lg transition-transform hover:scale-110 bg-neutral hover:bg-neutral-focus"
-          title="Copy Link"
-          onclick={`navigator.clipboard.writeText(window.location.href).then(() => {
-            const btn = this;
-            const toast = document.getElementById('copy-toast');
-            btn.classList.add('btn-success');
-            if (toast) toast.classList.remove('opacity-0', 'translate-y-4');
-            setTimeout(() => {
-              btn.classList.remove('btn-success');
-              if (toast) toast.classList.add('opacity-0', 'translate-y-4');
-            }, 2000);
-          })`}
-        >
-          <span class="sr-only">Copy Link</span>
+        <button class="btn btn-circle btn-lg hover:scale-110 bg-neutral" onclick="navigator.clipboard.writeText(window.location.href)">
           <Icon name="ri:links-line" class="w-6 h-6 text-white" />
         </button>  
       </div>
-      <div id="copy-toast" class="absolute left-1/2 -translate-x-1/2 bottom-20 transition-all duration-300 opacity-0 translate-y-4 pointer-events-none z-50 w-max">
-        <div class="alert alert-success shadow-lg text-white py-2 px-4 text-sm">
-          <Icon name="ri:checkbox-circle-line" class="w-5 h-5" />
-          <span>链接已复制成功！</span>
-        </div>
-      </div>
       <div class="modal-action">  
         <form method="dialog">  
-          <button class="btn btn-ghost hover:scale-105 transition-transform">  
-            {t("label.close")}  
-          </button>  
+          <button class="btn btn-ghost">{t("label.close")}</button>  
         </form>  
       </div>  
     </div>  
-    <form method="dialog" class="modal-backdrop">  
-      <button>{t("label.close")}</button>  
-    </form>  
   </dialog>
 </div>  
   
@@ -198,47 +159,28 @@ const socialLinks = [
   <script define:vars={{ slug, umamiConfig }} is:inline>  
     async function fetchLicensePageViews() {  
       if (!umamiConfig.enable) return;  
-      const checkInterval = setInterval(async () => {
-        if (typeof window.fetchUmamiStats === 'function') {
-          clearInterval(checkInterval);
-          try {
-            const queryPath = `/blog/${slug}`;
-            const statsData = await window.fetchUmamiStats(umamiConfig.baseUrl, umamiConfig.shareId, {
-              timezone: umamiConfig.timezone,
-              path: queryPath
-            });
-            const pageViews = (typeof statsData.pageviews === 'object' ? statsData.pageviews.value : statsData.pageviews) || 0;
-            const visits = (typeof statsData.visitors === 'object' ? statsData.visitors.value : statsData.visitors) || 0;
-            const viewsElement = document.getElementById('license-page-views');
-            const visitorsElement = document.getElementById('license-page-visitors');
-            if (viewsElement) viewsElement.textContent = `${pageViews} 次`;
-            if (visitorsElement) visitorsElement.textContent = `${visits} 人`;
-          } catch (error) {
-            console.error('Error fetching page views:', error);
-            const viewsElement = document.getElementById('license-page-views');
-            const visitorsElement = document.getElementById('license-page-visitors');
-            if (viewsElement) viewsElement.textContent = '-';
-            if (visitorsElement) visitorsElement.textContent = '-';
-          }
+      const i = setInterval(async () => {
+        if (window.fetchUmamiStats) {
+          clearInterval(i);
+          const d = await window.fetchUmamiStats(umamiConfig.baseUrl, umamiConfig.shareId, { path: `/blog/${slug}` });
+          document.getElementById('license-page-views').textContent = `${d.pageviews||0} 次`;
+          document.getElementById('license-page-visitors').textContent = `${d.visitors||0} 人`;
         }
       }, 100);
-      setTimeout(() => clearInterval(checkInterval), 10000);
+      setTimeout(() => clearInterval(i), 10000);
     }  
     document.addEventListener('astro:page-load', fetchLicensePageViews);
-    if (document.readyState === 'complete') fetchLicensePageViews();
-    else document.addEventListener('DOMContentLoaded', fetchLicensePageViews);
+    document.readyState === 'complete' ? fetchLicensePageViews() : window.addEventListener('load', fetchLicensePageViews);
   </script>  
 )}  
   
 <style>  
-  .modal-backdrop button {  
-    cursor: default;  
-    width: 100%;  
-    height: 100%;  
-    opacity: 0;  
-  }  
+  .modal-backdrop button { opacity:0; pointer-events:none; }  
   :global(.card-body .btn-category),  
-  :global(.card-body .btn-tag) {  
-    text-decoration: none;  
-  }  
+  :global(.card-body .btn-tag) { text-decoration:none; }
+
+  /* 去掉上下篇导航文字下划线 */
+  :global(.card-body a) {
+    text-decoration: none !important;
+  }
 </style>
