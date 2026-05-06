@@ -16,8 +16,8 @@ const {
   lang = "zh-CN",
   dark = "html[data-theme-type='dark']",
   emoji = ["https://unpkg.com/@waline/emojis@1.1.0/weibo", "https://unpkg.com/@waline/emojis@1.1.0/bilibili"],
-  meta = ["nick", "mail", "link"],
-  requiredMeta = [],
+  meta = ["nick", "mail"],
+  requiredMeta = ["nick"],
   reaction = false,
   pageview = false,
 } = Astro.props;
@@ -76,17 +76,22 @@ const {
         requiredMeta,
         reaction,
         pageview,
+        // ✅ 在这里加自定义文字
+        locale: {
+          nick: '昵称（必填）',
+          mail: '邮箱'
+        }
       });
     }, 20);
   }
 
-  // ==============================================
-  // ✅ 终极修复：首次打开 + 路由切换 全覆盖
-  // ==============================================
+  // ✅ 路由切换前销毁
   document.addEventListener("astro:before-swap", destroyWaline);
+
+  // ✅ 路由加载后初始化
   document.addEventListener("astro:page-load", mountWaline);
 
-  // 首次进入网站强制触发（解决你最新的问题）
+  // ✅ 首次打开网站强制加载
   if (document.readyState === "complete") {
     mountWaline();
   } else {
