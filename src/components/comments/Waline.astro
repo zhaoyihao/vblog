@@ -73,7 +73,7 @@ const {
         emoji,
         // ✅ 这里直接写死，只保留昵称和邮箱，网址就消失了
         meta: ["nick", "mail"],
-        requiredMeta,
+        requiredMeta: ["nick"], // ✅ 强制必填：仅昵称
         reaction,
         pageview,
         locale: {
