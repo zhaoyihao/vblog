@@ -13,7 +13,7 @@ interface Props {
 
 const {
   serverURL,
-  lang = "en",
+  lang = "zh-CN",
   dark = "html[data-theme-type='dark']",
   emoji = ["https://unpkg.com/@waline/emojis@1.1.0/weibo", "https://unpkg.com/@waline/emojis@1.1.0/bilibili"],
   meta = ["nick", "mail", "link"],
@@ -43,20 +43,30 @@ const {
 >
   import { init } from "https://unpkg.com/@waline/client@v3/dist/waline.js";
 
-  let walineInstance;
+  let walineInstance = null;
 
-  // 稳定初始化函数
+  // 统一销毁函数
+  function destroyWaline() {
+    try {
+      if (walineInstance) {
+        walineInstance.destroy();
+        walineInstance = null;
+      }
+    } catch (e) {}
+  }
+
+  // 初始化函数
   function mountWaline() {
+    // 先销毁，再初始化（关键修复！）
+    destroyWaline();
+
     const container = document.querySelector("#waline-container");
     if (!container) return;
 
-    // 销毁旧实例，防止重复加载
-    if (walineInstance) {
-      walineInstance.destroy();
-      walineInstance = null;
-    }
+    // 清空容器残留内容
+    container.innerHTML = "";
 
-    // 延迟 10ms 确保 DOM 完全就位（解决 Astro 过渡时序问题）
+    // 延迟确保 DOM 安全
     setTimeout(() => {
       walineInstance = init({
         el: "#waline-container",
@@ -70,14 +80,14 @@ const {
         reaction,
         pageview,
       });
-    }, 10);
+    }, 20);
   }
 
-  // ✅ 关键修复：监听最稳定的 Astro 路由事件
-  document.addEventListener("astro:page-load", mountWaline);
+  // 页面切换前销毁（超级关键）
+  document.addEventListener("astro:before-swap", destroyWaline);
 
-  // 兼容首次加载
-  document.addEventListener("DOMContentLoaded", mountWaline);
+  // 页面加载完成后初始化
+  document.addEventListener("astro:page-load", mountWaline);
 </script>
 
 <style>
