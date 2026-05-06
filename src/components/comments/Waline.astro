@@ -45,7 +45,7 @@ const {
 
   let walineInstance = null;
 
-  // 统一销毁函数
+  // 销毁
   function destroyWaline() {
     try {
       if (walineInstance) {
@@ -55,18 +55,15 @@ const {
     } catch (e) {}
   }
 
-  // 初始化函数
+  // 初始化
   function mountWaline() {
-    // 先销毁，再初始化（关键修复！）
     destroyWaline();
 
     const container = document.querySelector("#waline-container");
     if (!container) return;
 
-    // 清空容器残留内容
     container.innerHTML = "";
 
-    // 延迟确保 DOM 安全
     setTimeout(() => {
       walineInstance = init({
         el: "#waline-container",
@@ -83,11 +80,18 @@ const {
     }, 20);
   }
 
-  // 页面切换前销毁（超级关键）
+  // ==============================================
+  // ✅ 终极修复：首次打开 + 路由切换 全覆盖
+  // ==============================================
   document.addEventListener("astro:before-swap", destroyWaline);
-
-  // 页面加载完成后初始化
   document.addEventListener("astro:page-load", mountWaline);
+
+  // 首次进入网站强制触发（解决你最新的问题）
+  if (document.readyState === "complete") {
+    mountWaline();
+  } else {
+    window.addEventListener("load", mountWaline);
+  }
 </script>
 
 <style>
