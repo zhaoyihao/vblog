@@ -1,22 +1,35 @@
-init({
-  el: '#waline-container',
-  serverURL: 'https://comment.zxdai.ccwu.cc/',
-  path: window.location.pathname,
-  lang: 'zh-CN',
-  dark: 'html[data-theme-type="dark"]',
-  emoji: [
-    'https://unpkg.com/@waline/emojis@1.1.0/weibo',
-    'https://unpkg.com/@waline/emojis@1.1.0/bilibili'
-  ],
-  // 只保留昵称 + 邮箱
-  meta: ['nick', 'mail'],
-  // ✅ 关键：只让昵称必填，邮箱选填
-  requiredMeta: ['nick'],
-  reaction: false,
-  pageview: false,
-  // ✅ 干净提示文字，去掉 (可选)
-  locale: {
-    nick: "昵称",
-    mail: "邮箱"
-  }
-});
+<div id="waline-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
+
+<script type="module">
+  import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+
+  init({
+    el: '#waline-container',
+    serverURL: 'https://comment.zxdai.ccwu.cc/',
+    path: window.location.pathname,
+    lang: 'zh-CN',
+    dark: 'html[data-theme-type="dark"]',
+    emoji: [
+      'https://unpkg.com/@waline/emojis@1.1.0/weibo',
+      'https://unpkg.com/@waline/emojis@1.1.0/bilibili'
+    ],
+    meta: ['nick', 'mail'],
+    requiredMeta: ['nick'],
+    reaction: false,
+    pageview: false,
+    // 关键：这里修改占位文字
+    locale: {
+      nick: '昵称（必填）',
+      mail: '邮箱' // 只写“邮箱”，不要加任何括号内容
+    }
+  });
+</script>
+
+<style>
+#waline-container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+</style>
