@@ -1,72 +1,186 @@
----    
-import type { CollectionEntry } from "astro:content";    
+---  
+import dayjs from "@utils/dayjs";  
+import { USER_NAME, DATE_FORMAT, t, umamiConfig } from "@config";  
+import type { PostData } from "@interfaces/data";
+import type { CollectionEntry } from "astro:content";
 import { Icon } from "astro-icon/components";  
-    
-interface Props {    
-  prevPost?: CollectionEntry<"blog">;    
-  nextPost?: CollectionEntry<"blog">;    
-}    
-    
-const { prevPost, nextPost } = Astro.props;    
----    
-    
-<div class="post-navigation">    
-  <!-- 上一篇 -->    
-  {prevPost ? (    
-    <a href={`/blog/${prevPost.slug}`} class="nav-card prev group" data-pagefind-ignore>    
-      <div class="nav-arrow">  
-        <Icon name="tabler:chevron-left" class="text-2xl transition-transform group-hover:-translate-x-1" />
-      </div>  
-          
-      <div class="nav-content text-left">
-        <div class="nav-label text-xs opacity-60 mb-1">Previous Post</div>
-        <div class="nav-title font-medium line-clamp-2 group-hover:text-primary transition-colors">{prevPost.data.title}</div>    
-      </div>    
-    </a>    
-  ) : (
-    <div class="nav-card empty"></div>
-  )}    
-    
-  <!-- 下一篇 -->    
-  {nextPost ? (    
-    <a href={`/blog/${nextPost.slug}`} class="nav-card next group" data-pagefind-ignore>    
-      <div class="nav-content text-right">    
-        <div class="nav-label text-xs opacity-60 mb-1">Next Post</div>
-        <div class="nav-title font-medium line-clamp-2 group-hover:text-primary transition-colors">{nextPost.data.title}</div>    
-      </div>    
-      <div class="nav-arrow">  
-        <Icon name="tabler:chevron-right" class="text-2xl transition-transform group-hover:translate-x-1" />
-      </div>  
-    </a>    
-  ) : (
-    <div class="nav-card empty"></div>
-  )}    
-</div>    
-    
-<style>    
-  .post-navigation {    
-    @apply flex flex-col md:flex-row gap-4 my-8 w-full;
-  }    
-    
-  .nav-card {    
-    @apply flex-1 flex items-center gap-4 p-4 rounded-xl border border-base-300 bg-base-100/50 transition-all duration-300;
-    text-decoration: none;
-    color: inherit;
-  }
+import PostFilter from "./PostFilter.astro";  
   
-  .nav-card:not(.empty):hover {
-    @apply border-primary/50 bg-base-200/80 shadow-lg;
-  }
+const { 
+  title, url, pubDate, badge, categories = [], tags = [], word, time,
+  prevPost, nextPost
+} = Astro.props as PostData & { 
+  prevPost?: CollectionEntry<"blog">; 
+  nextPost?: CollectionEntry<"blog">; 
+};
 
-  .nav-card.empty {
-    @apply hidden md:block border-none bg-transparent;
-  }
-    
-  .nav-arrow {    
-    @apply flex-shrink-0 text-base-content/70;
-  }    
-    
-  .nav-content {    
-    @apply flex-1 min-w-0;
-  }    
+const displayDate = pubDate ? dayjs(pubDate).format(DATE_FORMAT) : "";  
+const slug = url ? url.toString().split('/').filter(Boolean).pop() : undefined;  
+  
+const socialLinks = [  
+  {  
+    name: "X (Twitter)",  
+    icon: "ri:twitter-x-line",  
+    class: "bg-black hover:bg-gray-800",  
+    url: `https://twitter.com/intent/tweet/?text=${title}&url=${url}`,  
+  },  
+  {  
+    name: "Telegram",  
+    icon: "ri:telegram-line",  
+    class: "bg-[#26a5e4] hover:bg-[#1e96d1]",  
+    url: `https://telegram.me/share/url?text=${title}&url=${url}`,  
+  },
+  {  
+    name: "Reddit",  
+    icon: "ri:reddit-line",  
+    class: "bg-[#ff4500] hover:bg-[#e63e00]",  
+    url: `https://reddit.com/submit/?url=${url}&title=${title}`,  
+  },  
+  {  
+    name: "Facebook",  
+    icon: "ri:facebook-circle-line",  
+    class: "bg-[#0866ff] hover:bg-[#0755d6]",  
+    url: `https://facebook.com/sharer/sharer.php?u=${url}`,  
+  },  
+  {  
+    name: "Email",  
+    icon: "ri:mail-line",  
+    class: "bg-gray-600 hover:bg-gray-700",  
+    url: `mailto:?subject=${title}&body=${url}`,  
+  },  
+];  
+---  
+  
+<hr />  
+<div class="container p-0">  
+  <div class="text-right text-sm text-base-content/60 italic mb-2">  
+    <Icon name="ri:heart-line" class="w-4 h-4 inline-block align-text-bottom text-error" /> Thanks for reading!  
+  </div>  
+
+  <div class="card bg-base-200 overflow-visible">  
+    <div class="card-body relative p-4 sm:p-6 lg:p-8">  
+      <div class="space-y-2">
+        <h3 class="text-lg sm:text-xl lg:text-2xl font-bold">{title}</h3>  
+
+        <div class="flex flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm opacity-75">  
+          {displayDate && (  
+            <span class="flex items-center gap-1">  
+              <Icon name="lucide:calendar" class="h-4 w-4" />  
+              {displayDate}  
+            </span>  
+          )}  
+          {badge && (  
+            <span class="flex items-center gap-1">  
+              <Icon name="lucide:bookmark" class="h-4 w-4" />  
+              {badge}  
+            </span>  
+          )}  
+          {word && time && (  
+            <div class="flex items-center gap-1">  
+              <Icon name="lucide:book-open" class="h-4 w-4" />  
+              <span>{word} {t("label.wordCount")} · {time} {t("label.readTime")}</span>  
+            </div>  
+          )}  
+          {slug && umamiConfig.enable && (  
+            <>
+              <div class="flex items-center gap-1">  
+                <Icon name="lucide:eye" class="h-4 w-4 text-primary" />  
+                <span id="license-page-views">-</span>  
+              </div>  
+              <div class="flex items-center gap-1">  
+                <Icon name="lucide:user" class="h-4 w-4 text-primary" />  
+                <span id="license-page-visitors">-</span>  
+              </div>
+            </>
+          )}   
+        </div>  
+
+        <div class="flex justify-between items-center mt-4">
+          <PostFilter categories={categories} tags={tags} />
+          <button class="btn btn-primary btn-outline" onclick="share_modal.showModal()">  
+            {t("label.share")}  
+            <Icon name="ri:share-line" class="w-5 h-5" />  
+          </button>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- ✅ 内置 上一篇 / 下一篇 导航（和标题同区域） -->
+      <!-- ============================================== -->
+      {prevPost || nextPost ? (
+        <>
+          <hr class="my-6" />
+          <div class="flex flex-col md:flex-row gap-4 w-full">    
+            {prevPost ? (    
+              <a href={`/blog/${prevPost.slug}`} class="flex-1 flex items-center gap-4 p-4 rounded-xl border border-base-300 bg-base-100/50 hover:border-primary/50 hover:bg-base-200/80 transition-all" data-pagefind-ignore>    
+                <Icon name="tabler:chevron-left" class="text-2xl text-base-content/70" />
+                <div class="text-left flex-1">
+                  <div class="text-xs opacity-60 mb-1">Previous Post</div>
+                  <div class="font-medium line-clamp-2">{prevPost.data.title}</div>    
+                </div>    
+              </a>    
+            ) : <div class="hidden md:block flex-1"></div>}    
+
+            {nextPost ? (    
+              <a href={`/blog/${nextPost.slug}`} class="flex-1 flex items-center gap-4 p-4 rounded-xl border border-base-300 bg-base-100/50 hover:border-primary/50 hover:bg-base-200/80 transition-all" data-pagefind-ignore>    
+                <div class="text-right flex-1">    
+                  <div class="text-xs opacity-60 mb-1">Next Post</div>
+                  <div class="font-medium line-clamp-2">{nextPost.data.title}</div>    
+                </div>    
+                <Icon name="tabler:chevron-right" class="text-2xl text-base-content/70" />
+              </a>    
+            ) : <div class="hidden md:block flex-1"></div>}    
+          </div>
+        </>
+      ) : null}
+    </div>  
+  </div>  
+
+  <dialog id="share_modal" class="modal modal-bottom sm:modal-middle">  
+    <div class="modal-box max-w-2xl rounded-none sm:rounded-xl relative">  
+      <h3 class="font-bold text-lg sm:text-xl mb-6 text-center">  
+        {t("label.shareCard")}  
+      </h3>  
+      <div class="flex flex-wrap gap-4 justify-center">  
+        {socialLinks.map(({ name, icon, class: bgClass, url }) => (  
+          <a href={url} class={`btn btn-circle btn-lg hover:scale-110 ${bgClass}`} target="_blank">  
+            <Icon name={icon} class="w-6 h-6 text-white" />  
+          </a>  
+        ))}
+        <button class="btn btn-circle btn-lg hover:scale-110 bg-neutral" onclick="navigator.clipboard.writeText(window.location.href)">
+          <Icon name="ri:links-line" class="w-6 h-6 text-white" />
+        </button>  
+      </div>
+      <div class="modal-action">  
+        <form method="dialog">  
+          <button class="btn btn-ghost">{t("label.close")}</button>  
+        </form>  
+      </div>  
+    </div>  
+  </dialog>
+</div>  
+  
+{slug && umamiConfig.enable && (  
+  <script define:vars={{ slug, umamiConfig }} is:inline>  
+    async function fetchLicensePageViews() {  
+      if (!umamiConfig.enable) return;  
+      const i = setInterval(async () => {
+        if (window.fetchUmamiStats) {
+          clearInterval(i);
+          const d = await window.fetchUmamiStats(umamiConfig.baseUrl, umamiConfig.shareId, { path: `/blog/${slug}` });
+          document.getElementById('license-page-views').textContent = `${d.pageviews||0} 次`;
+          document.getElementById('license-page-visitors').textContent = `${d.visitors||0} 人`;
+        }
+      }, 100);
+      setTimeout(() => clearInterval(i), 10000);
+    }  
+    document.addEventListener('astro:page-load', fetchLicensePageViews);
+    document.readyState === 'complete' ? fetchLicensePageViews() : window.addEventListener('load', fetchLicensePageViews);
+  </script>  
+)}  
+  
+<style>  
+  .modal-backdrop button { opacity:0; pointer-events:none; }  
+  :global(.card-body .btn-category),  
+  :global(.card-body .btn-tag) { text-decoration:none; }  
 </style>
