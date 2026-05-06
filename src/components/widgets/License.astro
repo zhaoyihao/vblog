@@ -110,21 +110,21 @@ const socialLinks = [
           <div class="flex flex-col md:flex-row gap-4 w-full">    
             {prevPost ? (    
               <a href={`/blog/${prevPost.slug}`} class="flex-1 flex items-center gap-4 p-4 rounded-xl border border-base-300 bg-base-100/50 hover:border-primary/50 hover:bg-base-200/80 transition-all" data-pagefind-ignore>    
-                <Icon name="tabler:chevron-left" class="text-2xl text-base-content/70" />
-                <div class="text-left flex-1">
+                <Icon name="tabler:chevron-left" class="text-2xl text-base-content/70 transition-transform duration-300 group-hover:-translate-x-1" />
+                <div class="text-left flex-1 group">
                   <span class="text-xs opacity-60 mb-1 block no-underline">上 一 篇</span>
-                  <div class="font-medium line-clamp-2">{prevPost.data.title}</div>    
+                  <div class="font-medium line-clamp-2 relative transition-all duration-300 group-hover:translate-x-1">{prevPost.data.title}</div>    
                 </div>    
               </a>    
             ) : <div class="hidden md:block flex-1"></div>}    
 
             {nextPost ? (    
               <a href={`/blog/${nextPost.slug}`} class="flex-1 flex items-center gap-4 p-4 rounded-xl border border-base-300 bg-base-100/50 hover:border-primary/50 hover:bg-base-200/80 transition-all" data-pagefind-ignore>    
-                <div class="text-right flex-1">    
+                <div class="text-right flex-1 group">    
                   <span class="text-xs opacity-60 mb-1 block no-underline">下 一 篇</span>
-                  <div class="font-medium line-clamp-2">{nextPost.data.title}</div>    
+                  <div class="font-medium line-clamp-2 relative transition-all duration-300 group-hover:-translate-x-1">{nextPost.data.title}</div>    
                 </div>    
-                <Icon name="tabler:chevron-right" class="text-2xl text-base-content/70" />
+                <Icon name="tabler:chevron-right" class="text-2xl text-base-content/70 transition-transform duration-300 group-hover:translate-x-1" />
               </a>    
             ) : <div class="hidden md:block flex-1"></div>}    
           </div>
@@ -133,7 +133,7 @@ const socialLinks = [
     </div>  
   </div>  
 
-  <dialog id="share_modal" class="modal modal-bottom sm:modal-middle">  
+  <dialog id="share_modal" class="modal-bottom sm:modal-middle">  
     <div class="modal-box max-w-2xl rounded-none sm:rounded-xl relative">  
       <h3 class="font-bold text-lg sm:text-xl mb-6 text-center">  
         {t("label.shareCard")}  
@@ -188,16 +188,5 @@ const socialLinks = [
   }
   :global(.card-body a) {
     text-decoration: none !important;
-  }
-
-  /* 箭头悬浮浮动动画 */
-  :global(.nav-arrow) {
-    transition: transform 0.2s ease;
-  }
-  :global(a:hover .nav-arrow:first-of-type) {
-    transform: translateX(-4px);
-  }
-  :global(a:hover .nav-arrow:last-of-type) {
-    transform: translateX(4px);
   }
 </style>
