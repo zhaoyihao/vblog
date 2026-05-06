@@ -97,4 +97,20 @@ const {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+
+/* 🔥 强制粉色输入框（核心生效代码） */
+#waline-container .wl-comment-form .wl-meta-item input {
+  border: 2px solid #ec4899 !important; /* 粉色边框 */
+  border-radius: 0.5rem !important;
+  background-color: transparent !important;
+  color: inherit !important;
+  padding: 0.5rem 0.75rem !important;
+}
+
+/* 聚焦时边框更亮 */
+#waline-container .wl-comment-form .wl-meta-item input:focus {
+  outline: none !important;
+  border-color: #f472b6 !important; /* 亮粉色 */
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.3) !important;
+}
 </style>
