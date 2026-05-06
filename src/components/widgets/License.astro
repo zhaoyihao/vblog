@@ -104,9 +104,6 @@ const socialLinks = [
         </div>
       </div>
 
-      <!-- ============================================== -->
-      <!-- ✅ 内置 上一篇 / 下一篇 导航（和标题同区域） -->
-      <!-- ============================================== -->
       {prevPost || nextPost ? (
         <>
           <hr class="my-6" />
@@ -115,7 +112,7 @@ const socialLinks = [
               <a href={`/blog/${prevPost.slug}`} class="flex-1 flex items-center gap-4 p-4 rounded-xl border border-base-300 bg-base-100/50 hover:border-primary/50 hover:bg-base-200/80 transition-all" data-pagefind-ignore>    
                 <Icon name="tabler:chevron-left" class="text-2xl text-base-content/70" />
                 <div class="text-left flex-1">
-                  <div class="text-xs opacity-60 mb-1 no-underline">  上 一 篇  </div>
+                  <span class="text-xs opacity-60 mb-1 block no-underline">上 一 篇</span>
                   <div class="font-medium line-clamp-2">{prevPost.data.title}</div>    
                 </div>    
               </a>    
@@ -124,7 +121,7 @@ const socialLinks = [
             {nextPost ? (    
               <a href={`/blog/${nextPost.slug}`} class="flex-1 flex items-center gap-4 p-4 rounded-xl border border-base-300 bg-base-100/50 hover:border-primary/50 hover:bg-base-200/80 transition-all" data-pagefind-ignore>    
                 <div class="text-right flex-1">    
-                  <div class="text-xs opacity-60 mb-1 no-underline">  下 一 篇  </div>
+                  <span class="text-xs opacity-60 mb-1 block no-underline">下 一 篇</span>
                   <div class="font-medium line-clamp-2">{nextPost.data.title}</div>    
                 </div>    
                 <Icon name="tabler:chevron-right" class="text-2xl text-base-content/70" />
@@ -181,12 +178,15 @@ const socialLinks = [
   
 <style>  
   .modal-backdrop button { opacity:0; pointer-events:none; }  
-  :global(.card-body .btn-category),  
-  :global(.card-body .btn-tag) { text-decoration:none; }  
+  :global(.card-body .btn-category),
+  :global(.card-body .btn-tag) { text-decoration:none; }
 
-  /* 真正去掉“上一篇 / 下一篇”下划线，标题保留 */
-  :global(.card-body a .text-xs) {
+  /* 强制永久去掉“上一篇/下一篇”下划线 */
+  :global(.card-body a > span:first-of-type) {
     text-decoration: none !important;
-    border-bottom: none !important;
+    border: none !important;
+  }
+  :global(.card-body a) {
+    text-decoration: none !important;
   }
 </style>
