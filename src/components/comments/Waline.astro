@@ -9,12 +9,83 @@
     el: '#waline-container',
     serverURL: 'https://comment.zxdai.ccwu.cc/',
     path: window.location.pathname,
+    lang: 'zh-CN',
+    dark: 'html[data-theme-type="dark"]',
+    emoji: [
+      'https://unpkg.com/@waline/emojis@1.1.0/weibo',
+      'https://unpkg.com/@waline/emojis@1.1.0/bilibili'
+    ],
+    meta: ['nick', 'mail'],
+    requiredMeta: ['nick'],
+    reaction: false,
+    pageview: false,
+    locale: {
+      nick: '',
+      mail: ''
+    }
   });
 </script>
 
 <style>
-  #waline-container {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
+#waline-container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* 美化昵称/邮箱标签 */
+.wl-comment-item input {
+  padding-left: 6rem !important;
+}
+
+.wl-comment-item.wl-nick::before,
+.wl-comment-item.wl-mail::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  padding: 0.4rem 1rem;
+  background: #f0f0f0;
+  border-right: 1px solid #e0e0e0;
+  font-size: 0.9rem;
+  color: #333;
+  border-radius: 4px 0 0 4px;
+}
+
+/* 昵称标签 */
+.wl-comment-item.wl-nick::before {
+  content: "昵称";
+}
+/* 昵称必填标记 */
+.wl-comment-item.wl-nick::after {
+  content: "*必填";
+  position: absolute;
+  top: 50%;
+  left: 4.2rem;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  color: #e74c3c;
+}
+
+/* 邮箱标签 */
+.wl-comment-item.wl-mail::before {
+  content: "邮箱";
+}
+/* 邮箱选填标记 */
+.wl-comment-item.wl-mail::after {
+  content: "(选填)";
+  position: absolute;
+  top: 50%;
+  left: 4.2rem;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  color: #999;
+}
+
+/* 暗黑模式适配 */
+html[data-theme-type='dark'] .wl-comment-item.wl-nick::before,
+html[data-theme-type='dark'] .wl-comment-item.wl-mail::before {
+  background: #2a2a2a;
+  border-right-color: #3a3a3a;
+  color: #eee;
+}
 </style>
