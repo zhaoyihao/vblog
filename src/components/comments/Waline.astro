@@ -98,19 +98,26 @@ const {
   margin-bottom: 2rem;
 }
 
-/* 🔥 强制粉色输入框（核心生效代码） */
-#waline-container .wl-comment-form .wl-meta-item input {
-  border: 2px solid #ec4899 !important; /* 粉色边框 */
-  border-radius: 0.5rem !important;
-  background-color: transparent !important;
-  color: inherit !important;
-  padding: 0.5rem 0.75rem !important;
-}
+/* ============================================== */
+/* 🔥 全局强制注入：粉色输入框（绝对能生效） */
+/* ============================================== */
+@layer reset {
+  :global(#waline-container [class*="meta-item"] input),
+  :global(#waline-container input[placeholder*="昵称"]),
+  :global(#waline-container input[placeholder*="邮箱"]) {
+    border: 2px solid #f9a8d4 !important;
+    background-color: #fdf2f8 !important;
+    border-radius: 8px !important;
+    padding: 10px 12px !important;
+    font-size: 1rem !important;
+    color: #1f2937 !important;
+  }
 
-/* 聚焦时边框更亮 */
-#waline-container .wl-comment-form .wl-meta-item input:focus {
-  outline: none !important;
-  border-color: #f472b6 !important; /* 亮粉色 */
-  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.3) !important;
+  :global(#waline-container [class*="meta-item"] input:focus) {
+    border-color: #f472b6 !important;
+    box-shadow: 0 0 0 3px rgba(244, 114, 182, 0.25) !important;
+    outline: none !important;
+  }
 }
 </style>
+
