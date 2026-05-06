@@ -189,4 +189,15 @@ const socialLinks = [
   :global(.card-body a) {
     text-decoration: none !important;
   }
+
+  /* 箭头悬浮浮动动画 */
+  :global(.nav-arrow) {
+    transition: transform 0.2s ease;
+  }
+  :global(a:hover .nav-arrow:first-of-type) {
+    transform: translateX(-4px);
+  }
+  :global(a:hover .nav-arrow:last-of-type) {
+    transform: translateX(4px);
+  }
 </style>
