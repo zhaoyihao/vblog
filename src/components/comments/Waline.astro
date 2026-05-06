@@ -1,5 +1,4 @@
 ---
-// Props interface
 interface Props {
   serverURL: string;
   lang?: string;
@@ -43,23 +42,38 @@ const {
 
   let walineInstance = null;
 
-  // 销毁
   function destroyWaline() {
-    try {
-      if (walineInstance) {
-        walineInstance.destroy();
-        walineInstance = null;
-      }
-    } catch (e) {}
+    try { walineInstance?.destroy(); walineInstance = null; } catch (e) {}
   }
 
-  // 初始化
+  // 🔥 全局样式穿透 Shadow DOM
+  function addWalineStyle() {
+    const style = document.createElement('style');
+    style.textContent = `
+      /* 标签加大加粗 */
+      .wl-meta-item label {
+        font-size: 1.2rem !important;
+        font-weight: 700 !important;
+      }
+      /* 粉色输入框 */
+      .wl-meta-item input {
+        border: 2px solid #f472b6 !important;
+        background: #fdf2f8 !important;
+        border-radius: 8px !important;
+        padding: 10px !important;
+      }
+      .wl-meta-item input:focus {
+        border-color: #ec4899 !important;
+        box-shadow: 0 0 0 3px rgba(244,114,182,0.3) !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
   function mountWaline() {
     destroyWaline();
-
     const container = document.querySelector("#waline-container");
     if (!container) return;
-
     container.innerHTML = "";
 
     setTimeout(() => {
@@ -74,22 +88,20 @@ const {
         requiredMeta: ["nick"],
         reaction,
         pageview,
-        locale: {
-          nick: ' 昵称(必填)︰',
-          mail: ' 邮箱'
-        }
+        locale: { nick: '昵称(必填):', mail: '邮箱' }
       });
-    }, 20);
+    }, 50);
   }
 
+  // 🔥 提前注入样式
+  addWalineStyle();
+  
   document.addEventListener("astro:before-swap", destroyWaline);
   document.addEventListener("astro:page-load", mountWaline);
-
-  if (document.readyState === "complete") {
+  window.addEventListener("load", () => {
+    addWalineStyle();
     mountWaline();
-  } else {
-    window.addEventListener("load", mountWaline);
-  }
+  });
 </script>
 
 <style>
@@ -97,27 +109,4 @@ const {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-
-/* ============================================== */
-/* 🔥 全局强制注入：粉色输入框（绝对能生效） */
-/* ============================================== */
-@layer reset {
-  :global(#waline-container [class*="meta-item"] input),
-  :global(#waline-container input[placeholder*="昵称"]),
-  :global(#waline-container input[placeholder*="邮箱"]) {
-    border: 2px solid #f9a8d4 !important;
-    background-color: #fdf2f8 !important;
-    border-radius: 8px !important;
-    padding: 10px 12px !important;
-    font-size: 1rem !important;
-    color: #1f2937 !important;
-  }
-
-  :global(#waline-container [class*="meta-item"] input:focus) {
-    border-color: #f472b6 !important;
-    box-shadow: 0 0 0 3px rgba(244, 114, 182, 0.25) !important;
-    outline: none !important;
-  }
-}
 </style>
-
