@@ -98,16 +98,14 @@ const {
   margin-bottom: 2rem;
 }
 
-/* 粉红色输入框样式 */
-.waline input[type="text"],
-.waline input[type="email"] {
+/* 100% 生效的粉红色输入框样式 */
+#waline-container .wl-input input {
   border: 2px solid #ffb6c1 !important;
   border-radius: 8px !important;
   padding: 8px 12px !important;
   background: #fff !important;
 }
-.waline input[type="text"]:focus,
-.waline input[type="email"]:focus {
+#waline-container .wl-input input:focus {
   border-color: #ff8da1 !important;
   box-shadow: 0 0 0 2px #ffb6c166 !important;
   outline: none !important;
