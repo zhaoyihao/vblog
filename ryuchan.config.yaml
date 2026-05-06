@@ -105,7 +105,7 @@ github:
   appId: null
   encryptKey: wudishiduomejimo
 umami:
-  enable: true
+  enable: false
   baseUrl: https://umami.131714.xyz
   shareId: jToXL5Z3hnA1gKUw
   websiteId: 3f9afc6c-f0bd-4734-be15-6d053960d34d
