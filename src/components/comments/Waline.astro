@@ -19,17 +19,53 @@
     requiredMeta: ['nick'],
     reaction: false,
     pageview: false,
-    // 关键：这里修改占位文字
     locale: {
       nick: '昵称（必填）',
-      mail: '邮箱' // 只写“邮箱”，不要加任何括号内容
+      mail: '邮箱'
     }
   });
 </script>
 
 <style>
+/* 核心：让评论框和评论列表合并成一个版块 */
 #waline-container {
   margin-top: 2rem;
   margin-bottom: 2rem;
+  border: 1px solid #e5e7eb; /* 可选：添加外边框，和图1效果对齐 */
+  border-radius: 8px; /* 可选：圆角效果 */
+  overflow: hidden; /* 关键：合并边框和内边距 */
+}
+
+/* 1. 评论框部分：移除底部边框，和下方评论列表无缝衔接 */
+.wl-panel {
+  border-bottom: none !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+}
+
+/* 2. 评论列表部分：移除顶部边框，和评论框无缝衔接 */
+.wl-comment-list {
+  border-top: none !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+}
+
+/* 3. 调整内部间距，避免内容贴边 */
+.wl-editor-wrapper {
+  padding: 1rem;
+}
+
+.wl-comment-list {
+  padding: 1rem;
+}
+
+/* 4. 可选：统一背景色，让整体更协调 */
+:root {
+  --waline-bgcolor-light: #f9fafb; /* 浅色模式背景 */
+  --waline-bgcolor-dark: #1f2937; /* 深色模式背景 */
+}
+
+html[data-theme-type="dark"] {
+  --waline-bgcolor-light: var(--waline-bgcolor-dark);
 }
 </style>
