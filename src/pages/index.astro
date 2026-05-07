@@ -1,16 +1,10 @@
 ---
-// 空的，只用来跳转
+// 仅跳转，无内容
 ---
 
 <script>
-// 1. 旧域名 → 新域名
-const allowedHost = "wdblog.cc.cd";
-if (location.host !== allowedHost) {
-  location.href = "https://" + allowedHost + location.pathname;
-}
-
-// 2. 自动进入你的博客主页（真正的首页）
-if (location.pathname === "/") {
-  location.href = "/blog";
+// 旧域名直接跳转到新域名首页（你要的效果）
+if (location.host === 'vblog-u5u.pages.dev') {
+  window.location.href = 'https://wdblog.cc.cd';
 }
 </script>
