@@ -10,6 +10,11 @@ import { t } from "@config";
 import { generatePageLinks } from "@utils/blogUtils";
 import { getMainBlogPaginationPaths } from "@utils/paginationUtils";
 
+// 🔥 自动跳转：pages.dev → 自定义域名（SEO 301 重定向）
+if (Astro.url.host === 'vblog-u5u.pages.dev') {
+  return Astro.redirect(`https://wdblog.cc.cd${Astro.url.pathname}`, 301);
+}
+
 export async function getStaticPaths({ paginate }: { paginate: any }) {
   return getMainBlogPaginationPaths({ paginate });
 }
