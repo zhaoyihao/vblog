@@ -1,0 +1,14 @@
+---
+// 全站 301 跳转：pages.dev → 自定义域名
+if (Astro.url.host === 'vblog-u5u.pages.dev') {
+  return Astro.redirect(`https://wdblog.cc.cd${Astro.url.pathname}`, 301);
+}
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="refresh" content="0;url=https://wdblog.cc.cd">
+</head>
+<body></body>
+</html>
