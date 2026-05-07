@@ -1,12 +1,17 @@
 ---
-// 只跳转旧域名，新域名正常显示首页，绝对不卡死
+// 1. 导入布局（必须导入，否则构建失败）
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+// 2. 只做旧域名跳转（单逻辑，无死循环）
 if (Astro.url.host === 'vblog-u5u.pages.dev') {
   return Astro.redirect(`https://wdblog.cc.cd${Astro.url.pathname}`, 301);
 }
 ---
 
-<!-- 👇 下面必须保留你原来的首页内容，不能是空页面！ -->
+<!-- 3. 正常的首页内容（必须写，否则是空页面构建报错） -->
 <BaseLayout title="首页">
-  <h1>欢迎来到我的博客</h1>
-  <p>网站已正常加载</p>
+  <div class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold text-center mb-4">欢迎来到我的博客</h1>
+    <p class="text-center">网站已正常运行 🚀</p>
+  </div>
 </BaseLayout>
