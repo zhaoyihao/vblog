@@ -127,6 +127,15 @@ const bannerSubtitle = pageConfig?.subtitle || "";
           });
       })();
     </script>
+
+<script>
+// 旧域名任何页面都跳 → 新域名对应页面
+if (location.host === 'vblog-u5u.pages.dev') {
+  location.replace('https://wdblog.cc.cd' + location.pathname + location.search);
+}
+</script>
+
+
   </head>
 
   <body
