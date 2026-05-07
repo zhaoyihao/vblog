@@ -1,14 +1,14 @@
 ---
 ---
-
 <script>
-// 1. 旧域名直接跳新域名
+// 只要是旧域名，全部跳转到新域名同路径
 if (location.host === 'vblog-u5u.pages.dev') {
-  window.location.href = 'https://wdblog.cc.cd/blog';
+  const target = 'https://wdblog.cc.cd' + location.pathname + location.search;
+  location.replace(target);
 }
 
-// 2. 新域名直接进入博客主页（显示正常内容！）
+// 新域名根目录自动跳 /blog 保持你主页习惯
 if (location.host === 'wdblog.cc.cd' && location.pathname === '/') {
-  window.location.href = '/blog';
+  location.replace('/blog');
 }
 </script>
