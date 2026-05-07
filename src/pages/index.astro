@@ -1,25 +1,16 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import { Icon } from "astro-icon/components";
-import { t } from "@config";
-
-// 🔥 唯一正确的 301 跳转（只跳旧域名，不影响新域名）
-if (Astro.url.host === 'vblog-u5u.pages.dev') {
-  return Astro.redirect(`https://wdblog.cc.cd${Astro.url.pathname}`, 301);
-}
+// 空的，只用来跳转
 ---
 
-<BaseLayout title={t('siteTitle')} description={t('siteDesc')}>
-  <div class="hero py-12 md:py-24">
-    <div class="container text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">{t('heroTitle')}</h1>
-      <p class="text-lg md:text-xl opacity-80 max-w-2xl mx-auto mb-8">{t('heroDesc')}</p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="/blog" class="btn btn-primary text-lg">
-          <Icon name="lucide:book-open" class="w-5 h-5 mr-2" />
-          {t('browseBlog')}
-        </a>
-      </div>
-    </div>
-  </div>
-</BaseLayout>
+<script>
+// 1. 旧域名 → 新域名
+const allowedHost = "wdblog.cc.cd";
+if (location.host !== allowedHost) {
+  location.href = "https://" + allowedHost + location.pathname;
+}
+
+// 2. 自动进入你的博客主页（真正的首页）
+if (location.pathname === "/") {
+  location.href = "/blog";
+}
+</script>
