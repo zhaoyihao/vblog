@@ -1,17 +1,25 @@
 ---
-// 1. 导入布局（必须导入，否则构建失败）
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
+import { t } from "@config";
 
-// 2. 只做旧域名跳转（单逻辑，无死循环）
+// 🔥 唯一正确的 301 跳转（只跳旧域名，不影响新域名）
 if (Astro.url.host === 'vblog-u5u.pages.dev') {
   return Astro.redirect(`https://wdblog.cc.cd${Astro.url.pathname}`, 301);
 }
 ---
 
-<!-- 3. 正常的首页内容（必须写，否则是空页面构建报错） -->
-<BaseLayout title="首页">
-  <div class="container mx-auto p-6">
-    <h1 class="text-3xl font-bold text-center mb-4">欢迎来到我的博客</h1>
-    <p class="text-center">网站已正常运行 🚀</p>
+<BaseLayout title={t('siteTitle')} description={t('siteDesc')}>
+  <div class="hero py-12 md:py-24">
+    <div class="container text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">{t('heroTitle')}</h1>
+      <p class="text-lg md:text-xl opacity-80 max-w-2xl mx-auto mb-8">{t('heroDesc')}</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/blog" class="btn btn-primary text-lg">
+          <Icon name="lucide:book-open" class="w-5 h-5 mr-2" />
+          {t('browseBlog')}
+        </a>
+      </div>
+    </div>
   </div>
 </BaseLayout>
