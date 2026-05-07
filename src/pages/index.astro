@@ -1,10 +1,14 @@
 ---
-// 仅跳转，无内容
 ---
 
 <script>
-// 旧域名直接跳转到新域名首页（你要的效果）
+// 1. 旧域名直接跳新域名
 if (location.host === 'vblog-u5u.pages.dev') {
-  window.location.href = 'https://wdblog.cc.cd';
+  window.location.href = 'https://wdblog.cc.cd/blog';
+}
+
+// 2. 新域名直接进入博客主页（显示正常内容！）
+if (location.host === 'wdblog.cc.cd' && location.pathname === '/') {
+  window.location.href = '/blog';
 }
 </script>
