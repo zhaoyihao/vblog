@@ -1,13 +1,8 @@
 ---
 ---
-<script>
-// 只要是旧域名，全部跳转到新域名同路径
-if (location.host === 'vblog-u5u.pages.dev') {
-  const target = 'https://wdblog.cc.cd' + location.pathname + location.search;
-  location.replace(target);
-}
 
-// 新域名根目录自动跳 /blog 保持你主页习惯
+<script>
+// 新域名根目录自动进入博客主页
 if (location.host === 'wdblog.cc.cd' && location.pathname === '/') {
   location.replace('/blog');
 }
