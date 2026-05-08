@@ -3,7 +3,7 @@ title: 0成本搭建Cloudflare个人精美博客
 description: Cloudflare Pages免费搭建个人精美博客网站
 pubDate: 2026-05-04T00:28
 image: >-
-  https://imgr2.aitc.ccwu.cc/%E5%85%B6%E4%BB%96/edf3187b-5737-44fe-becb-75acb5a9fdb3.png
+  https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/5dc47cd8-8656-43aa-9348-f6c13789d032.png
 draft: false
 tags:
   - blog
