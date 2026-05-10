@@ -15,7 +15,7 @@ categories:
   - 安装部署
 badge: ''
 ---
-  今天我们将使用网络大善人的 Cloudflare Pages，来免费搭建一个基于**Astro**开发的个人博客！完全免费开源，精美又小巧，对于个人使用还是非常不错！ CloudFlare Pages 每日免费请求次数有 10w，对于个人使用完全够用。[B站原视频](https://www.bilibili.com/video/BV18EktBAET5/)
+  今天我们将使用网络大善人的 Cloudflare Pages，来免费搭建一个基于**Astro**开发的个人博客！完全免费开源，精美又小巧，对于个人使用还是非常不错！ CloudFlare Pages 每日免费请求次数有 10w，对于个人使用完全够用。<a href="https://www.bilibili.com/video/BV18EktBAET5/" target="_blank">🌐B站原视频</a>
 
 ## 部署步骤：
 
