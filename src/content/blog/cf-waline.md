@@ -12,7 +12,7 @@ categories:
   - 安装部署
 badge: ''
 ---
-  只需几个步骤，3 分钟快速教你在你的网站中启用**Waline**提供评论与浏览量服务。[B站原视频](https://www.bilibili.com/video/BV1J2XuBtEGn/)
+  只需几个步骤，3 分钟快速教你在你的网站中启用**Waline**提供评论与浏览量服务。<a href="https://www.bilibili.com/video/BV1J2XuBtEGn/" target="_blank">🌐B站原视频</a>
 
 GitHub项目地址：`https://github.com/walinejs/waline`
 
