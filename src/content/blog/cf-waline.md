@@ -15,8 +15,7 @@ badge: ''
   只需几个步骤，3 分钟快速教你在你的网站中启用**Waline**提供评论与浏览量服务。
 
 <div style="position:relative;width:100%;height:0;padding-bottom:56.25%;">
-
-<iframe src="//player.bilibili.com/player.html?bvid=BV1J2XuBtEGn&page=1" scrolling="no" frameborder="no" allowfullscreen="true" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+<iframe src="https://player.bilibili.com/player.html?bvid=BV1J2XuBtEGn&page=1&high_quality=1&danmaku=0&as_wide=1" scrolling="no" frameborder="no" allowfullscreen="true" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
 </div>
 
 GitHub项目地址：`https://github.com/walinejs/waline`
