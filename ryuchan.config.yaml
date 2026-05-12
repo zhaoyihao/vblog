@@ -10,7 +10,7 @@ site:
     code: github-dark
   date_format: YYYY年MM月DD日 dddd
   blog:
-    pageSize: 8
+    pageSize: 28
   banner:
     randomUrl: https://imgr2.aitc.ccwu.cc/其他/6461b4c9-8dbc-4587-abde-e103224c33bb.webp
     height: 50vh
