@@ -1,5 +1,5 @@
 ---
-title: 10 分钟搭建🚀 Edgetunnel2.0 全新版本
+title: 10 分钟搭建 🚀Edgetunnel2.0 全新版本
 description: Cloudflare最强免费VPN节点！ ｜永久免费｜全球高速节点｜无限流量
 pubDate: 2026-05-12T16:20
 draft: false
@@ -72,10 +72,61 @@ ZoneABC：`https://zoneabc.net`
 
 ## 四、设置管理员变量
 
+> 💬 **注**
+>
+> 类型 `文本` ，变量名称 `ADMIN` ，值 为`WebUI管理员密码`，建议密码设置复杂点，避免被暴力破解。
 
+![截图](https://imgr2.aitc.ccwu.cc/截图/9bf75fd0-2ac4-4497-9013-6fa872815049.png)
 
+![截图](https://imgr2.aitc.ccwu.cc/截图/a50c3b4b-ac67-43df-8d40-232e6060fef7.png)
 
+![截图](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/5c96428f-204b-4a56-8b9c-da18da92f14a.png)
 
+## 五、绑定 KV 命名空间
+
+> 💬 **注**
+>
+> 变量名称必须填写大写 KV ，命名空间选择刚刚创建的 kv名称，点击 保存 完成绑定。
+
+![截图](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/33cb0082-2af2-4830-9854-0a0d47184807.png)
+
+![截图](https://imgr2.aitc.ccwu.cc/截图/446641c0-9b3c-43ef-8bd3-223acfcffb91.png)
+
+![截图](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/627b3991-836a-4502-b2a3-dc0504a55e9b.png)
+
+![截图](https://imgr2.aitc.ccwu.cc/其他/52f0690f-6b66-4888-b89c-4c694233449a.png)
+
+## 六、重新部署，使其变量生效！
+
+![截图](https://imgr2.aitc.ccwu.cc/截图/eebe5525-7348-4a32-82e8-75fe40596638.png)
+
+![截图](https://imgr2.aitc.ccwu.cc/截图/f354d0c1-32a1-476a-bf12-acda53a581c1.png)
+
+![截图](https://imgr2.aitc.ccwu.cc/截图/744b4064-0c0a-4e01-89d8-505d9213d10a.png)
+
+## 七、绑定自定义域名
+
+![截图](https://imgr2.aitc.ccwu.cc/%E5%85%B6%E4%BB%96/2cadaffd-17e4-43dc-9443-97ea0840924f.png)
+
+![截图](https://imgr2.aitc.ccwu.cc/其他/5d9bcf97-3d09-4da6-aff4-4ef7783ede58.png)
+
+![截图](https://imgr2.aitc.ccwu.cc/其他/36a930d6-7079-46af-be7d-02187cbc6177.png)
+
+![截图](https://imgr2.aitc.ccwu.cc/%E5%85%B6%E4%BB%96/05450111-ad94-4aad-96c6-274988fba65b.png)
+
+![截图](https://imgr2.aitc.ccwu.cc/其他/9230932c-9e17-47df-9143-97b1841c796e.png)
+
+## 八、此时浏览器输入绑定的域名，假如主页提示`Welcome to nginx!` 说明已部署成功，这时再在输入框的域名后面添加 `/admin` 再回车，即可进入管理页面；
+
+![截图](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/bbe7f734-2c26-48c3-9a94-208b03cb45db.png)
+
+输入管理员密码，点击 `登录` 即可进入管理页面；
+
+![截图](https://imgr2.aitc.ccwu.cc/其他/6dbf201f-00d0-4960-ba05-79ddd3efa7c8.png)
+
+登录成功后，即可看到管理页面，如果您是小白，无需折腾直接订阅使用即可；
+
+![截图](https://imgr2.aitc.ccwu.cc/其他/f609e787-ab69-4684-b804-5d564fa10453.png)
 
 
 
