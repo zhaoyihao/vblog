@@ -30,6 +30,10 @@ const {
   showBanner = true,
 } = Astro.props;
 
+// 新增：提前判断路径类型
+const isBlogListOrHome = ['/', '/blog/'].includes(Astro.url.pathname);
+const isBlogPost = Astro.url.pathname.startsWith('/blog/') && !isBlogListOrHome;
+
 // 根据当前路径从配置中获取 Banner 内容
 const currentPath = Astro.url.pathname.replace("/", "") || "home";
 const pageConfig = SITE_PAGES?.[currentPath];
@@ -149,7 +153,7 @@ if (location.host === 'vblog-u5u.pages.dev') {
         class={`grid grid-cols-1 ${showSidebar ? "md:grid-cols-[260px_1fr]" : ""} gap-4 px-4 pb-4 h-full`}
       >
         <main
-          class={`col-span-1 md:col-span-auto bg-transparent order-1 md:order-2 flex flex-col gap-4 ${['/', '/blog/'].includes(Astro.url.pathname) ? 'md:w-[1360px] md:-ml-[255px]' : Astro.url.pathname.startsWith('/blog/') ? 'md:max-w-full' : ''}
+          class={`col-span-1 md:col-span-auto bg-transparent order-1 md:order-2 flex flex-col gap-4 ${isBlogListOrHome ? 'md:w-[1360px] md:-ml-[255px]' : isBlogPost ? 'md:max-w-full' : ''}`}
         >
           <div class="flex-grow flex flex-col gap-4">
             <slot />
