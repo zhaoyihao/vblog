@@ -184,4 +184,14 @@ const url = new URL(`/blog/${blog.slug}`, Astro.url.origin);
       } as any);
     });
   </script>
+
+  <!-- 新增：强制给所有代码块加上横向滚动条，和官方效果一致 -->
+  <style is:inline>
+    #content pre {
+      overflow-x: auto;
+      max-width: 100%;
+      display: block;
+    }
+  </style>
+
 </BaseLayout>
