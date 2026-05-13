@@ -1,10 +1,15 @@
 ---
-title: 10 分钟搭建 🚀Edgetunnel2.0 全新版本
+title: 10 分钟搭建 Edgetunnel2.0 全新版本
 description: Cloudflare最强免费VPN节点！ ｜永久免费｜全球高速节点｜无限流量
 pubDate: 2026-05-12T16:20
 draft: false
-tags: []
-categories: []
+tags:
+  - kv空间
+  - 域名绑定
+  - Edgetunnel
+  - 节点
+categories:
+  - 安装部署
 badge: ''
 ---
   今天教大家用 Cloudflare 搭建一套长期可用的免费高速VPN节点，不用服务器、不花一分钱、全球节点任选、无限流量。不但能够访问各大AI平台，还能通过 Cloudflare 的后台，控制代理指定国家的节点。废话不多说，直接开始教程。
@@ -127,51 +132,3 @@ ZoneABC：`https://zoneabc.net`
 登录成功后，即可看到管理页面，如果您是小白，无需折腾直接订阅使用即可；
 
 ![截图](https://imgr2.aitc.ccwu.cc/其他/f609e787-ab69-4684-b804-5d564fa10453.png)
-
-```astro
----
-// src/components/comments/Waline.astro
-interface Props {
-  serverURL: string;
-  lang?: string;
-  dark?: string;
-  emoji?: string[];
-  meta?: string[];
-  requiredMeta?: string[];
-  reaction?: boolean;
-  pageview?: boolean;
-}
-const {
-  serverURL,
-  lang = "zh-CN",
-  dark = "html[data-theme-type='dark']",
-  emoji = ["https://unpkg.com/@waline/emojis@1.1.0/weibo", "https://unpkg.com/@waline/emojis@1.1.0/bilibili"],
-  meta = ["nick", "mail", "link"],
-  requiredMeta = [],
-  reaction = false,
-  pageview = false,
-} = Astro.props;
----
-<div id="waline-container"></div>
-<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
-<script type="module" define:vars={{
-  serverURL, lang, dark, emoji, meta, requiredMeta, reaction, pageview,
-}}>
-  import { init } from "https://unpkg.com/@waline/client@v3/dist/waline.js";
-  let walineInstance;
-  async function mountWaline() {
-    if (walineInstance) await walineInstance.destroy();
-    walineInstance = init({
-      el: "#waline-container",
-      serverURL, path: location.pathname, lang, dark, emoji, meta, requiredMeta, reaction, pageview,
-    });
-  }
-  document.addEventListener("astro:after-swap", mountWaline);
-  document.addEventListener("DOMContentLoaded", mountWaline);
-</script>
-<style>
-  #waline-container { margin-top: 2rem; margin-bottom: 2rem; }
-</style>
-```
-
-
