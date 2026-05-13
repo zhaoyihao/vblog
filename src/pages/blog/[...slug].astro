@@ -1,3 +1,4 @@
+---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import License from "@components/widgets/License.astro";
 import PostInfo from "@components/widgets/PostInfo.astro";
@@ -182,12 +183,4 @@ const url = new URL(`/blog/${blog.slug}`, Astro.url.origin);
       } as any);
     });
   </script>
-
-  <!-- 仅新增的宽度修复样式，不影响原有代码 -->
-  <style>
-    #content pre {
-      overflow-x: auto;
-      max-width: 100%;
-    }
-  </style>
 </BaseLayout>
