@@ -211,7 +211,7 @@ export default function ArchiveList({ posts, labels, dateFormat }: ArchiveListPr
                                 <span>批量删除</span>
                             </button>
                         )}
-                        <a href="/blog" className="btn btn-outline btn-sm gap-2">
+                        <a href="/" className="btn btn-outline btn-sm gap-2">
                             <BookOpen className="w-4 h-4" />
                             <span>{labels.backToBlog}</span>
                         </a>
