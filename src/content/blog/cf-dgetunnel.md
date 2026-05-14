@@ -3,7 +3,7 @@ title: 5 分钟搭建 Edgetunnel  就是这么简单！✨ 就是这么方便！
 description: Cloudflare最强免费VPN节点！ ｜永久免费｜全球高速节点｜无限流量
 pubDate: 2026-05-12T16:20
 image: >-
-  https://imgr2.aitc.ccwu.cc/%E5%85%B6%E4%BB%96/938a7512-6399-4c0d-8dad-9ad2c59b9998.png
+  https://imgr2.aitc.ccwu.cc/%E5%85%B6%E4%BB%96/a12ef135-4603-4a4c-9977-7dc46ccec2cc.png
 draft: false
 tags:
   - kv空间
