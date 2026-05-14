@@ -7,8 +7,7 @@ draft: false
 tags:
   - Markdown
 categories:
-  - Documentation
-  - Examples
+  - Markdown示例
 badge: Markdown
 ---
 在 Astro 中撰写 Markdown 内容时，常会用到以下基础 Markdown 语法示例。
@@ -43,7 +42,53 @@ badge: Markdown
 
 ![wdblog](https://imgr2.aitc.ccwu.cc/其他/a1099896-3fe0-4cff-aaa7-ef01fae64ec8.png)
 
-## 四、引用块
+## 四、超链接：
+
+### 1、网址超链
+
+```
+1. [点击前往](https://www.inav.ccwu.cc)
+2. 【[点击前往](https://www.inav.ccwu.cc)】
+3. 【[▶️点击前往](https://www.inav.ccwu.cc)】
+```
+#### 输出
+1. [点击前往](https://www.inav.ccwu.cc)
+2. 【[点击前往](https://www.inav.ccwu.cc)】
+3. 【[▶️点击前往](https://www.inav.ccwu.cc)】
+
+### 2、视频超链
+
+#### 文字跳转链接
+```
+<a href="https://www.youtube.com" target="_blank">YouTube视频↗</a>
+```
+#### 输出
+
+<a href="https://www.youtube.com" target="_blank">YouTube视频↗</a>
+
+#### 直接嵌入播放代码
+```
+<iframe 
+  width="100%" 
+  height="400" 
+  src="https://www.youtube.com/embed/abc123xyz" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+```
+#### 输出
+
+<iframe 
+  width="100%" 
+  height="400" 
+  src="https://www.youtube.com/embed/abc123xyz" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+
+---
+
+## 五、引用块
 
 ### 1、大于号 > 开头，就是 Markdown 引用块，例如：
 
@@ -52,20 +97,21 @@ badge: Markdown
 ```
 #### 输出 
 > 这是单行引用块
-
+---
 ### 2、多行引用，每行都加 >，也可以只在第一行加，
 
 写法 1：每行都加 >
-#### 输出
-```
-> 第一行引用
-> 第二行引用
-> 第三行引用
-```
-> 第一行引用
-> 第二行引用
-> 第三行引用
 
+```
+> 第一行引用
+> 第二行引用
+> 第三行引用
+```
+#### 输出
+> 第一行引用
+> 第二行引用
+> 第三行引用
+---
 写法 2：只有开头一个 > ，换行继续写
 ```
 > 第一行引用
@@ -76,17 +122,17 @@ badge: Markdown
 > 第一行引用
 第二行引用
 第三行引用
-
+---
 ### 3、引用块里可以嵌套其他 Markdown：
 
 比如**加粗**、_斜体_、`行内代码`；
 
 ```
-> 重点提示：可以在引用块里用  **加粗**、  _斜体_、  `行内代码`
+> 💬重点提示：可以在引用块里用  **加粗**、  _斜体_、  `行内代码`
 ```
 #### 输出
-> 重点提示：可以在引用块里用  **加粗**、  _斜体_、  `行内代码`
-
+> 💬重点提示：可以在引用块里用  **加粗**、  _斜体_、  `行内代码`
+---
 比如 - 列表1、- 列表2、- 列表3；
 ```
 - 列表第1条内容
@@ -97,76 +143,78 @@ badge: Markdown
 > - 列表第1条内容
 > - 列表第2条内容
 > - 列表第3条内容
+---
+### 4、嵌套引用块（引用块里套引用块），多加一个 >>
 
-带出处引用
-
-> Don't communicate by sharing memory, share memory by communicating.<br>
-> — <cite>Rob Pike[^1]</cite>
-
-
-
-
-
-
-
-
-
-
-The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a `footer` or `cite` element, and optionally with in-line changes such as annotations and abbreviations.
-
-### Blockquote without attribution
-
-#### Syntax
-
-```markdown
-> Tiam, ad mint andaepu dandae nostion secatur sequo quae.
-> **Note** that you can use _Markdown syntax_ within a blockquote.
+```
+> 外层引用
+>> 内层嵌套引用
 ```
 
-#### Output
+#### 输出
+> 外层引用
+>> 内层嵌套引用
+---
 
-> Tiam, ad mint andaepu dandae nostion secatur sequo quae.
-> **Note** that you can use _Markdown syntax_ within a blockquote.
-
-### Blockquote with attribution
-
-#### Syntax
-
-```markdown
-> Don't communicate by sharing memory, share memory by communicating.<br>
+### 5、带出处引用
+```
+> 不要通过共享内存来通信，要通过通信来共享内存。<br>
 > — <cite>Rob Pike[^1]</cite>
 ```
+#### 输出
 
-#### Output
-
-> Don't communicate by sharing memory, share memory by communicating.<br>
+> 不要通过共享内存来通信，要通过通信来共享内存。<br>
 > — <cite>Rob Pike[^1]</cite>
 
-[^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
+[^1]: Go 语言联合创始人，著名程序员。The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
 
-## Tables
+- <br>是 HTML 的换行；
+- <cite> 是 HTML 标签作用，标注引用的出处、作者、来源；
+所以👉 <cite>Rob Pike</cite>意思是：出处 / 作者为Rob Pike
+- `[^1]` 可以上标引用，绑定底部注释
+---
 
-#### Syntax
+## 6、表格
 
-```markdown
-| Italics   | Bold     | Code   |
-| --------- | -------- | ------ |
-| _italics_ | **bold** | `code` |
+#### 三列表格
+
+```
+|  变量名称  |  填写示例  |  说明  |
+| --------- | --------- | ------- |
+|  替换名称  |  替换示例  |  说明  |
+|  替换名称  |  替换示例  |  说明  |
 ```
 
-#### Output
+#### 输出
 
-| Italics   | Bold     | Code   |
-| --------- | -------- | ------ |
-| _italics_ | **bold** | `code` |
+|  变量名称  |  填写示例  |  说明  |
+| --------- | --------- | ------- |
+|  替换名称  |  替换示例  |  说明  |
+|  替换名称  |  替换示例  |  说明  |
 
-## Code Blocks
+#### 两列表格
 
-#### Syntax
+```
+| 变量名称 | 值 |
+| :--- | :--- |
+| 文本 | 文本 | 文本 |
+| 文本 | 文本 | 文本 |
+```
+#### 输出
+| 变量名称 | 值 |
+| :--- | :--- |
+| 文本 | 文本 | 文本 |
+| 文本 | 文本 | 文本 |
 
-we can use 3 backticks ``` in new line and write snippet and close with 3 backticks on new line and to highlight language specific syntac, write one word of language name after first 3 backticks, for eg. html, javascript, css, markdown, typescript, txt, bash
+- `:--- 或 只有 ----` = 左对齐；
+- `---: ` = 右对齐；
+- `:--: `= 居中对齐;
 
-````markdown
+## 七、代码块
+
+我们可以使用三个反引号 ``` ，然后另起一行编写代码片段，代码编写完后在另起一行再次使用三个反引号。为了突出显示特定语言的语法，可以在开头的三个反引号后写上该语言名称的一个单词，例如：html、javascript、css、markdown、typescript、txt、bash
+
+````Markdown
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -197,7 +245,7 @@ int main()
 ```
 ````
 
-Output
+#### 输出
 
 ```cpp
 #include <bits/stdc++.h>
@@ -228,67 +276,56 @@ int main()
 }
 ```
 
-## List Types
 
-### Ordered List
+## 八、列表类型
 
-#### Syntax
+### 有序列表
+```markdown
+1. 第一项
+2. 第二项
+3. 第三项
+```
+#### 输出
+1. 第一项
+2. 第二项
+3. 第三项
+
+### 无序列表
 
 ```markdown
-1. First item
-2. Second item
-3. Third item
+- 列表项
+- 另一件物品
+- 还有另一件物品
 ```
+#### 输出
 
-#### Output
+- 列表项
+- 另一件物品
+- 还有另一件物品
 
-1. First item
-2. Second item
-3. Third item
-
-### Unordered List
-
-#### Syntax
+### 嵌套列表
 
 ```markdown
-- List item
-- Another item
-- And another item
+- 水果
+  - 苹果
+  - 橙子
+  - 香蕉
+- 奶制品
+  - 牛奶
+  - 奶酪
 ```
 
-#### Output
+#### 输出
 
-- List item
-- Another item
-- And another item
+- 水果
+  - 苹果
+  - 橙子
+  - 香蕉
+- 奶制品
+  - 牛奶
+  - 奶酪
 
-### Nested list
-
-#### Syntax
-
-```markdown
-- Fruit
-  - Apple
-  - Orange
-  - Banana
-- Dairy
-  - Milk
-  - Cheese
-```
-
-#### Output
-
-- Fruit
-  - Apple
-  - Orange
-  - Banana
-- Dairy
-  - Milk
-  - Cheese
-
-## Other Elements
-
-#### Syntax
+## 九、其他要素
 
 ```markdown
 <abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
@@ -302,9 +339,13 @@ Press <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd> to end the session.
 Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
 ```
 
-#### Output
+#### 输出
 
 <abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
+
+- <abbr> 是 HTML 缩写标签，专门用来标记英文缩写、简写。
+- title="" 属性，title="Graphics Interchange Format"
+- 鼠标悬停在 GIF 文字上时，会弹出小字提示：Graphics Interchange Format
 
 H<sub>2</sub>O
 
@@ -312,4 +353,8 @@ X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
 
 Press <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd> to end the session.
 
+- <kbd> 是 HTML 专用标签，渲染效果会变成按键样式，像键盘按钮一样。
+
 Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
+
+- <mark>内容</mark>，HTML 高亮标签，默认黄色背景高亮，用来标记、突出重点文字。
