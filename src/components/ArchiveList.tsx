@@ -76,6 +76,11 @@ export default function ArchiveList({ posts, labels, dateFormat }: ArchiveListPr
     };
 
     const executeDelete = async () => {
+        // 二次权限校验：未授权直接拦截删除
+        if (!isAuth) {
+            toast.error('权限不足，无法执行删除操作');
+            return;
+        }
         try {
             setDeleting(true);
             await batchDeleteBlogs(Array.from(selectedSlugs));
@@ -97,12 +102,14 @@ export default function ArchiveList({ posts, labels, dateFormat }: ArchiveListPr
             return;
         }
 
+        // 未授权：弹窗导入私钥，终止后续删除逻辑
         if (!isAuth) {
             toast.info('请导入私钥以继续删除操作');
             keyInputRef.current?.click();
             return;
         }
 
+        // 已授权才执行删除
         await executeDelete();
     };
 
