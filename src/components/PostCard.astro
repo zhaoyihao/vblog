@@ -80,7 +80,8 @@ const slug = url ? url.split('/').filter(Boolean).pop() : undefined;
       }
       <div class="flex items-center gap-1">
         <Icon name="lucide:book-open" class="h-4 w-4 flex-shrink-0" />
-        <span class="truncate">{word} {t("label.wordCount")} · {time} {t("label.readTime")}</span>
+        <!--<span class="truncate">{word} {t("label.wordCount")} · {time} {t("label.readTime")}</span>-->
+        <span class="truncate">{word} {t("label.wordCount")}</span>
       </div>
       {
         badge && (
@@ -93,7 +94,7 @@ const slug = url ? url.split('/').filter(Boolean).pop() : undefined;
       <PostStats url={url} layout="mobile" />
     </div>
 
-    <p class="text-sm text-base-content/70 mb-4">{description}</p>
+    <!--<p class="text-sm text-base-content/70 mb-4">{description}</p>-->
 
     <!-- 只在list模式下，隐藏下方的标签；其他模式正常显示 -->
     {mode === "list" ? (
