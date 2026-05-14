@@ -146,10 +146,11 @@ if (location.host === 'vblog-u5u.pages.dev') {
     <Navbar />
     <div class={`max-w-blog mx-auto w-full flex-grow page-content-animate ${showBanner ? 'mt-8' : 'mt-24'}`}>
       <div
-        class={`grid grid-cols-1 ${showSidebar ? "md:grid-cols-[260px_1fr]" : ""} gap-4 px-4 pb-4 h-full`}
+        class={`grid grid-cols-1 ${showSidebar ? "md:grid-cols-5 lg:grid-cols-4" : ""} gap-4 px-4 pb-4 h-full`}
       >
         <main
-          class={`col-span-1 md:col-span-auto bg-transparent order-1 md:order-2 flex flex-col gap-4 ${['/'].includes(Astro.url.pathname) ? 'md:w-[1360px] md:-ml-[255px]' : ''}`} 
+          <!-- class={`col-span-1 md:col-span-auto bg-transparent order-1 md:order-2 flex flex-col gap-4 ${['/'].includes(Astro.url.pathname) ? 'md:w-[1100px] md:-ml-[255px]' : ''}`}  -->
+          class={`grid grid-cols-1 ${showSidebar ? "md:grid-cols-5 lg:grid-cols-4" : ""} ${['/'].includes(Astro.url.pathname) ? 'md:w-[1360px] md:-ml-[255px]' : ''} gap-4 px-4 pb-4 h-full`}
         >
           <div class="flex-grow flex flex-col gap-4">
             <slot />
