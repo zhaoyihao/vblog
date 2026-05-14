@@ -2,6 +2,8 @@
 title: 10 分钟搭建 Edgetunnel2.0 全新版本
 description: Cloudflare最强免费VPN节点！ ｜永久免费｜全球高速节点｜无限流量
 pubDate: 2026-05-12T16:20
+image: >-
+  https://imgr2.aitc.ccwu.cc/%E5%85%B6%E4%BB%96/938a7512-6399-4c0d-8dad-9ad2c59b9998.png
 draft: false
 tags:
   - kv空间
@@ -21,10 +23,15 @@ badge: ''
 Cloudflare注册地址：`https://www.cloudflare.com`
 
 注册免费域名地址：
+
 DNSHE：`https://www.dnshe.com`  邀请码：CY483A4A4B
+
 DigitalPlat: `https://domain.digitalplat.org` 
+
 ClouDNS：`https://www.cloudns.net/index/lang/chs`
+
 dynv6：`https://dynv6.com`
+
 ZoneABC：`https://zoneabc.net`
 
 ## 一、安装部署前的准备
@@ -111,15 +118,15 @@ ZoneABC：`https://zoneabc.net`
 
 ## 七、绑定自定义域名
 
-![截图](https://imgr2.aitc.ccwu.cc/%E5%85%B6%E4%BB%96/2cadaffd-17e4-43dc-9443-97ea0840924f.png)
+![截图](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/2cadaffd-17e4-43dc-9443-97ea0840924f.png)
 
-![截图](https://imgr2.aitc.ccwu.cc/其他/5d9bcf97-3d09-4da6-aff4-4ef7783ede58.png)
+![截图](https://imgr2.aitc.ccwu.cc/截图/5d9bcf97-3d09-4da6-aff4-4ef7783ede58.png)
 
-![截图](https://imgr2.aitc.ccwu.cc/其他/36a930d6-7079-46af-be7d-02187cbc6177.png)
+![截图](https://imgr2.aitc.ccwu.cc/截图/36a930d6-7079-46af-be7d-02187cbc6177.png)
 
-![截图](https://imgr2.aitc.ccwu.cc/%E5%85%B6%E4%BB%96/05450111-ad94-4aad-96c6-274988fba65b.png)
+![截图](https://imgr2.aitc.ccwu.cc/截图/05450111-ad94-4aad-96c6-274988fba65b.png)
 
-![截图](https://imgr2.aitc.ccwu.cc/其他/9230932c-9e17-47df-9143-97b1841c796e.png)
+![截图](https://imgr2.aitc.ccwu.cc/截图/9230932c-9e17-47df-9143-97b1841c796e.png)
 
 ## 八、此时浏览器输入绑定的域名，假如主页提示`Welcome to nginx!` 说明已部署成功，这时再在输入框的域名后面添加 `/admin` 再回车，即可进入管理页面；
 
@@ -127,8 +134,8 @@ ZoneABC：`https://zoneabc.net`
 
 输入管理员密码，点击 `登录` 即可进入管理页面；
 
-![截图](https://imgr2.aitc.ccwu.cc/其他/6dbf201f-00d0-4960-ba05-79ddd3efa7c8.png)
+![截图](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/6dbf201f-00d0-4960-ba05-79ddd3efa7c8.png)
 
 登录成功后，即可看到管理页面，如果您是小白，无需折腾直接订阅使用即可；
 
-![截图](https://imgr2.aitc.ccwu.cc/其他/f609e787-ab69-4684-b804-5d564fa10453.png)
+![截图](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/f609e787-ab69-4684-b804-5d564fa10453.png)
