@@ -35,7 +35,7 @@ GitHub项目地址：`https://github.com/walinejs/waline`
 
 一两分钟后，满屏的烟花会庆祝你部署成功。此时点击 Continue to Dashboard 可以跳转到应用的控制台。
 
-![截图](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/98f97fe5-6c8b-4406-9db7-7df733d1e811.png)
+![截图](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/bc009f51-198f-4709-a340-06906d302166.png)
 
 ![截图](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/fee40fd0-84f6-4cd8-b4b9-b4811c084f85.png)
 
