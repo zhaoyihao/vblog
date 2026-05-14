@@ -68,23 +68,11 @@ badge: Markdown
 
 #### 直接嵌入播放代码
 ```
-<iframe 
-  width="100%" 
-  height="400" 
-  src="https://youtu.be/IzQybHQSwGI?si=1R5S6ZIK9X66s6nl" 
-  frameborder="0" 
-  allowfullscreen>
-</iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IzQybHQSwGI?si=JcUZdVBBlWVd-0wb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 ```
 #### 输出
 
-<iframe 
-  width="100%" 
-  height="400" 
-  src="https://youtu.be/IzQybHQSwGI?si=1R5S6ZIK9X66s6nl" 
-  frameborder="0" 
-  allowfullscreen>
-</iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IzQybHQSwGI?si=JcUZdVBBlWVd-0wb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
