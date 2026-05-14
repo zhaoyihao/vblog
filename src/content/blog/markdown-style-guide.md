@@ -47,31 +47,31 @@ badge: Markdown
 ### 1、网址超链
 
 ```
-1. [点击前往](https://www.inav.ccwu.cc)
-2. 【[点击前往](https://www.inav.ccwu.cc)】
-3. 【[▶️点击前往](https://www.inav.ccwu.cc)】
+1. [点击前往](https://inav.ccwu.cc)
+2. 【[点击前往](https://inav.ccwu.cc)】
+3. 【[▶️点击前往](https://inav.ccwu.cc)】
 ```
 #### 输出
-1. [点击前往](https://www.inav.ccwu.cc)
-2. 【[点击前往](https://www.inav.ccwu.cc)】
-3. 【[▶️点击前往](https://www.inav.ccwu.cc)】
+1. [点击前往](https://inav.ccwu.cc)
+2. 【[点击前往](https://inav.ccwu.cc)】
+3. 【[▶️点击前往](https://inav.ccwu.cc)】
 
 ### 2、视频超链
 
 #### 文字跳转链接
 ```
-<a href="https://www.youtube.com" target="_blank">YouTube视频↗</a>
+<a href="https://youtu.be/IzQybHQSwGI?si=1R5S6ZIK9X66s6nl" target="_blank">YouTube视频↗</a>
 ```
 #### 输出
 
-<a href="https://www.youtube.com" target="_blank">YouTube视频↗</a>
+<a href="https://youtu.be/IzQybHQSwGI?si=1R5S6ZIK9X66s6nl" target="_blank">YouTube视频↗</a>
 
 #### 直接嵌入播放代码
 ```
 <iframe 
   width="100%" 
   height="400" 
-  src="https://www.youtube.com/embed/abc123xyz" 
+  src="https://youtu.be/IzQybHQSwGI?si=1R5S6ZIK9X66s6nl" 
   frameborder="0" 
   allowfullscreen>
 </iframe>
@@ -81,7 +81,7 @@ badge: Markdown
 <iframe 
   width="100%" 
   height="400" 
-  src="https://www.youtube.com/embed/abc123xyz" 
+  src="https://youtu.be/IzQybHQSwGI?si=1R5S6ZIK9X66s6nl" 
   frameborder="0" 
   allowfullscreen>
 </iframe>
@@ -160,6 +160,9 @@ badge: Markdown
 ```
 > 不要通过共享内存来通信，要通过通信来共享内存。<br>
 > — <cite>Rob Pike[^1]</cite>
+
+--------------------------------------------------------------------------
+[^1]: Go 语言联合创始人，著名程序员。The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
 ```
 #### 输出
 
@@ -168,8 +171,8 @@ badge: Markdown
 
 [^1]: Go 语言联合创始人，著名程序员。The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
 
-- <br>是 HTML 的换行；
-- <cite> 是 HTML 标签作用，标注引用的出处、作者、来源；
+- `<br>`是 HTML 的换行；
+- `<cite>名称</cite>` 是 HTML 标签作用，标注引用的出处、作者、来源；
 所以👉 <cite>Rob Pike</cite>意思是：出处 / 作者为Rob Pike
 - `[^1]` 可以上标引用，绑定底部注释
 ---
@@ -352,7 +355,7 @@ X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
 
 Press <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd> to end the session.
 
-- `<kbd>` 是 HTML 专用标签，渲染效果会变成按键样式，像键盘按钮一样。
+- `<kbd>按键名</kbd>` 是 HTML 专用标签，渲染效果会变成按键样式，像键盘按钮一样。
 
 Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
 
