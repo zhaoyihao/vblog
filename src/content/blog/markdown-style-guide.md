@@ -276,7 +276,6 @@ int main()
 }
 ```
 
-
 ## 八、列表类型
 
 ### 有序列表
@@ -353,8 +352,8 @@ X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
 
 Press <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd> to end the session.
 
-- <kbd> 是 HTML 专用标签，渲染效果会变成按键样式，像键盘按钮一样。
+- `<kbd>` 是 HTML 专用标签，渲染效果会变成按键样式，像键盘按钮一样。
 
 Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
 
-- <mark>内容</mark>，HTML 高亮标签，默认黄色背景高亮，用来标记、突出重点文字。
+- `<mark>内容</mark>`，HTML 高亮标签，默认黄色背景高亮，用来标记、突出重点文字。
