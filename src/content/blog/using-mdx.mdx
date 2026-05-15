@@ -1,33 +1,195 @@
 ---
 title: MDX 简介与使用教程
-description: Lorem ipsum dolor sit amet
-pubDate: 2022-07-02T00:00
+description: 在 RyuChan 中使用 mdx，为文章内容添加更多组件！
+pubDate: 2025-06-03T15:50
 image: >-
   https://imgr2.aitc.ccwu.cc/%E5%85%B6%E4%BB%96/b9d7536e-3018-42d0-ac80-4be64a2cefd3.png
 draft: false
-tags: []
+tags:
+  - MDX
+  - mdx
 categories:
-  - Documentation
+  - Markdown示例
+  - 使用指南
 badge: MDX
 ---
-此主题已预装并配置了 [@astrojs/mdx](https://docs.astro.build/en/guides/integrations-guide/mdx/) ，它是让 Astro 支持 Markdown + JSX 混合写作的插件，常用于撰写博客和文档。该插件已自动集成到 `astro.config.mjs`  配置文件中；如果不需要使用 MDX 功能，可在配置文件里移除该项集成来禁用。
+import Collapse from "../../components/mdx/Collapse.astro";
+import Diff from "../../components/mdx/Diff.astro";
+import Error from "../../components/mdx/Error.astro";
+import Info from "../../components/mdx/Info.astro";
+import Kbd from "../../components/mdx/Kbd.astro";
+import Success from "../../components/mdx/Success.astro";
+import Warning from "../../components/mdx/Warning.astro";
+import TimeLine from "../../components/mdx/TimeLine.astro";
+import LinkCard from "../../components/mdx/LinkCard.astro";
 
+此主题已预装并配置了 [@astrojs/mdx](https://docs.astro.build/en/guides/integrations-guide/mdx/) ，它是让 Astro 支持 Markdown + JSX 混合写作的插件，常用于撰写博客和文档。该插件已自动集成到 `astro.config.mjs`  配置文件中；如果不需要使用 MDX 功能，可在配置文件里移除该项集成来禁用。如果您已有使用 MDX 编写的内容，那么此次集成有望让您轻松迁移到 Astro。
 
-## 为什么选择MDX？
+## 一、 为什么选择MDX？
 
 MDX 是 Markdown 的一种特殊变体，它支持嵌入式 JavaScript 和 JSX 语法。这使得您可以将 [JavaScript 和 UI 组件混合到 Markdown 内容中](https://docs.astro.build/en/guides/markdown-content/#mdx-features)，从而实现交互式图表或提示框等功能。
 
-如果您已有使用 MDX 编写的内容，那么此次集成有望让您轻松迁移到 Astro。
+普通的 `.md` 文件只能写：文字、标题、列表、图片、链接
 
+`.mdx` 文件不仅能写普通 markdown，还能直接插入组件、代码块、交互元素（比如 Ryuchan 提供的现成组件）
 
-## 如何使用 RyuChan 提供的组件mdx来实现普通 RyuChan 无法实现的功能md
+## 二、如何使用 RyuChan 提供的组件 `mdx`  来实现普通 RyuChan 无法实现的 `md` 功能
 
-以下是如何在 MDX 中导入和使用 UI 组件的方法。
+### 1、首先你需要创建一个mdx文件，这很简单，只需将文件扩展名更改为 `.mdx`
 
+比如：新建一个文件，把后缀改成 .mdx 就行[intro.md → 改成 intro.mdx]。
 
+### 2、Ryuchan提供的组件已放置在 `/mdx` 文件夹中。然后在 `.mdx` 文件内写入导入组件的代码—— `import` 就是导入组件的意思 ：
 
+```astro
+import Collapse from "../../components/mdx/Collapse.astro";
+import Diff from "../../components/mdx/Diff.astro";
+import Error from "../../components/mdx/Error.astro";
+import Info from "../../components/mdx/Info.astro";
+import Kbd from "../../components/mdx/Kbd.astro";
+import Success from "../../components/mdx/Success.astro";
+import Warning from "../../components/mdx/Warning.astro";
+import TimeLine from "../../components/mdx/TimeLine.astro";
+import LinkCard from "../../components/mdx/LinkCard.astro";
+```
+- `<Collapse>` —— 折叠面板
+- `<Diff>` —— 差异对比
+- `<Error>` —— 红色错误提示
+- `<Info>` —— 蓝色信息提示
+- `<Kbd>` —— 键盘按键样式
+- `<Success>` —— 绿色成功提示
+- `<Warning>` —— 黄色警告
+- `<TimeLine>` —— 时间线
+- `<LinkCard>` —— 链接卡片
 
+### 3、以下是如何在 MDX 中导入和使用 UI 组件的具体方法。
 
+#### 1、Collapse —— 折叠面板
+
+```astro
+<Collapse title="这是放显示的文本。">
+  这里放隐藏内容！
+</Collapse>
+```
+#### 输出
+
+<Collapse title="这是放显示的文本。">
+  这里放隐藏内容！
+</Collapse>
+
+---
+
+#### 2、Diff —— 差异对比
+
+```astro
+<Diff l="/image/l.png" r="/image/r.png" />
+```
+#### 输出
+
+<Diff l="/image/l.png" r="/image/r.png" />
+
+---
+
+#### 3、Error —— 红色错误提示
+
+```astro
+<Error>是不是哪里出错了？ </Error>
+```
+#### 输出
+
+<Error>是不是哪里出错了？</Error>
+
+---
+#### 4、Info —— 蓝色信息提示
+
+```astro
+<Info>这只是一条信息。 </Info>
+```
+#### 输出
+
+<Info>这只是一条信息。 </Info>
+
+---
+
+#### 5、Kbd —— 键盘按键样式
+
+```astro
+<Kbd>Ctrl</Kbd> + <Kbd>C</Kbd> 复制文本。
+```
+#### 输出
+<Kbd>Ctrl</Kbd> + <Kbd>C</Kbd> 复制文本。
+
+---
+
+#### 6、Success —— 绿色成功提示
+
+```astro
+<Success>恭喜您部署成功！</Success>
+```
+#### 输出
+
+<Success>恭喜您部署成功！ </Success>
+
+---
+
+#### 7、Warning —— 黄色警告
+
+```astro
+<Warning>嘿！小心路上的坑！ </Warning>
+```
+#### 输出
+
+<Warning>嘿！小心路上的坑！ </Warning>
+
+---
+
+#### 8、TimeLine —— 时间线
+
+```astro
+<TimeLine
+  items={[
+    { year: "1984", event: "第一台 Macintosh 电脑" },
+    { year: "1998", event: "iMac" },
+    { year: "2001", event: "iPod" },
+    { year: "2007", event: "iPhone" },
+    { year: "2015", event: "Apple Watch" },
+  ]}
+/>
+```
+#### 输出
+
+<TimeLine
+  items={[
+    { year: "1984", event: "第一台 Macintosh 电脑" },
+    { year: "1998", event: "iMac" },
+    { year: "2001", event: "iPod" },
+    { year: "2007", event: "iPhone" },
+    { year: "2015", event: "Apple Watch" },
+  ]}
+/>
+
+---
+
+#### 9、LinkCard —— 链接卡片
+
+```astro
+<LinkCard
+  title="RyuChan"
+  desc="My blog project!"
+  url="https://github.com/kobaridev/RyuChan"
+  img="https://img.131714.xyz/file/Avatar/NOr1G3Zs.jpeg"
+/>
+```
+#### 输出
+
+<LinkCard
+  title="RyuChan"
+  desc="My blog project!"
+  url="https://github.com/kobaridev/RyuChan"
+  img="https://img.131714.xyz/file/Avatar/NOr1G3Zs.jpeg"
+/>
+
+---
 
 ## 更多链接
 
