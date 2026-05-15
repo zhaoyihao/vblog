@@ -2,12 +2,14 @@
 title: Git 安装与推送到 GitHub
 description: 首次仓库构建初始化与远程推送
 pubDate: 2026-04-18T00:14
-image: /images/git/b9cb7653e82633e5.png
+image: >-
+  https://imgr2.aitc.ccwu.cc/%E5%85%B6%E4%BB%96/f791749d-1133-4203-84ef-14547b19025a.png
 draft: false
 tags:
   - Git
 categories:
   - Documentation
+badge: ''
 ---
 ## 一、什么是 Git？
 
