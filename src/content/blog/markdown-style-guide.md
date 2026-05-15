@@ -1,7 +1,7 @@
 ---
 title: Markdown 样式指南
 description: 本文列举了 Astro 项目中编写 Markdown 内容的常用基础语法示例。
-pubDate: 2024-07-01T00:00
+pubDate: 2026-03-01T18:00
 image: https://imgr2.aitc.ccwu.cc/其他/a1099896-3fe0-4cff-aaa7-ef01fae64ec8.png
 draft: false
 tags:
