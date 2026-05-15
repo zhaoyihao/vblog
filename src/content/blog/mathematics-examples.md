@@ -1,105 +1,102 @@
 ---
-title: Mathematical Formulas in Markdown
-description: >-
-  A demonstration of various mathematical formulas rendered using LaTeX within
-  Markdown.
+title: Markdown 中的数学公式
+description: 使用$$分隔符在 Markdown 中渲染数学公式的效果。
 pubDate: 2025-05-31T00:00
-image: /image/image5.webp
+image: >-
+  https://imgr2.aitc.ccwu.cc/%E5%85%B6%E4%BB%96/938a7512-6399-4c0d-8dad-9ad2c59b9998.png
 draft: false
 tags:
   - Markdown
-  - LaTeX
-  - Mathematics
+  - 数学公式
 categories:
-  - Documentation
-  - Examples
+  - Markdown示例
+badge: ''
 ---
+本文档用于测试使用$$分隔符在 Markdown 中渲染数学公式的效果。
 
-This document serves as a test for rendering mathematical formulas in Markdown using `$$` delimiters.
+## 基础代数
 
-## Basic Algebra
+让我们从一些基本的代数表达式开始。
 
-Let's start with some fundamental algebraic expressions.
-
-The quadratic formula is given by:
+二次方程的求根公式为： 
 $$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$$
 
-A simple linear equation:
+一个简单的线性方程：
 $$y = mx + c$$
 
-Expansion of a binomial square:
+二项式平方的展开式：
 $$(a+b)^2 = a^2 + 2ab + b^2$$
 
 ---
 
-## Calculus
+## 微积分
 
-Here are some common expressions from calculus.
+以下是一些微积分中常用的表达式。
 
-The limit definition of a derivative:
+导数的极限定义:
 $$f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$$
 
-A definite integral:
+定积分:
 $$\int_{a}^{b} f(x) dx$$
 
-The Taylor series expansion of $e^x$ around $x=0$:
+$e^x$在$x=0$处的泰勒级数展开式:
 $$e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots$$
 
 ---
 
-## Trigonometry
+## 三角函数
 
-Some basic trigonometric identities.
+一些基本的三角恒等式。
 
-Pythagorean identity:
+毕达哥拉斯定理:
 $$\sin^2\theta + \cos^2\theta = 1$$
 
-Angle addition formula for sine:
+正弦角加法公式:
 $$\sin(\alpha + \beta) = \sin\alpha\cos\beta + \cos\alpha\sin\beta$$
 
-Euler's formula:
+欧拉公式:
 $$e^{i\theta} = \cos\theta + i\sin\theta$$
 
 ---
 
-## Statistics and Probability
+## 统计学和概率
 
-Formulas commonly used in statistics and probability.
+统计学和概率论中常用的公式。
 
-The formula for the mean ($\mu$) of a set of $n$ numbers $x_1, x_2, \ldots, x_n$:
+一组 $n$个数 $x_1, x_2, \ldots, x_n$ 的平均值 ($\mu$) 公式:
 $$\mu = \frac{1}{n} \sum_{i=1}^{n} x_i$$
 
-The probability density function of a normal distribution:
+正态分布的概率密度函数:
 $$f(x | \mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
 
-Bayes' theorem:
+贝叶斯定理:
 $$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$$
 
 ---
 
-## Linear Algebra
+## 线性代数
 
-Examples from linear algebra.
+线性代数中的例子。
 
-A 2x2 matrix:
+一个 2x2 矩阵:
 $$A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$$
 
-The determinant of a 2x2 matrix:
+2x2 矩阵的行列式:
 $$\det(A) = ad - bc$$
 
-Matrix multiplication of two matrices A and B:
+矩阵 A 和 B 的矩阵乘法:
 $$C = AB$$
 
 ---
 
-## Physics
+## 物理
 
-A couple of well-known physics equations.
+几个著名的物理方程式。
 
-Einstein's mass-energy equivalence:
+爱因斯坦的质能方程:
 $$E = mc^2$$
 
-Newton's second law of motion:
+牛顿第二运动定律:
 $$F = ma$$
 
-This should provide a good test of how various mathematical formulas are rendered.
+这可以很好地测试各类数学公式的渲染显示效果。
