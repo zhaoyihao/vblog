@@ -117,22 +117,18 @@ user:
   avatar: /profile.png
   sidebar:
     social:
-      - href: https://github.com/DongMaicle
-        ariaLabel: Github
-        title: Github
-        svg: ri:github-line
-      - href: '#'
-        ariaLabel: Email
-        title: Email：maiclezxd@gmail.com
-        svg: ri:mail-line
-      - href: '#'
-        ariaLabel: QQ
-        title: QQ：550680039
-        svg: ri:qq-line
       - href: null
         ariaLabel: WeChat
         title: 微信：13465318688
         svg: ri:wechat-fill
+      - href: '#'
+        ariaLabel: QQ
+        title: QQ：550680039
+        svg: ri:qq-line
+      - href: '#'
+        ariaLabel: Email
+        title: Email：maiclezxd@gmail.com
+        svg: ri:mail-line
   footer:
     social:
       - href: https://github.com/DongMaicle
