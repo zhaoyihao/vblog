@@ -21,7 +21,7 @@ import Warning from "../../components/mdx/Warning.astro";
 <iframe width="560" height="315" src="https://www.youtube.com/embed/AgHFYoUb_ec?si=Ca6PlrR8bybDesta" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-<br>
+<br />
 
 <Collapse title="今天就教大家搭建一个Cloudflare Zero Trust ，解决WARP无法连接的问题。">
 ✅ 完全免费
@@ -30,11 +30,11 @@ import Warning from "../../components/mdx/Warning.astro";
 ✅ 支持电脑 + 手机全平台的 VPN / 翻墙方案。
 </Collapse>
 
-  很多教程只教你“怎么点按钮”，却没有讲清楚底层原理，结果就是一旦策略变化、端口受限或者协议升级，你就彻底失去控制。这篇文章，我会从 Zero Trust 的线路逻辑讲起，带你彻底搞懂 MASQUE 的工作方式，并手把手解决 WARP 连接失败的问题，让你真正掌握这条“隐藏线路”的正确用法，而不是被动等待运气。
+  这篇文章，我会手把手解决 WARP 连接失败的问题，让你真正掌握这条“隐藏线路”的正确用法，而不是被动等待运气。接下来，我把电脑端和手机端，完整的注册、安装和配置流程整理成一篇详细教程，照着步骤操作即可。
 
-接下来，我把完整的注册、安装和配置流程整理成一篇详细教程，照着步骤操作即可。
+## 一、电脑端
 
-## 首先，你需要注册一个免费的 Cloudflare 账户【[点击前往](https://dash.cloudflare.com/sign-up)】
+### 首先，你需要注册一个免费的 Cloudflare 账户【[点击前往](https://dash.cloudflare.com/sign-up)】
 
 打开官网后，可以把页面语言切换成中文。注册方式很灵活，可以使用 Google 账号、Apple 账号、GitHub账号快速登录，也可以通过邮箱注册。
 
@@ -44,7 +44,7 @@ import Warning from "../../components/mdx/Warning.astro";
 
 ![Cloudflare注册](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/a3bbe2dd-c2b0-4223-8147-e5ae21cd977f.png)
 
-## 注册好并登录成功后，在左侧菜单找到 Zero Trust 入口并点击进入。如果是第一次使用，会看到欢迎界面，点击“开始使用”。接下来需要选择免费套餐（0 元方案即可）。免费版支持最多 50 个席位，也就是 50 个设备或子账号，日常个人使用完全足够，但同时也需要你录入银行卡或其他金融账户后，才能创建一个团队名称。
+### 注册好并登录成功后，在左侧菜单找到 Zero Trust 入口并点击进入。如果是第一次使用，会看到欢迎界面，点击“开始使用”。接下来需要选择免费套餐（0 元方案即可）。免费版支持最多 50 个席位，也就是 50 个设备或子账号，日常个人使用完全足够，但同时也需要你录入银行卡或其他金融账户后，才能创建一个团队名称。
 
 ![Cloudflare注册](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/a13e6d55-b4de-46ec-84ec-ce5561e29473.png)
 
@@ -98,7 +98,104 @@ import Warning from "../../components/mdx/Warning.astro";
 
 ![zero trust](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/0950ecbe-385b-4ef5-b29c-2bf2c1e61e5a.png)
 
-### 4、系统会引导你设置注册策略。默认会自动允许当前登录邮箱注册设备，也可以自定义策略名称。接下来选择服务模式时，建议选择“流量 + DNS 双重代理模式”。这种模式更稳定，相当于双通道运行：DNS 出问题可以走流量代理，流量异常可以通过 DNS 进行切换。
+### 系统会引导你设置注册策略。默认会自动允许当前登录邮箱注册设备，也可以自定义策略名称。接下来选择服务模式时，建议选择“流量 + DNS 双重代理模式”。这种模式更稳定，相当于双通道运行：DNS 出问题可以走流量代理，流量异常可以通过 DNS 进行切换。
+
+![zero trust](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/36b2e52a-f9e3-4cab-a2ef-65a7e0b4f465.png)
+
+![zero trust](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/9b0006fa-30dc-4efb-a4a4-efb580f55306.png)
+
+### 在默认路由配置阶段，选择“排除模式”，即默认将所有流量发送到 Cloudflare，仅对例外流量进行排除。需要特别注意的是，这一步一定要关闭电脑上其他 VPN 或代理工具，否则后续无法正常连接。
+
+![zero trust](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/982004e5-6f2b-4cba-8f3c-160139252376.png)
+
+![zero trust](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/a4d11535-b052-4983-8157-ff584e16a934.png)
+
+### 接下来就是完成客户端安装向导
+
+![zero trust](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/28ab2248-74f2-4104-ad21-20c14b27ceb7.png)
+
+![zero trust](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/cb7dc5b4-8ee6-4e52-ada2-4354e2bb27f1.png)
+
+### 4、全部设置完成后，打开右下角任务栏中的 WARP 图标，选择右边的 **Cloudflare One Client** 点击 `继续` 。
+
+![Cloudflare One Client](https://imgr2.aitc.ccwu.cc/截图/09952d7d-45c6-4d14-9c69-7fadf7de3bfc.png)
+
+### 这时需要输入你刚才创建的团队名称。然后页面就会自动跳出验证界面，先输入**定义注册策略** 时所填写的邮箱，输入后系统会向注册邮箱发送验证码，填写验证码即可完成登录。
+
+![Cloudflare One Client](https://imgr2.aitc.ccwu.cc/截图/725d9e52-ee2e-4ace-a3e0-69a7ecbdf88a.png)
+
+![Cloudflare One Client](https://imgr2.aitc.ccwu.cc/截图/4d3cc71e-429b-439c-8499-971ddb629352.png)
+
+![Cloudflare One Client](https://imgr2.aitc.ccwu.cc/截图/49b820f4-8dbb-49ac-989a-cda686a5cba8.png)
+
+![Cloudflare One Client](https://imgr2.aitc.ccwu.cc/截图/10d40abb-02e3-4e17-988b-f856fb0e7093.png)
+
+### 5、登录成功后，先别着急点击“连接”，否则部分用户照样无法连接，因为 Cloudflare Zero Trust  VPN 默认使用的是Wireguard协议，一些特殊的网络运营商是会屏蔽这个加密协议的，所以现在我们需要把Wireguard协议切换到MASQUE协议上去。
+
+### 具体修改步骤是：Zero Trust ⋙ 团队和资源 ⋙ 设备 ⋙ 设备配置文件 ⋙ 然后找到你的通用配置文件，点击右侧的三个点，进入配置，将里面的Wireguard协议切换到MASQUE协议，并确认更改，最后滑到页面最底部，`保存配置文件` 即可！
+
+![Cloudflare One Client](https://imgr2.aitc.ccwu.cc/截图/cf5b6814-7e81-4cb2-93f7-5b881619f777.png)
+
+![Cloudflare One Client](https://imgr2.aitc.ccwu.cc/截图/29b2031f-c86d-498b-a134-d749929bc9f4.png)
+
+![Cloudflare One Client](https://imgr2.aitc.ccwu.cc/截图/b809d596-f057-4cd9-bbcf-06266705c99e.png)
+
+![Cloudflare One Client](https://imgr2.aitc.ccwu.cc/截图/33f39896-5aa1-4e46-9a4b-2fed42032396.png)
+
+### 这样修改完协议配置之后，就可以彻底解决Cloudflare VPN 无法连接的问题，然后我们打开任务栏中的 WARP 图标去进行连接，连接成功之后，电脑端就可以畅快的全球上网了。
+
+![Cloudflare One Client](https://imgr2.aitc.ccwu.cc/截图/0f8e7f6b-f7bb-4486-aad4-b1520277608e.png)
+
+![Cloudflare One Client](https://imgr2.aitc.ccwu.cc/截图/e721b592-cdf1-440c-a0d2-b52b4a1bf3d3.png)
+
+## 手机端
+
+### 手机上需在谷歌应用商店和苹果应用商店去下载**Cloudflare One Agent** ，然后安装到手机上。
+
+![Cloudflare One Client](https://imgr2.aitc.ccwu.cc/截图/017acd18-1d7b-4a72-936f-15556252f7d0.png)
+
+### 安装后打开软件，选择 **组织名称** 输入刚才设置的 **团队名称** 再点下一步，然后进入邮箱验证，还是输入**定义注册策略** 时所填写的邮箱，输入后系统会向注册邮箱发送验证码，填写验证码
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
