@@ -1,0 +1,181 @@
+---
+title: 3 分钟玩转Edgetunnel高手模式——优选订阅｜代理指定国家IP
+description: Edgetunnel高手模式，优选订阅｜代理指定国家IP
+pubDate: 2026-05-13T10:59
+image: >-
+  https://imgr2.aitc.ccwu.cc/%E5%85%B6%E4%BB%96/1e7608ce-7f10-45d3-9749-8f8ec3b46705.png
+draft: false
+tags:
+  - EdgeTunnel
+  - VPN
+  - Cloudflare
+  - 免费VPN
+categories:
+  - 使用指南
+---
+  上一篇已经教大家在Cloudflare平台上，怎么搭建免费的 Edgetunnel，这一偏教大家怎么玩转高手模式。 我会给大家推荐几个优选订阅，同时教大家怎么代理指定国家或指定城市的 IP。
+
+import Collapse from "../../components/mdx/Collapse.astro";
+import Info from "../../components/mdx/Info.astro";
+import Kbd from "../../components/mdx/Kbd.astro";
+import Warning from "../../components/mdx/Warning.astro";
+
+<Collapse title="代理IP、优选IP、优选订阅含义与区别">
+
+- ✅ **PROXYIP（代理 IP）**——“换个身份上网”
+  - 定义：用于代理转发流量的中转 IP，客户端会先连接这个 IP，再由它帮你访问目标网站，从而隐藏真实 IP。
+  - 核心：代理转发、隐藏真实 IP、突破网络限制
+  - 常见用途：
+    - Cloudflare Workers
+    - VLESS / Trojan / Xray
+    - sing-box
+    - CF Tunnel
+    - 自建代理中转
+  - 特点：
+    - 不一定是最快 IP
+    - 只要能稳定代理即可
+    - 可以手动指定
+  - 一句话：PROXYIP = 网络 “马甲”，实际负责“流量中转”的代理入口 IP。
+
+- ✅ **优选 IP**——“从大量 IP 中筛选出的高速线路”
+  - 定义：通过测速、延迟、丢包率、稳定性等方式，从大量可用 IP 中筛选出的高质量 IP。
+  - 核心：低延迟、高速度、高稳定性
+  - 常见筛选条件：
+    - 延迟低
+    - 丢包少
+    - 带宽高
+    - 不易被封
+    - 解锁能力强
+  - 常见用途：
+    - Cloudflare 优选
+    - CDN 加速
+    - 代理节点加速
+    - Warp / Workers / VLESS
+  - 特点：
+    - 本质只是 IP 地址
+    - 通常需要手动填写或生成配置
+    - 更偏技术向
+  - 一句话：优选 IP = 代理 IP 中经过测速筛选后的“高速 VIP 通道”。
+
+- ✅ **优选订阅**——“自动集成优选 IP 的订阅配置”
+  - 定义：将优选 IP、节点配置、规则等内容整合成可直接导入客户端的订阅链接。
+  - 核心：自动化、免配置、自动更新
+  - 通常包含：
+    - 自动优选 IP
+    - 节点配置
+    - 分流规则
+    - 自动测速排序
+    - 自动更新
+  - 支持客户端：
+    - Clash
+    - Shadowrocket
+    - Surge
+    - sing-box
+    - v2rayN
+  - 特点：
+    - 普通用户直接导入即可使用
+    - 不需要手动测速
+    - 更适合长期稳定使用
+  - 一句话：优选订阅 = 优选 IP + 节点配置 + 自动更新 的完整代理方案。
+
+</Collapse>
+
+首先打开部署 EdgeTunnel 时绑定的域名，在域名末尾加上/admin，即可进入后台管理页面。
+
+![EdgeTunnel](https://imgr2.aitc.ccwu.cc/截图/351a2ae5-7814-42b1-a972-b4bdcb68fd7e.png)
+
+![EdgeTunnel](https://imgr2.aitc.ccwu.cc/截图/680b6530-8864-49c9-941b-26355e80ea07.png)
+
+![EdgeTunnel](https://imgr2.aitc.ccwu.cc/截图/b8fca031-deb6-4fc6-a51f-f16dd17d8018.png)
+
+##  一、优选订阅
+
+![EdgeTunnel](https://imgr2.aitc.ccwu.cc/截图/354c575a-fcd9-47db-9396-d02e8f19e626.png)
+
+优选订阅地址：
+```
+Cm.Soso.Edu.Kg
+```
+```
+Sub.Cmliussss.Net
+```
+```
+Owo.O00o.Ooo
+```
+
+把上面的三个中的一个，填入下图的红框里，点击保存，然后去代理软件(V2rayN)，更新订阅即可！
+
+![EdgeTunnel](https://imgr2.aitc.ccwu.cc/截图/f7f85d01-29cb-46db-a0c9-7b4d547b4e32.png)
+
+![EdgeTunnel](https://imgr2.aitc.ccwu.cc/截图/649bec77-6e8c-41ab-a90e-df66db54c86b.png)
+
+##  二、PROXYIP 订阅（优选订阅生成要改回 `随机优选` 否则会有冲突）
+
+![EdgeTunnel](https://imgr2.aitc.ccwu.cc/截图/dad0f94a-ae07-411c-89bf-2b0d4f2318ae.png)
+
+![EdgeTunnel](https://imgr2.aitc.ccwu.cc/截图/6b35ace9-c0fa-43f6-9a55-6d2912c62c02.png)
+
+![EdgeTunnel](https://imgr2.aitc.ccwu.cc/截图/678d5965-4729-4397-bba8-0096bb1c552a.png)
+
+### PROXYIP 订阅默认是自动获取，会优选最好用的给你用，但是如果你需要指定某个国家的IP地址，那么你可以把下面指定国家的反代订阅填入下图的红框里，点击保存，然后去代理软件(V2rayN)，更新订阅即可。
+
+### 1. 指定国家PROXYIP订阅：
+
+美国
+```
+ProxyIP.US.CMLiussss.net
+```
+新加坡
+```
+ProxyIP.SG.CMLiussss.net
+```
+日本
+```
+ProxyIP.JP.CMLiussss.net
+```
+香港
+```
+ProxyIP.HK.CMLiussss.net
+```
+韩国
+```
+ProxyIP.KR.CMLiussss.net
+```
+德国
+```
+ProxyIP.DE.CMLiussss.net
+```
+瑞典
+```
+ProxyIP.SE.CMLiussss.net
+```
+荷兰
+```
+ProxyIP.NL.CMLiussss.net
+```
+芬兰
+```
+ProxyIP.FI.CMLiussss.net
+```
+英国
+```
+ProxyIP.GB.CMLiussss.net
+```
+
+![EdgeTunnel](https://imgr2.aitc.ccwu.cc/截图/257d4fce-cce7-42df-bd06-bdac35c9a3a7.png)
+
+![EdgeTunnel](https://imgr2.aitc.ccwu.cc/截图/649bec77-6e8c-41ab-a90e-df66db54c86b.png)
+
+![EdgeTunnel](https://imgr2.aitc.ccwu.cc/截图/54e7a391-3ff5-45d0-8be8-484a06d9f9f3.png)
+
+### 2. 指定某国家某一个城市的PROXYIP订阅，可以同时指定不同国家，不同城市的IP，最多指定8个目标IP！
+
+![EdgeTunnel](https://imgr2.aitc.ccwu.cc/截图/bbdc15e0-1ed1-413a-9c94-0f5e7fe7caf8.png)
+
+![EdgeTunnel](https://imgr2.aitc.ccwu.cc/截图/56ee2319-4b23-4187-ab59-aa6775125124.png)
+
+![EdgeTunnel](https://imgr2.aitc.ccwu.cc/截图/17272125-9422-4539-af88-095481d74efd.png)
+
+![EdgeTunnel](https://imgr2.aitc.ccwu.cc/截图/649bec77-6e8c-41ab-a90e-df66db54c86b.png)
+
+![EdgeTunnel](https://imgr2.aitc.ccwu.cc/截图/6f4f4c82-c21e-4c4c-b20d-1258718688dd.png)
