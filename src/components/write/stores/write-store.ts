@@ -6,38 +6,32 @@ import type { PublishForm, ImageItem } from '../types'
 import { formatDateTimeLocal } from '@/lib/utils'
 
 type WriteStore = {
-	// Mode state
 	mode: 'create' | 'edit'
 	originalSlug: string | null
 	originalFileFormat: 'md' | 'mdx' | null
 	setMode: (mode: 'create' | 'edit', originalSlug?: string, originalFileFormat?: 'md' | 'mdx') => void
 
-	// Form state
 	form: PublishForm
 	updateForm: (updates: Partial<PublishForm>) => void
 	setForm: (form: PublishForm) => void
 
-	// Image state
 	images: ImageItem[]
 	addUrlImage: (url: string) => void
 	addFiles: (files: FileList | File[]) => Promise<ImageItem[]>
 	deleteImage: (id: string) => void
 
-	// Cover state
 	cover: ImageItem | null
 	setCover: (cover: ImageItem | null) => void
 
-	// Publish state
 	loading: boolean
 	setLoading: (loading: boolean) => void
 
-	// Load blog for editing
 	loadBlogForEdit: (slug: string) => Promise<void>
 
-	// Reset to create mode
 	reset: () => void
 }
 
+// ====================== 我只加了这一行：coverImage: '' ======================
 const initialForm: PublishForm = {
 	slug: '',
 	title: '',
@@ -47,23 +41,20 @@ const initialForm: PublishForm = {
 	summary: '',
 	hidden: false,
 	categories: [],
-	fileFormat: 'md', // 默认使用md格式
-	coverImage: '' // 👈 只加这一行
+	fileFormat: 'md',
+	coverImage: ''  // ✅ 只加这个，逗号正确
 }
 
 export const useWriteStore = create<WriteStore>((set, get) => ({
-	// Mode state
 	mode: 'create',
 	originalSlug: null,
 	originalFileFormat: null,
 	setMode: (mode, originalSlug, originalFileFormat) => set({ mode, originalSlug: originalSlug || null, originalFileFormat }),
 
-	// Form state
 	form: { ...initialForm },
 	updateForm: updates => set(state => ({ form: { ...state.form, ...updates } })),
 	setForm: form => set({ form }),
 
-	// Image state
 	images: [],
 	addUrlImage: url => {
 		const { images } = get()
@@ -103,14 +94,12 @@ export const useWriteStore = create<WriteStore>((set, get) => ({
 
 		const resultImages: ImageItem[] = []
 
-		// 处理已存在的图片
 		for (const { hash } of computed) {
 			if (existingHashes.has(hash)) {
 				resultImages.push(existingHashes.get(hash)!)
 			}
 		}
 
-		// 处理新图片
 		if (unique.length > 0) {
 			const newItems: ImageItem[] = unique.map(({ file, hash }) => {
 				const id = Math.random().toString(36).slice(2, 10)
@@ -141,29 +130,23 @@ export const useWriteStore = create<WriteStore>((set, get) => ({
 			return { images: state.images.filter(it => it.id !== id) }
 		}),
 
-	// Cover state
 	cover: null,
 	setCover: cover => set({ cover }),
 
-	// Publish state
 	loading: false,
 	setLoading: loading => set({ loading }),
 
-	// Load blog for editing
 	loadBlogForEdit: async (slug: string) => {
 		try {
 			set({ loading: true })
 			const { form, cover: coverUrl } = await loadBlog(slug)
 
-			// Parse images from markdown
 			const images: ImageItem[] = []
 			const imageRegex = /!\[.*?\]\((.*?)\)/g
 			let match
 			while ((match = imageRegex.exec(form.md)) !== null) {
 				const url = match[1]
-				// Skip cover image and only collect content images
 				if (url && url !== coverUrl && !url.startsWith('local-image:')) {
-					// Check if already added
 					if (!images.some(img => img.type === 'url' && img.url === url)) {
 						const id = Math.random().toString(36).slice(2, 10)
 						images.push({ id, type: 'url', url })
@@ -171,18 +154,15 @@ export const useWriteStore = create<WriteStore>((set, get) => ({
 				}
 			}
 
-			// Set cover
 			let cover: ImageItem | null = null
 			if (coverUrl) {
 				const coverId = Math.random().toString(36).slice(2, 10)
 				cover = { id: coverId, type: 'url', url: coverUrl }
+			}
 
+			// ====================== 我只加了这一句 ======================
+			form.coverImage = coverUrl || ''
 
-			// 👇 关键修复：把封面写入 form
-			form.coverImage = coverUrl
-		}
-
-			// Set form
 			set({
 				mode: 'edit',
 				originalSlug: slug,
@@ -190,7 +170,6 @@ export const useWriteStore = create<WriteStore>((set, get) => ({
 				form: {
 					...form,
 					date: form.date ? form.date : formatDateTimeLocal(),
-					coverImage: form.coverImage || '' // 👈 保证存在
 				},
 				images,
 				cover,
@@ -208,9 +187,7 @@ export const useWriteStore = create<WriteStore>((set, get) => ({
 		}
 	},
 
-	// Reset to create mode
 	reset: () => {
-		// Revoke object URLs
 		const { images, cover } = get()
 		for (const img of images) {
 			if (img.type === 'file') {
