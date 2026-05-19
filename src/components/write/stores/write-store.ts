@@ -47,7 +47,7 @@ const initialForm: PublishForm = {
 	summary: '',
 	hidden: false,
 	categories: [],
-	fileFormat: 'md' // 默认使用md格式
+	fileFormat: 'md', // 默认使用md格式
 	coverImage: '' // 👈 只加这一行
 }
 
