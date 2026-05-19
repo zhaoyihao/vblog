@@ -2,8 +2,6 @@
 title: 3 分钟快速部署免费 Waline 评论系统完整版
 description: 无需服务器、全程免费，详解 Waline 评论系统搭建、数据库配置、域名绑定与网站接入步骤，适合个人博客自用。
 pubDate: 2026-05-08T13:51
-image: >-
-  https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/b0bdea95-691f-4fe6-8378-793ab6a1a367.png
 draft: false
 tags:
   - comment
