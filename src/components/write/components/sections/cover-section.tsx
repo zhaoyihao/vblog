@@ -111,14 +111,27 @@ export function CoverSection({ delay = 0 }: CoverSectionProps) {
 				}}
 				onDrop={handleCoverDrop}>
 				{!!coverPreviewUrl ? (
-					<div className="relative w-full h-full">
-						<img src={coverPreviewUrl} alt='cover preview' className='h-full w-full rounded-xl object-cover' />
-						<button
-							onClick={handleClickUpload}
-							className="absolute inset-0 w-full h-full bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center text-white text-sm font-medium"
-						>
-							更换封面
-						</button>
+					<div className="relative h-full w-full">
+						<img src={coverPreviewUrl} alt="cover preview" className="h-full w-full rounded-xl object-cover" />
+						<div className="absolute inset-0 flex items-center justify-center gap-2 bg-black/40 opacity-0 hover:opacity-100 transition-opacity rounded-xl">
+							<button
+								type="button"
+								onClick={handleClickUpload}
+								className="btn btn-sm btn-primary rounded-lg"
+							>
+								更换
+							</button>
+							<button
+								type="button"
+								onClick={() => {
+									updateForm({ coverImage: '' })
+									setCover(null)
+								}}
+								className="btn btn-sm btn-error rounded-lg"
+							>
+								删除
+							</button>
+						</div>
 					</div>
 				) : (
 					<div className='grid h-full w-full cursor-pointer place-items-center transition-colors hover:bg-base-200/50' onClick={handleClickUpload}>
