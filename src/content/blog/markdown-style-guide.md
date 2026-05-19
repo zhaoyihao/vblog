@@ -1,5 +1,5 @@
 ---
-title: Markdown 样式指南
+title: Markdown 零基础使用教程
 description: 本文列举了 Astro 项目中编写 Markdown 内容的常用基础语法示例。
 pubDate: 2026-03-01T18:00
 image: https://imgr2.aitc.ccwu.cc/其他/a1099896-3fe0-4cff-aaa7-ef01fae64ec8.png
@@ -8,6 +8,7 @@ tags:
   - Markdown
 categories:
   - Markdown示例
+  - 使用指南
 badge: Markdown
 ---
 在 Astro 中撰写 Markdown 内容时，常会用到以下基础 Markdown 语法示例。
@@ -68,7 +69,11 @@ badge: Markdown
 
 #### 直接嵌入播放代码
 ```
-<iframe width="560" height="315" src="https://www.youtube.com/embed/IzQybHQSwGI?si=JcUZdVBBlWVd-0wb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div style="max-width: 900px; width: 96%; margin: 2rem auto;">
+<iframe style="width: 100%; height: auto; aspect-ratio: 16 / 9; border: none;" 
+src="https://www.youtube.com/embed/AgHFYoUb_ec" allowfullscreen></iframe>
+</div>
+
 ```
 #### 输出
 
@@ -333,7 +338,7 @@ Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and ot
 
 <abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
 
-- <abbr> 是 HTML 缩写标签，专门用来标记英文缩写、简写。
+- `<abbr>` 是 HTML 缩写标签，专门用来标记英文缩写、简写。
 - title="" 属性，title="Graphics Interchange Format"
 - 鼠标悬停在 GIF 文字上时，会弹出小字提示：Graphics Interchange Format
 
