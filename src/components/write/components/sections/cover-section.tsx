@@ -26,7 +26,7 @@ export function CoverSection({ delay = 0 }: CoverSectionProps) {
         if (!urlInput.trim()) return
         const url = urlInput.trim()
 		updateForm({ coverImage: url })
-       // setUrlInput('')   👈👈👈👈👈👈👈👈👈👈 这样就不会清空输入框
+        setUrlInput('') 
         toast.success('已设置封面')
     }
 
