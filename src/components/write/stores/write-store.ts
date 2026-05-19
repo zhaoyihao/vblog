@@ -48,6 +48,7 @@ const initialForm: PublishForm = {
 	hidden: false,
 	categories: [],
 	fileFormat: 'md' // 默认使用md格式
+	coverImage: '' // 👈 只加这一行
 }
 
 export const useWriteStore = create<WriteStore>((set, get) => ({
@@ -175,7 +176,11 @@ export const useWriteStore = create<WriteStore>((set, get) => ({
 			if (coverUrl) {
 				const coverId = Math.random().toString(36).slice(2, 10)
 				cover = { id: coverId, type: 'url', url: coverUrl }
-			}
+
+
+			// 👇 关键修复：把封面写入 form
+			form.coverImage = coverUrl
+		}
 
 			// Set form
 			set({
@@ -185,6 +190,7 @@ export const useWriteStore = create<WriteStore>((set, get) => ({
 				form: {
 					...form,
 					date: form.date ? form.date : formatDateTimeLocal(),
+					coverImage: form.coverImage || '' // 👈 保证存在
 				},
 				images,
 				cover,
