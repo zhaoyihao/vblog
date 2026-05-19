@@ -36,7 +36,7 @@ badge: Markdown
 ## 三、图片
 
 ```markdown
-![](https://imgr2.aitc.ccwu.cc/其他/a1099896-3fe0-4cff-aaa7-ef01fae64ec8.png)
+![图片标签](https://imgr2.aitc.ccwu.cc/其他/a1099896-3fe0-4cff-aaa7-ef01fae64ec8.png)
 ```
 
 #### 输出
@@ -344,13 +344,21 @@ Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and ot
 - title="" 属性，title="Graphics Interchange Format"
 - 鼠标悬停在 GIF 文字上时，会弹出小字提示：Graphics Interchange Format
 
+---
+
 H<sub>2</sub>O
 
+---
+
 X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
+
+---
 
 Press <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd> to end the session.
 
 - `<kbd>按键名</kbd>` 是 HTML 专用标签，渲染效果会变成按键样式，像键盘按钮一样。
+
+---
 
 Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
 
