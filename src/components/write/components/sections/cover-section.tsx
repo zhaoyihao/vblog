@@ -26,7 +26,7 @@ export function CoverSection({ delay = 0 }: CoverSectionProps) {
         if (!urlInput.trim()) return
         const url = urlInput.trim()
 		updateForm({ coverImage: url })
-        setUrlInput('')
+       // setUrlInput('')   👈👈👈👈👈👈👈👈👈👈 这样就不会清空输入框
         toast.success('已设置封面')
     }
 
@@ -145,7 +145,8 @@ export function CoverSection({ delay = 0 }: CoverSectionProps) {
                     type="text" 
                     className="input input-sm input-bordered w-full text-xs" 
                     placeholder="输入图片 URL"
-                    value={urlInput}
+					value={urlInput || form.coverImage}
+                    //  value={urlInput}
                     onChange={e => setUrlInput(e.target.value)}
                     onKeyDown={e => e.key === 'Enter' && handleUrlSubmit()}
                 />
