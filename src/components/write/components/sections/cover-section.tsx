@@ -10,19 +10,22 @@ type CoverSectionProps = {
 }
 
 export function CoverSection({ delay = 0 }: CoverSectionProps) {
-	const { images, setCover, cover, addFiles } = useWriteStore()
+	const { images, setCover, cover, addFiles, updateForm, form } = useWriteStore()
 	const fileInputRef = useRef<HTMLInputElement>(null)
     const [urlInput, setUrlInput] = useState('')
 
-	const coverPreviewUrl = cover ? (cover.type === 'url' ? cover.url : cover.previewUrl) : null
+	const coverPreviewUrl = form.coverImage
+		? form.coverImage
+		: cover
+		? cover.type === 'url'
+			? cover.url
+			: cover.previewUrl
+		: null
 
     const handleUrlSubmit = () => {
         if (!urlInput.trim()) return
-        setCover({
-            id: Date.now().toString(),
-            type: 'url',
-            url: urlInput.trim()
-        })
+        const url = urlInput.trim()
+		updateForm({ coverImage: url })
         setUrlInput('')
         toast.success('已设置封面')
     }
@@ -45,9 +48,9 @@ export function CoverSection({ delay = 0 }: CoverSectionProps) {
 			}
 
 			if (foundItem) {
-				setCover(foundItem)
+				const url = foundItem.type === 'url' ? foundItem.url : foundItem.previewUrl
+				updateForm({ coverImage: url })
 				toast.success('已设置封面')
-
 				return
 			}
 		}
@@ -64,7 +67,9 @@ export function CoverSection({ delay = 0 }: CoverSectionProps) {
 			const resultImages = await addFiles(imageFiles as unknown as FileList)
 			if (resultImages && resultImages.length > 0) {
 				// 使用第一个图片作为封面
-				setCover(resultImages[0])
+				const first = resultImages[0]
+				const url = first.type === 'url' ? first.url : first.previewUrl
+				updateForm({ coverImage: url })
 				toast.success('已设置封面')
 			}
 			return
@@ -82,7 +87,9 @@ export function CoverSection({ delay = 0 }: CoverSectionProps) {
 		const resultImages = await addFiles(files)
 		if (resultImages && resultImages.length > 0) {
 			// 使用第一个图片作为封面
-			setCover(resultImages[0])
+			const first = resultImages[0]
+			const url = first.type === 'url' ? first.url : first.previewUrl
+			updateForm({ coverImage: url })
 			toast.success('已设置封面')
 		}
 
@@ -98,13 +105,21 @@ export function CoverSection({ delay = 0 }: CoverSectionProps) {
 
 			<input ref={fileInputRef} type='file' accept='image/*' className='hidden' onChange={handleFileChange} />
 			<div
-				className='bg-base-100 h-[150px] overflow-hidden rounded-xl border border-base-200 border-dashed hover:border-primary/50 transition-colors'
+				className='bg-base-100 h-[150px] overflow-hidden rounded-xl border border-base-200 border-dashed hover:border-primary/50 transition-colors relative'
 				onDragOver={e => {
 					e.preventDefault()
 				}}
 				onDrop={handleCoverDrop}>
 				{!!coverPreviewUrl ? (
-					<img src={coverPreviewUrl} alt='cover preview' className='h-full w-full rounded-xl object-cover' />
+					<div className="relative w-full h-full">
+						<img src={coverPreviewUrl} alt='cover preview' className='h-full w-full rounded-xl object-cover' />
+						<button
+							onClick={handleClickUpload}
+							className="absolute inset-0 w-full h-full bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center text-white text-sm font-medium"
+						>
+							更换封面
+						</button>
+					</div>
 				) : (
 					<div className='grid h-full w-full cursor-pointer place-items-center transition-colors hover:bg-base-200/50' onClick={handleClickUpload}>
 						<span className='text-3xl leading-none text-base-content/20'>+</span>
