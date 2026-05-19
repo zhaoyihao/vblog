@@ -1,0 +1,90 @@
+---
+title: CFnew V2.9.6 安装部署指南
+description: ''
+pubDate: 2026-05-19T21:49
+draft: false
+tags: []
+categories: []
+---
+  CFnew V2.9.6 旨在修复因内核更新导致旧版本无法正常使用的问题。该版本支持 VLESS、Trojan 和 XHTTP 等多种协议，且节点数量相比之前版本有了显著增加。为了确保 XHTTP 协议的兼容性，本次部署最好选择 Cloudflare Workers 而非 Pages 模式(若非要用Pages，则无法使用 XHTTP )，且要准备一个域名。
+
+## 环境准备
+- **Cloudflare 账户**：注册并登录 Cloudflare 账户
+- **域名准备**：确保拥有一个托管在 Cloudflare 的域名
+- **必要工具**：安装 V2RayN 或其他兼容的代理软件
+
+## 安装步骤
+
+### 1.创建 Cloudflare Worker，并绑定域名，然后手动开启绑定域名 ⋙ 网络设置中的 gRPC 选项。
+
+![Cloudflare Worker](https://imgr2.aitc.ccwu.cc/截图/13ee0e56-859d-4e66-8086-27cd7f94dd75.png)
+
+![Cloudflare Worker](https://imgr2.aitc.ccwu.cc/截图/308ee631-b0b7-417a-bff3-612aa1d09f9c.png)
+
+![Cloudflare Worker](https://imgr2.aitc.ccwu.cc/截图/2c177b84-e6e7-4aac-850d-19162622ea5c.png)
+
+![Cloudflare Worker](https://imgr2.aitc.ccwu.cc/截图/228e8fbd-d945-4956-992f-dddb8de0e9d2.png)
+
+![Cloudflare Worker](https://imgr2.aitc.ccwu.cc/截图/af847482-c9ed-4b00-98c5-f73c0733c11e.png)
+
+![Cloudflare Worker](https://imgr2.aitc.ccwu.cc/截图/2b745d96-6e58-401e-a7fd-b158ede54251.png)
+
+![Cloudflare Worker](https://imgr2.aitc.ccwu.cc/截图/8bfca63f-cbd5-4738-8ab1-78df629d5ed4.png)
+
+![Cloudflare Worker](https://imgr2.aitc.ccwu.cc/截图/d0c37543-4c4d-4835-be0b-a9da7fb1c698.png)
+
+### 2. 获取最新代码，访问 GitHub 仓库【[点击前往](https://github.com/byJoey/cfnew)】
+
+![GitHub](https://imgr2.aitc.ccwu.cc/截图/f0c7e123-6331-4a45-ba9b-7860357b5c21.png)
+
+![GitHub](https://imgr2.aitc.ccwu.cc/截图/731dcbe6-cc18-478b-b1df-a2e6997d28d0.png)
+
+### 3. 配置 Worker，将下载的代码粘贴到 Worker 编辑器中
+
+![Worker](https://imgr2.aitc.ccwu.cc/截图/a1b53ddc-f697-44d8-9c9b-1747433b64b1.png)
+
+![Worker](https://imgr2.aitc.ccwu.cc/截图/01443651-2d62-4d6f-8513-c18b007d419d.png)
+
+![Worker](https://imgr2.aitc.ccwu.cc/截图/665d01c3-544e-49df-8516-ac13da6d5754.png)
+
+<Warning>Worker 设置中的兼容日期为 2026 年 1 月 20 日！ </Warning>
+
+![Worker](https://imgr2.aitc.ccwu.cc/截图/1a55d8fc-a5c9-4a08-adad-a8c7c7798daa.png)
+
+![Worker](https://imgr2.aitc.ccwu.cc/截图/2e678b08-e8ca-4e91-8f60-59a1b7de008c.png)
+
+### 4. 配置 KV 命名空间，在 Cloudflare 中创建一个新的 KV 命名空间，然后将命名空间与 Worker 绑定
+
+![Worker](https://imgr2.aitc.ccwu.cc/截图/19ab9c43-f978-44ce-b20a-fe75130eef22.png)
+
+![Worker](https://imgr2.aitc.ccwu.cc/截图/065969b0-30c0-415e-874f-9a1dc4bf0104.png)
+
+![Worker](https://imgr2.aitc.ccwu.cc/截图/49437169-38bd-46c7-aa1e-8284311b75cd.png)
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
