@@ -31,7 +31,7 @@ export default function WritePage({ categories = [] }: WritePageProps) {
 
     const { loading } = useLoadBlog(slug || undefined)
 
-    const coverPreviewUrl = cover ? (cover.type === 'url' ? cover.url : cover.previewUrl) : null
+    const coverPreviewUrl = form.coverImage || (cover ? (cover.type === 'url' ? cover.url : cover.previewUrl) : null)
 
     return (
         <>
