@@ -63,11 +63,11 @@ badge: Markdown
 
 #### 文字跳转链接
 ```
-<a href="https://youtu.be/AgHFYoUb_ec?si=TSYreTydHTL3ieLy" target="_blank">YouTube视频↗</a>
+【<a href="https://youtu.be/AgHFYoUb_ec?si=TSYreTydHTL3ieLy" target="_blank" rel="noopener noreferrer">YouTube视频↗</a>】
 ```
 #### 输出
 
-<a href="https://youtu.be/AgHFYoUb_ec?si=TSYreTydHTL3ieLy" target="_blank">YouTube视频↗</a>
+【<a href="https://youtu.be/AgHFYoUb_ec?si=TSYreTydHTL3ieLy" target="_blank" rel="noopener noreferrer">YouTube视频↗</a>】
 
 #### 直接嵌入播放代码
 ```
@@ -82,6 +82,7 @@ src="https://www.youtube.com/embed/AgHFYoUb_ec" allowfullscreen></iframe>
 <div style="max-width: 900px; width: 96%; margin: 2rem auto;">
 <iframe style="width: 100%; height: auto; aspect-ratio: 16 / 9; border: none;" 
 src="https://www.youtube.com/embed/AgHFYoUb_ec" allowfullscreen></iframe>
+</div>
 
 ---
 
