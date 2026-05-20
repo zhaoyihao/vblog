@@ -22,6 +22,12 @@ import Warning from "../../components/mdx/Warning.astro";
   
   CFnew V2.9.6 旨在修复因内核更新导致旧版本无法正常使用的问题。该版本支持 VLESS、Trojan 和 XHTTP 等多种协议，且节点数量相比之前版本有了显著增加。为了确保 XHTTP 协议的兼容性，本次部署最好选择 Cloudflare Workers 而非 Pages 模式(若非要用Pages，则无法使用 XHTTP )，且要准备一个域名。
 
+<div style="max-width: 900px; width: 96%; margin: 2rem auto;">
+<iframe style="width: 100%; height: auto; aspect-ratio: 16 / 9; border: none;" 
+src="https://www.youtube.com/embed/TPxAYNoSDHQ" allowfullscreen></iframe>
+
+---
+
 ## 环境准备
 - **Cloudflare 账户**：注册并登录 Cloudflare 账户
 - **域名准备**：确保拥有一个托管在 Cloudflare 的域名
@@ -31,7 +37,7 @@ import Warning from "../../components/mdx/Warning.astro";
 
 ### 1.创建 Cloudflare Worker，并绑定域名，然后手动开启绑定域名 ⋙ 网络设置中的 gRPC 选项。
 
-<Info>为什么Xhttp用不了？——就是因为没有绑定域名，没有开gRPC，部署时必须选择 Cloudflare Workers 而非 Pages ！ </Info>
+<Info>为什么Xhttp用不了？——就是因为没有绑定域名，没有开gRPC，部署时没有选择 Cloudflare Workers 而选了 Pages ！ </Info>
 
 ![Cloudflare Worker](https://imgr2.aitc.ccwu.cc/截图/13ee0e56-859d-4e66-8086-27cd7f94dd75.png)
 
@@ -135,7 +141,7 @@ import Warning from "../../components/mdx/Warning.astro";
 
 目前支持：<mark>US、SG、JP、HK、KR、DE、SE、NL、FI、GB</mark>
 
-若要指定使用香港地区 IP，请返回 V2rayN 客户端，双击选中目标节点，在 ** 节点路径（path）** 原有内容后追加后缀 &wk=HK，完整路径示例：`/?ed=2048&wk=HK` 。修改后 Works 地区将与节点地区一致，成功切换为香港 IP。
+若要指定使用香港地区 IP，请返回 V2rayN 客户端，双击选中目标节点，在 **节点路径(path)** 原有内容后追加后缀 &wk=HK，完整路径示例：`/?ed=2048&wk=HK` 。修改后 Works 地区将与节点地区一致，成功切换为香港 IP。
 
 ![V2rayN](https://imgr2.aitc.ccwu.cc/截图/fc99e0aa-45bd-4191-a906-2395504d228e.png)
 
