@@ -1,11 +1,18 @@
 ---
 title: CFnew V2.9.6 安装部署指南
-description: ''
-pubDate: 2026-05-19T21:49
+description: CFnew｜Cloudflare 免费 VPN 最强综合性能・稳定在线
+pubDate: 2026-05-14T21:49
 image: https://imgr2.aitc.ccwu.cc/其他/b5003b8f-5ec0-4214-9765-5c2e22c52b12.png
 draft: false
-tags: []
-categories: []
+tags:
+  - CFnew
+  - Cloudflare
+  - VPN
+  - 免费VPN
+  - 节点
+categories:
+  - 安装部署
+  - 科学上网
 badge: ''
 ---
 import Collapse from "../../components/mdx/Collapse.astro";
@@ -24,6 +31,8 @@ import Warning from "../../components/mdx/Warning.astro";
 
 ### 1.创建 Cloudflare Worker，并绑定域名，然后手动开启绑定域名 ⋙ 网络设置中的 gRPC 选项。
 
+<Info>为什么Xhttp用不了？——就是因为没有绑定域名，没有开gRPC，部署时必须选择 Cloudflare Workers 而非 Pages ！ </Info>
+
 ![Cloudflare Worker](https://imgr2.aitc.ccwu.cc/截图/13ee0e56-859d-4e66-8086-27cd7f94dd75.png)
 
 ![Cloudflare Worker](https://imgr2.aitc.ccwu.cc/截图/308ee631-b0b7-417a-bff3-612aa1d09f9c.png)
@@ -40,7 +49,7 @@ import Warning from "../../components/mdx/Warning.astro";
 
 ![Cloudflare Worker](https://imgr2.aitc.ccwu.cc/截图/d0c37543-4c4d-4835-be0b-a9da7fb1c698.png)
 
-### 2. 获取最新代码，访问 GitHub 仓库 <span style="border:4px solid red; padding:2px 8px;"><a href="https://github.com/byJoey/cfnew" target="_blank" style="text-decoration:underline; color:black;">【点击前往】</a></span>
+### 2. 获取最新代码，访问 GitHub 仓库 <a href="https://github.com/byJoey/cfnew" target="_blank" >【点击前往↗】</a>
 
 ![GitHub](https://imgr2.aitc.ccwu.cc/截图/f0c7e123-6331-4a45-ba9b-7860357b5c21.png)
 
@@ -82,7 +91,7 @@ import Warning from "../../components/mdx/Warning.astro";
 
 ![Worker](https://imgr2.aitc.ccwu.cc/截图/becde70b-7dc0-4ceb-9a78-b85713a87eaa.png)
 
-### 6. 访问已绑定的 Works 域名，输入环境变量中配置的 UUID 并回车，即可进入终端。将 `协议选择` 下的 4 个选项全部勾选✅，点击 `保存协议配置` ；返回页面顶部的 `选择客户端` ，选中对应客户端，即可生成订阅链接。
+### 6. 访问已绑定的 Works 域名，输入环境变量中配置的 UUID 并回车，即可进入终端。将 `协议选择` 下的 4 个选项全部勾选✅，点击 `保存协议配置` ；返回页面顶部的 `选择客户端` ，选中对应客户端，即可生成并复制订阅链接。
 
 ![Worker](https://imgr2.aitc.ccwu.cc/截图/6d228acc-81b4-45ed-a7f3-56d7659e999a.png)
 
@@ -118,12 +127,16 @@ import Warning from "../../components/mdx/Warning.astro";
 
 ![V2rayN](https://imgr2.aitc.ccwu.cc/截图/85fb8367-0c39-4130-a319-ba939ddf9416.png)
 
+![V2rayN](https://imgr2.aitc.ccwu.cc/截图/db634f3b-3571-4ca1-ad18-49b9d72e550a.png)
 
+<Warning>如果节点延迟出现显示异常的情况，建议耐心等待几分钟，稍后系统会自动恢复正常！ </Warning>
 
+### 最后来讲一下，如何手动指定国家/地区IP？
 
+目前支持：<mark>US、SG、JP、HK、KR、DE、SE、NL、FI、GB</mark>
 
+若要指定使用香港地区 IP，请返回 V2rayN 客户端，双击选中目标节点，在 ** 节点路径（path）** 原有内容后追加后缀 &wk=HK，完整路径示例：`/?ed=2048&wk=HK` 。修改后 Works 地区将与节点地区一致，成功切换为香港 IP。
 
+![V2rayN](https://imgr2.aitc.ccwu.cc/截图/fc99e0aa-45bd-4191-a906-2395504d228e.png)
 
-
-
-
+![V2rayN](https://imgr2.aitc.ccwu.cc/截图/95e0a5e6-4e98-4189-8340-6dfc5280280f.png)
