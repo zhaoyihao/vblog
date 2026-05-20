@@ -51,11 +51,13 @@ badge: Markdown
 1. [点击前往](https://inav.ccwu.cc)
 2. 【[点击前往](https://inav.ccwu.cc)】
 3. 【[▶️点击前往](https://inav.ccwu.cc)】
+4、<a href="https://inav.ccwu.cc" target="_blank" >【点击前往↗】</a>
 ```
 #### 输出
 1. [点击前往](https://inav.ccwu.cc)
 2. 【[点击前往](https://inav.ccwu.cc)】
 3. 【[▶️点击前往](https://inav.ccwu.cc)】
+4、<a href="https://inav.ccwu.cc" target="_blank" >【点击前往↗】</a>
 
 ### 2、视频超链
 
