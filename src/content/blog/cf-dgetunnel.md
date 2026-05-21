@@ -112,7 +112,7 @@ ZoneABC：`https://zoneabc.net`
 
 ![绑定kv空间](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/627b3991-836a-4502-b2a3-dc0504a55e9b.png)
 
-![绑定kv空间](https://imgr2.aitc.ccwu.cc/其他/52f0690f-6b66-4888-b89c-4c694233449a.png)
+![绑定kv空间](https://imgr2.aitc.ccwu.cc/截图/0882321b-34fc-471d-ae80-6419881fa828.png)
 
 ## 六、重新部署，使其变量生效！
 
