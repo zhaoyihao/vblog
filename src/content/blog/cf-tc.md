@@ -1,17 +1,16 @@
 ---
 title: 0 成本搭建免费无限图床
 description: 利用 Cloudflare + Telegram 搭建永久免费图床：零成本无限图床全攻略_
-pubDate: 2026-05-22T21:23
+pubDate: 2026-05-23T00:20
 image: https://imgr2.aitc.ccwu.cc/其他/00eac7d1-9e10-46d8-ad30-6049b88568a9.png
 draft: false
 tags:
   - 图床
   - Cloudflare
-  - Telegram
 categories:
   - 安装部署
 ---
-今天给大家带来一个非常实用的 GitHub 开源项目【<a href="https://cfbed.sanyue.de/guide/features.html" target="_blank" rel="noopener noreferrer">项目介绍↗</a>】，教大家如何利用 Cloudflare 的生态系统搭建一个完全免费的个人图床。
+  今天给大家带来一个非常实用的 GitHub 开源项目【<a href="https://cfbed.sanyue.de/guide/features.html" target="_blank" rel="noopener noreferrer">项目介绍↗</a>】，教大家如何利用 Cloudflare 的生态系统搭建一个完全免费的个人图床。
 
 该方案的巧妙之处在于：使用 Cloudflare Pages 部署前端，KV 存储元数据，D1 存储数据库，而真正的图片文件则存储在 Telegram 上（利用 TG 的无限容量作为免费硬盘）。
 
