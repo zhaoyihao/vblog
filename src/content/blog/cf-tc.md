@@ -7,6 +7,8 @@ draft: false
 tags:
   - 图床
   - Cloudflare
+  - Telegram
+  - TG
 categories:
   - 安装部署
 ---
@@ -33,6 +35,9 @@ src="https://www.youtube.com/embed/UBXmvVZgMqo" allowfullscreen></iframe>
    - 框架预设：没有 (None)
    - 构建命令：`npm install`
    - 构建输出路径：`frontend-dist`
+
+![Cloudflare Pages](https://imgr2.aitc.ccwu.cc/截图/686a8442-5085-41b5-8396-363f37a3c329.png)
+
 4. 点击“保存并部署”。
 
 ## 3. 配置 KV 数据库
@@ -176,6 +181,8 @@ CREATE TRIGGER IF NOT EXISTS update_other_data_updated_at
 > 💬安全提醒：首次登录直接点击登录，请务必第一时间进入后台修改管理员账号、密码以及上传密码。
 
 ## 8. 获取 Telegram 配置，@BotFather可获取Bot_Token，@VersaToolsBot可获取频道ID。
+
+![Telegram 渠道](https://imgr2.aitc.ccwu.cc/截图/911347a7-798a-42fb-97fc-0f8cf9c2929d.png)
 
 1. 获取Bot_Token：在Telegram中，向@BotFather发送命令/newbot，根据提示依次输入您的机器人名称和用户名。成功创建机器人后，您将会收到一个BOT_TOKEN，用于与Telegram API进行交互。
 
