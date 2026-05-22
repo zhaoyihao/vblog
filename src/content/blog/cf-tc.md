@@ -11,7 +11,7 @@ tags:
 categories:
   - 安装部署
 ---
-今天给大家带来一个非常实用的 GitHub 开源项目，教大家如何利用 Cloudflare 的生态系统搭建一个完全免费的个人图床。
+今天给大家带来一个非常实用的 GitHub 开源项目【<a href="https://cfbed.sanyue.de/guide/features.html" target="_blank" rel="noopener noreferrer">项目介绍↗</a>】，教大家如何利用 Cloudflare 的生态系统搭建一个完全免费的个人图床。
 
 该方案的巧妙之处在于：使用 Cloudflare Pages 部署前端，KV 存储元数据，D1 存储数据库，而真正的图片文件则存储在 Telegram 上（利用 TG 的无限容量作为免费硬盘）。
 
