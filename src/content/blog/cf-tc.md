@@ -11,6 +11,7 @@ tags:
   - TG
 categories:
   - 安装部署
+badge: ''
 ---
   今天给大家带来一个非常实用的 GitHub 开源项目【<a href="https://cfbed.sanyue.de/guide/features.html" target="_blank" rel="noopener noreferrer">项目介绍↗</a>】，教大家如何利用 Cloudflare 的生态系统搭建一个完全免费的个人图床。
 
@@ -27,6 +28,7 @@ src="https://www.youtube.com/embed/UBXmvVZgMqo" allowfullscreen></iframe>
 
 ### 首先，进入本项目地址并 Fork 到你的 GitHub 账号下：【<a href="https://github.com/MarSeventh/CloudFlare-ImgBed" target="_blank" rel="noopener noreferrer">点击前往↗</a>】
 
+
 ## 2. 创建 Cloudflare Pages
 
 1. 登录账户主页，点击 Workers 和 Pages -> 创建应用程序 -> Pages -> 连接到 Git。
@@ -35,9 +37,6 @@ src="https://www.youtube.com/embed/UBXmvVZgMqo" allowfullscreen></iframe>
    - 框架预设：没有 (None)
    - 构建命令：`npm install`
    - 构建输出路径：`frontend-dist`
-
-![Cloudflare Pages](https://imgr2.aitc.ccwu.cc/截图/686a8442-5085-41b5-8396-363f37a3c329.png)
-
 4. 点击“保存并部署”。
 
 ## 3. 配置 KV 数据库
