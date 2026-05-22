@@ -26,22 +26,26 @@ src="https://www.youtube.com/embed/UBXmvVZgMqo" allowfullscreen></iframe>
 
 ## 1. 项目准备
 
-### 首先，进入本项目地址并 Fork 到你的 GitHub 账号下：【<a href="https://github.com/MarSeventh/CloudFlare-ImgBed" target="_blank" rel="noopener noreferrer">点击前往↗</a>】
-
+首先，进入本项目地址并 Fork 到你的 GitHub 账号下：【<a href="https://github.com/MarSeventh/CloudFlare-ImgBed" target="_blank" rel="noopener noreferrer">点击前往↗</a>】
 
 ## 2. 创建 Cloudflare Pages
 
 1. 登录账户主页，点击 Workers 和 Pages -> 创建应用程序 -> Pages -> 连接到 Git。
 2. 选择你刚刚 Fork 的项目 CloudFlare-ImgBed。
 3. 在“构建设置”中进行如下配置：
-   - 框架预设：没有 (None)
-   - 构建命令：`npm install`
-   - 构建输出路径：`frontend-dist`
+
+|  配置项  |  值  |  说明  |
+| --------- | --------- | ------- |
+|  项目名称  |  `cloudflare-imgbed（或自定义）`  |  项目标识符  |
+|  生产分支 |  `main`  |  生产环境分支  |
+|  构建命令 |  `npm install` |  重要：v2.0 新构建命令  |
+|  构建输出路径|  `/frontend-dist` |  前端构建产物目录  |
+
 4. 点击“保存并部署”。
 
 ## 3. 配置 KV 数据库
 
-1. 回到账户主页，选择 `存储和数据库` -> Workers KV。
+1. 回到账户主页，选择 存储和数据库 -> Workers KV。
 2. 点击“创建命名空间”，名称输入：`img_url` 。
 
 ## 4. 绑定 KV 到项目
