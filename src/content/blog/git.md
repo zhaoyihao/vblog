@@ -50,7 +50,7 @@ git push -u origin main
 - `git commit`：提交到本地仓库
 - `git branch -M main`：设置主分支为 main
 - `git remote add origin`：绑定远程仓库
-- `git push`：推送到 GitHub`git push` ：推送到 GitHub
+- `git push`：推送到 GitHub
 
 ------
 
