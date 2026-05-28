@@ -2,7 +2,7 @@
 title: ShareX 搭配 Worker API 实现无感图床
 description: 解放双手的自动化流水线：截图 - 静默上传 - AI识图打标签 - 剪贴板获取链接，一步到位。
 pubDate: 2026-05-28T22:46
-image: https://imgr2.aitc.ccwu.cc/截图/fc2533ac-7c55-48a4-9c2f-7030b27d2cb1.webp
+image: https://imgr2.aitc.ccwu.cc/其他/fc2533ac-7c55-48a4-9c2f-7030b27d2cb1.webp
 draft: false
 tags:
   - 图床
@@ -13,7 +13,7 @@ tags:
 categories:
   - 使用指南
 ---
-你有没有遇到过这样的场景：写技术文章需要配图时，先截图、保存、打开图床上传、复制链接、再粘贴到文档里？一个截图要折腾五六步，思路很容易被打断。
+  你有没有遇到过这样的场景：写技术文章需要配图时，先截图、保存、打开图床上传、复制链接、再粘贴到文档里？一个截图要折腾五六步，思路很容易被打断。
 
 如果这一切能变成：按下快捷键 → 截图自动上传 → 链接直接在剪贴板等你粘贴。甚至，每张图片还能被 AI 自动识别内容并打上标签。下面，我就用 ShareX 配合 R2 Worker API 或 TG Worker API，一步步搭建这条“截图即用”的自动化流水线。
 
@@ -58,7 +58,7 @@ categories:
 ![ShareX](https://imgr2.aitc.ccwu.cc/截图/2ccbc2a3-164e-445e-b398-db8dd26aefda.webp)
 
 回顾一下我们做成了什么：
-底层存储：用 Cloudflare R2 白嫖了一个永不关停、全球加速的私人云盘；
+底层存储：用 Cloudflare R2 和TG 白嫖了一个永不关停、全球加速的私人云盘；
 自动化上传：用 ShareX 实现截图即传、链接直达剪贴板；
 AI 视觉大脑：用 Worker API 给每张图片自动打标签，从此图库不再是冰冷的文件名堆砌；
 语义检索：想找什么图，直接打字描述就行，而不是在一堆 IMG_001.png 里翻到崩溃。
