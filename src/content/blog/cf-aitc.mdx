@@ -40,7 +40,7 @@ import Warning from "../../components/mdx/Warning.astro";
 
 ![R2](https://imgr2.aitc.ccwu.cc/截图/189f7049-ff93-44ea-a3b3-f3669fb9b04d.webp)
 
-### 3、创建 D1 数据库** 并执行SQL创建表头
+### 3、创建 D1 数据库，并执行SQL创建表头
 
 ![D1](https://imgr2.aitc.ccwu.cc/截图/5ec9d5db-d267-487d-b7af-afaf6bfd1128.webp)
 
@@ -127,7 +127,7 @@ CREATE INDEX IF NOT EXISTS idx_images_file_id ON images(file_id);
 
 ![Workers AI](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/95a8d2b3-3174-4d6b-8e69-2633668dc1f6.webp)
 
-### 4、 部署 _tg-worker_ ，并分别绑定D1、Workers AI、1个自定义域名
+### 5、 部署 _tg-worker_ ，并分别绑定D1、Workers AI、1个自定义域名
 
 #### (1)、创建 _tg-worker_ 应用程序
 
@@ -219,7 +219,7 @@ CREATE INDEX IF NOT EXISTS idx_images_file_id ON images(file_id);
 
 ![tg-worker](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/a4399e77-8e07-42fb-ab10-71167aea4ef5.webp)
 
-### 5、 部署 Pages（前端页面）
+### 6、 部署 Pages（前端页面）
 
 #### (1)、在 GitHub 项目中定位到 index.html 文件，点击进入后，使用编辑按钮（铅笔图标）进行相应的修改。
 
@@ -235,7 +235,7 @@ CREATE INDEX IF NOT EXISTS idx_images_file_id ON images(file_id);
 > 3. 将原文件中的哈希值替换成这个新哈希值。
 > 4. 此后，用你设定的密码即可登录。
 
-<Collapse title="如何用浏览器 F12 控制台得到某个密码的哈希值`ADMIN_PASS_HASH` ，展开可查看具体步骤。">
+<Collapse title="如何用浏览器得到某个密码的哈希值，展开查看具体步骤">
 
 1. 打开浏览器，按 F12 打开开发者工具
 2. 切换到 Console（控制台）标签
@@ -287,7 +287,7 @@ CREATE INDEX IF NOT EXISTS idx_images_file_id ON images(file_id);
 
 ![绑定域名](https://imgr2.aitc.ccwu.cc/截图/9d966ee5-c7d9-4640-9b31-3184d5e3f12f.webp)
 
-### 6、打开 Pages 绑定的那个自定义域名，进入页面后使用账号和密码登录即可。 
+### 7、打开 Pages 绑定的那个自定义域名，进入页面后使用账号和密码登录即可。 
 
 ![登录](https://imgr2.aitc.ccwu.cc/截图/be8b22db-e20c-4e84-8639-99adf5668aed.webp)
 
