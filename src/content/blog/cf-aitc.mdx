@@ -1,15 +1,22 @@
 ---
 title: 5 分钟搭建永久免费的双渠道私人 AI 图床
-description: ''
+description: 基于 Cloudflare 全家桶 + Telegram 频道搭建的**永久免费**私人 AI 图床。
 pubDate: 2026-05-27T15:58
+image: https://imgr2.aitc.ccwu.cc/其他/eea1c01c-a11d-4658-836d-49435c8dab35.webp
 draft: false
-tags: []
-categories: []
+tags:
+  - 图床
+  - TG
+  - Telegram
+  - Cloudflare
+categories:
+  - 安装部署
+badge: ''
 ---
 import Collapse from "../../components/mdx/Collapse.astro";
 import Info from "../../components/mdx/Info.astro";
 import Kbd from "../../components/mdx/Kbd.astro";
-import Warning from "../../components/mdx/Warning.astro";  
+import Warning from "../../components/mdx/Warning.astro";
 
   基于 Cloudflare 全家桶 + Telegram 频道搭建的**永久免费**私人 AI 图床。支持 R2 和 Telegram 双渠道存储，AI 自动打标签，WebP 自动转换，支持分类管理、语义检索。全屏快速预览、一键下载、批量管理，让图片管理变得高效便捷。
 
@@ -17,25 +24,23 @@ import Warning from "../../components/mdx/Warning.astro";
 
 ---
 
-## 🚀 快速部署
-
-### 前提条件
+##  前期准备
 
 - Cloudflare 账号（免费）
 - Telegram 账号和频道
 - GitHub 账号（可选）
 
-### 部署步骤
+## 🚀部署步骤
 
-#### 1. **Fork 项目** 【<a href="https://github.com/maiclez/aitc/tree/main" target="_blank" rel="noopener noreferrer">点击前往↗</a>】
+### 1、 Fork 项目【<a href="https://github.com/maiclez/aitc/tree/main" target="_blank" rel="noopener noreferrer">点击前往↗</a>】
 
-#### 2. **创建 R2 存储桶** 
+### 2、创建 R2 存储桶
 
 ![R2](https://imgr2.aitc.ccwu.cc/截图/5e404b9b-b0b5-4f0d-8998-6229c53baa54.webp)
 
 ![R2](https://imgr2.aitc.ccwu.cc/截图/189f7049-ff93-44ea-a3b3-f3669fb9b04d.webp)
 
-#### 3. **创建 D1 数据库** 并执行SQL创建表头
+### 3、创建 D1 数据库** 并执行SQL创建表头
 
 ![D1](https://imgr2.aitc.ccwu.cc/截图/5ec9d5db-d267-487d-b7af-afaf6bfd1128.webp)
 
@@ -43,7 +48,7 @@ import Warning from "../../components/mdx/Warning.astro";
 
 ![D1](https://imgr2.aitc.ccwu.cc/截图/6f1ab995-4cd6-44ea-a499-3eeba73f1601.webp)
 
-进入该数据库，点击 `控制台` ，复制并执行以下 SQL 代码来创建表结构：
+进入该数据库，点击 `控制台` ，复制下方的SQL代码并执行，创建表结构：
 
 ```
 CREATE TABLE IF NOT EXISTS images (
@@ -70,15 +75,15 @@ CREATE INDEX IF NOT EXISTS idx_images_file_id ON images(file_id);
 
 ![D1](https://imgr2.aitc.ccwu.cc/截图/2ce5de3d-859a-4bd4-a392-308e42de5af6.webp)
 
-#### 4. **部署 r2-worker**，并分别绑定R2存储桶、D1数据库、Workers AI
+### 4、部署 _r2-worker_，并分别绑定R2、D1、Workers AI、2个自定义域名
+
+#### (1)、创建 _r2-worker_ 应用程序
 
 ![r2-worker](https://imgr2.aitc.ccwu.cc/截图/ed961592-dbd2-40f3-b31a-f396c01b6feb.webp)
 
 ![r2-worker](https://imgr2.aitc.ccwu.cc/截图/3df99eec-667d-4b14-8093-a51a9c10029b.webp)
 
-![r2-worker](https://imgr2.aitc.ccwu.cc/截图/823059c9-9849-491b-b62d-c6adf681763e.webp)
-
-#### 📋 R2 Worker 绑定配置
+#### (2)、R2 Worker 绑定配置项
 
 | 变量名称 | 类型 | 说明 |
 | :--- | :--- | :--- |
@@ -86,66 +91,76 @@ CREATE INDEX IF NOT EXISTS idx_images_file_id ON images(file_id);
 | `MY_DB` | D1 数据库 | 你的 D1 数据库 |
 | `AI` | AI 绑定 | Workers AI |
 
+![r2-worker](https://imgr2.aitc.ccwu.cc/截图/823059c9-9849-491b-b62d-c6adf681763e.webp)
+
 ![r2-worker](https://imgr2.aitc.ccwu.cc/截图/23319771-03fd-4a8b-8233-c855b55c69f9.webp)
 
-#### 完成绑定后，再给 `r2-worker` 绑定两个自定义域名，例如：
-- `api.aitc.ccwu.cc` 用作 R2 Worker 的 API 调用(对应前端配置中的 R2_API_URL)
-- `r2.aitc.ccwu.cc` 用作 R2 存储桶中图片的访问链接(对应的是 R2_PUBLIC_URL)
+#### (3)、再给 `r2-worker` 绑定两个自定义域名，
+
+**例如**：
+- `api.aitc.ccwu.cc` 用作 R2 Worker 的 API 调用，(对应前端配置中的 R2_API_URL)
+- `r2.aitc.ccwu.cc` 用作 R2 存储桶中图片的访问链接
 
 ![绑定域名](https://imgr2.aitc.ccwu.cc/截图/087dd78e-c452-4fd3-a07b-525f22c52725.webp)
 
 ![绑定域名](https://imgr2.aitc.ccwu.cc/截图/b0bed2d0-d3fa-433b-8d89-cfe3aa9e9401.webp)
 
-#### 自定义域名绑定好之后，给 `r2-worker` 配置环境变量
+#### (4)、自定义域名绑定好之后，给 _r2-worker_ 配置环境变量
 
 | 变量名称 | 值 |
 | :--- | :--- |
-| R2_PUBLIC_URL | https://r2.aitc.ccwu.cc | 
+| `R2_PUBLIC_URL` | `https://r2.aitc.ccwu.cc` |
 
-![绑定域名](https://imgr2.aitc.ccwu.cc/截图/5be171b7-c3e0-4058-87e7-bb57f1c54633.webp)
+![环境变量](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/5be171b7-c3e0-4058-87e7-bb57f1c54633.webp)
 
-![绑定域名](https://imgr2.aitc.ccwu.cc/截图/9042033e-f7c6-472e-8868-a269ce7dbba8.webp)
+![环境变量](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/9042033e-f7c6-472e-8868-a269ce7dbba8.webp)
 
-#### 环境变量设置好之后，进入 GitHub 项目，打开 workers/r2-worker.js 文件，复制全部代码，然后粘贴到 Cloudflare `r2-worker`  的代码编辑器中，点击保存并部署。
+#### (5)、进入 GitHub 项目，打开 workers/r2-worker.js 文件，复制全部代码，然后粘贴到 Cloudflare _r2-worker_  的代码编辑器中，点击保存并部署。
 
-![r2-worker](https://imgr2.aitc.ccwu.cc/截图/1fa07550-7625-42a5-91b0-a62c0bf75497.webp)
+![r2-worker](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/1fa07550-7625-42a5-91b0-a62c0bf75497.webp)
 
 ![r2-worker](https://imgr2.aitc.ccwu.cc/截图/d741de74-b510-4c9a-bc69-8a3daf37d9ff.webp)
 
-#### `r2-worker` 部署完成后，在浏览器中打开 API 域名并访问 /?setup=agree 路径（例如 https://api.aitc.ccwu.cc/?setup=agree），按回车键执行。此步骤用于同意 Workers AI 模型的使用许可协议，确保 AI 打标功能正常工作，页面上显示 `Setup successful` 代表设置成功。
+#### (6)、部署好 _r2-worker_ 后需执行 `/?setup=agree` 接口，完成 AI 模型协议签署。
 
-![r2-worker](https://imgr2.aitc.ccwu.cc/截图/95a8d2b3-3174-4d6b-8e69-2633668dc1f6.webp)
+在浏览器中打开 API 域名并访问 /?setup=agree 路径（例如 `https://api.aitc.ccwu.cc/?setup=agree`），按回车键执行。此步骤用于同意 Workers AI 模型的使用许可协议，确保 AI 打标功能正常工作，页面上显示 Setup successful 代表设置成功。
 
-#### 5. **部署 tg-worker**，并分别绑定D1数据库、Workers AI
+![Workers AI](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/95a8d2b3-3174-4d6b-8e69-2633668dc1f6.webp)
 
-![tg-worker](https://imgr2.aitc.ccwu.cc/截图/dab2e95d-0807-41cf-9b31-fef8b2e0aba0.webp)
+### 4、 部署 _tg-worker_ ，并分别绑定D1、Workers AI、1个自定义域名
 
-![tg-worker](https://imgr2.aitc.ccwu.cc/截图/fad8db39-4902-4d83-a5a4-253a471967fc.webp)
+#### (1)、创建 _tg-worker_ 应用程序
 
-#### 📋 TG Worker 绑定配置
+![tg-worker](https://imgr2.aitc.ccwu.cc/截图/ed961592-dbd2-40f3-b31a-f396c01b6feb.webp)
+
+![tg-worker](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/dab2e95d-0807-41cf-9b31-fef8b2e0aba0.webp)
+
+#### (2)、TG Worker 绑定配置项
 
 | 变量名称 | 类型 | 说明 |
 | :--- | :--- | :--- |
 | `MY_DB` | D1 数据库 | 你的 D1 数据库 |
 | `AI` | AI 绑定 | Workers AI |
 
-![tg-worker](https://imgr2.aitc.ccwu.cc/截图/b61ca9f1-4a34-4778-afb0-3f94b31e3bcb.webp)
+![tg-worker](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/fad8db39-4902-4d83-a5a4-253a471967fc.webp)
 
-#### 完成绑定后，再给 `tg-worker` 绑定一个自定义域名，例如：
+![tg-worker](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/b61ca9f1-4a34-4778-afb0-3f94b31e3bcb.webp)
 
+#### (3)、再给 _tg-worker_ 绑定一个自定义域名,
+
+**例如：**
 - `tg.aitc.ccwu.cc` 用作 TG Worker 的 API 调用(对应前端配置中的 TG_API_URL)
 
-![绑定域名](https://imgr2.aitc.ccwu.cc/截图/41ab56e0-50ef-4aad-acde-bfe8c6d121d6.webp)
+![绑定域名](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/41ab56e0-50ef-4aad-acde-bfe8c6d121d6.webp)
 
-![绑定域名](https://imgr2.aitc.ccwu.cc/截图/d3aa093b-ec7d-4de9-ad85-84810f54644f.webp)
+![绑定域名](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/d3aa093b-ec7d-4de9-ad85-84810f54644f.webp)
 
- #### **创建 Telegram Bot** 并获取 `Bot_Token` 和 `CHAT_ID`
+#### (4)、创建 Telegram Bot 并获取 Bot_Token 和 CHAT_ID
 
-![Telegram 渠道](https://imgr2.aitc.ccwu.cc/截图/911347a7-798a-42fb-97fc-0f8cf9c2929d.png)
+![TG](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/911347a7-798a-42fb-97fc-0f8cf9c2929d.png)
 
 <Collapse title="如需获取 `Bot_Token` 和 `CHAT_ID`，展开可查看完整流程。">
-
-1. 获取Bot_Token：在Telegram中，向@BotFather发送命令/newbot，根据提示依次输入您的机器人名称和用户名。成功创建机器人后，您将会收到一个BOT_TOKEN，用于与Telegram API进行交互。
+- 获取Bot_Token：在Telegram中，向@BotFather发送命令/newbot，根据提示依次输入您的机器人名称和用户名。成功创建机器人后，您将会收到一个BOT_TOKEN，用于与Telegram API进行交互。
 
 ---
 
@@ -157,7 +172,7 @@ CREATE INDEX IF NOT EXISTS idx_images_file_id ON images(file_id);
 
 ---
 
-2. 获取 Chat ID：创建一个新的频道（Channel），进入该频道后，点击频道头像，将刚刚创建的机器人添加为频道管理员，然后往频道随便发一条内容，再将这条内容转发给这样 @VersaToolsBot ，然后去到@VersaToolsBot 聊天界面，它就会发给你一条消息，这样你就能得到CHAT_ID。
+- 获取 Chat ID：创建一个新的频道（Channel），进入该频道后，点击频道头像，将刚刚创建的机器人添加为频道管理员，然后往频道随便发一条内容，再将这条内容转发给这样 @VersaToolsBot ，然后去到@VersaToolsBot 聊天界面，它就会发给你一条消息，这样你就能得到CHAT_ID。
 
 ---
 
@@ -189,26 +204,96 @@ CREATE INDEX IF NOT EXISTS idx_images_file_id ON images(file_id);
 
 </Collapse>
 
-#### 获取到 `Bot_Token` 和 `CHAT_ID` 之后，给 `tg-worker` 配置环境变量，例如：
+#### (5)、获取到 Bot_Token 和 CHAT_ID 之后，给 _tg-worker_ 配置环境变量，例如：
 
 | 变量名称 | 值 |
 | :--- | :--- |
-| TG_BOT_TOKEN | 8657392330:ABGeO736lgKZHpDe54QfMICTXG-r73M93Bk | 
-| TG_CHAT_ID | -1003754576283 | 
+| `TG_BOT_TOKEN` | `8600352354:AAGeOXM6lpKZHpDeymQfMICTsG-r73M96Bk` |
+| `TG_CHAT_ID` | `-1009946576573` |
 
-![配置环境变量](https://imgr2.aitc.ccwu.cc/截图/4fbebc0d-37eb-4856-b09d-3b9eeb52a3a6.webp)
+![环境变量](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/4fbebc0d-37eb-4856-b09d-3b9eeb52a3a6.webp)
 
-#### 环境变量设置好之后，进入 GitHub 项目，打开 workers/tg-worker.js 文件，复制全部代码，然后粘贴到 Cloudflare `tg-worker`  的代码编辑器中，点击保存并部署。
+#### (6)、进入 GitHub 项目，打开 workers/tg-worker.js 文件，复制全部代码，然后粘贴到 Cloudflare _tg-worker_ 的代码编辑器中，点击保存并部署。
 
-![tg-worker](https://imgr2.aitc.ccwu.cc/截图/969ba274-73f3-4996-b35e-5819a4571a8d.webp)
+![tg-worker](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/969ba274-73f3-4996-b35e-5819a4571a8d.webp)
 
-![tg-worker](https://imgr2.aitc.ccwu.cc/截图/a4399e77-8e07-42fb-ab10-71167aea4ef5.webp)
+![tg-worker](https://imgr2.aitc.ccwu.cc/%E6%88%AA%E5%9B%BE/a4399e77-8e07-42fb-ab10-71167aea4ef5.webp)
 
-#### 6. **部署 Pages**（前端页面）
+### 5、 部署 Pages（前端页面）
 
+#### (1)、在 GitHub 项目中定位到 index.html 文件，点击进入后，使用编辑按钮（铅笔图标）进行相应的修改。
 
+| 名称 | 示例值 | 说明 |
+| :--- | :--- | :--- |
+| `R2_API_URL` | `https://api.aitc.ccwu.cc` | _r2-worker_ 绑定的自定义域名 |
+| `TG_API_URL` | `https://tg.aitc.ccwu.cc` | _tg-worker_ 绑定的自定义域名 |
+| `ADMIN_USER` | admin | 管理员登录账号 |
+| `ADMIN_PASS_HASH` | 5d539ed951309b3166f9005b4d10d316aaca2bf62ad5da5cc9bbee197894931b | 把哈希值改成你想要的密码对应的哈希值，之后用这个密码登录即可 |
 
+> 1. 先确定你想要使用的登录密码，比如我想用的密码是: _Laozhao9862_ 
+> 2. 计算出该密码对应的哈希值，那么 _Laozhao9862_ 对应的哈希值就是：5d539ed951309b3166f9005b4d10d316aaca2bf62ad5da5cc9bbee197894931b
+> 3. 将原文件中的哈希值替换成这个新哈希值。
+> 4. 此后，用你设定的密码即可登录。
 
+<Collapse title="如何用浏览器 F12 控制台得到某个密码的哈希值`ADMIN_PASS_HASH` ，展开可查看具体步骤。">
+
+1. 打开浏览器，按 F12 打开开发者工具
+2. 切换到 Console（控制台）标签
+3. 粘贴以下代码，按回车：
+
+```(async () => {
+  const msg = "Laozhao9862"; // 比如我想设置的密码是Laozhao9862
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(msg));
+  const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+  console.log("密码:", msg);
+  console.log("SHA256:", hash);
+})();
+```
+![哈希值](https://imgr2.aitc.ccwu.cc/截图/9594f040-22c8-4046-a6c6-ea111abbbad7.webp)
+
+</Collapse>
+
+![pages](https://imgr2.aitc.ccwu.cc/截图/251cf612-4af7-4a6a-bd2d-c5c3c2cacb7c.webp)
+
+![pages](https://imgr2.aitc.ccwu.cc/截图/f356010e-79b9-4049-b8c1-b781a15fef4d.webp)
+
+#### (2)、将修改后的 index.html 文件下载到本地，然后存放到任意一个文件夹中（文件夹名称可随意设定，例如 abc 或 tuchuang）。
+
+![pages](https://imgr2.aitc.ccwu.cc/截图/384b5154-8f59-4db7-a98e-378f1386a7a8.webp)
+
+![pages](https://imgr2.aitc.ccwu.cc/截图/60d712d2-0131-41fc-9b81-f0d3eaf7846a.webp)
+
+#### (3)、创建Pages应用程序
+
+![pages](https://imgr2.aitc.ccwu.cc/截图/1801a6a2-9c0c-4bde-bdce-e5874bc95b4c.webp)
+
+![pages](https://imgr2.aitc.ccwu.cc/截图/14899062-32af-426f-b7a3-988c71a41c0e.webp)
+
+![pages](https://imgr2.aitc.ccwu.cc/截图/3c58cd9d-488c-4e4b-a466-38bc9d26a27b.webp)
+
+![pages](https://imgr2.aitc.ccwu.cc/截图/fe5381f4-5409-4f45-b94f-a946ce18c30a.webp)
+
+![pages](https://imgr2.aitc.ccwu.cc/截图/9379bab7-5951-4da4-a6b2-8bbd5cfe9800.webp)
+
+![pages](https://imgr2.aitc.ccwu.cc/截图/a4181f6d-e86a-4ac5-910f-ab5a00b36034.webp)
+
+#### (4)、绑定自定义域名
+
+![绑定域名](https://imgr2.aitc.ccwu.cc/截图/5fd8e41c-6935-445c-a595-b888462b0a20.webp)
+
+![绑定域名](https://imgr2.aitc.ccwu.cc/截图/5fd8e41c-6935-445c-a595-b888462b0a20.webp)
+
+![绑定域名](https://imgr2.aitc.ccwu.cc/截图/ae32bc48-647e-453c-b799-5f368de2e5a3.webp)
+
+![绑定域名](https://imgr2.aitc.ccwu.cc/截图/9d966ee5-c7d9-4640-9b31-3184d5e3f12f.webp)
+
+### 6、打开 Pages 绑定的那个自定义域名，进入页面后使用账号和密码登录即可。 
+
+![登录](https://imgr2.aitc.ccwu.cc/截图/be8b22db-e20c-4e84-8639-99adf5668aed.webp)
+
+![登录](https://imgr2.aitc.ccwu.cc/截图/0a46b3d6-7e21-4734-bf5c-40b4e9eb8eb5.webp)
+
+![登录](https://imgr2.aitc.ccwu.cc/截图/79993f27-b28c-4c10-a009-816984f22183.webp)
 
 ---
 
@@ -230,14 +315,3 @@ CREATE INDEX IF NOT EXISTS idx_images_file_id ON images(file_id);
 | **💾 渠道记忆** | localStorage 记住上次选择的渠道 |
 | **📜 分页加载** | 滚动自动加载更多，每页 100 张 |
 
-
-## 🏗️ 技术架构
-
-| 组件 | 技术 | 说明 |
-| :--- | :--- | :--- |
-| **前端** | HTML + Tailwind CSS | 响应式界面，部署在 Pages |
-| **R2 Worker** | Cloudflare Workers | 处理 R2 上传、查询、删除、移动、复制 |
-| **TG Worker** | Cloudflare Workers | 处理 Telegram 上传、删除、移动、复制、代理访问 |
-| **数据库** | Cloudflare D1 | 存储图片元数据 |
-| **存储** | Cloudflare R2 + Telegram 频道 | 双渠道文件存储 |
-| **AI 模型** | Workers AI | 图片自动打标签 |
