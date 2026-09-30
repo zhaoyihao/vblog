@@ -6,6 +6,8 @@ image: https://mycc.mcck.ccwu.cc/file/7d8ab64671af4145.jpeg
 draft: false
 tags:
   - Oracle
+  - 甲骨文云
+  - Oracle Cloud
 categories:
   - 注册指南
 badge: ''
@@ -13,6 +15,7 @@ badge: ''
 import Collapse from "../../components/mdx/Collapse.astro";
 import Success from "../../components/mdx/Success.astro";
 import Info from "../../components/mdx/Info.astro";
+import Warning from "../../components/mdx/Warning.astro";
 
 甲骨文云（Oracle Cloud Infrastructure）的 Always Free 套餐，是目前市面上唯一能提供长期免费云服务器的平台。注册过程出了名的难，有人一次过，有人折腾大半年。这篇教程整合了注册前准备、填表流程、避坑细节和注册后的注意事项，帮你把能提前做对的事都做对。
 
@@ -214,4 +217,35 @@ Oracle 的风控逻辑核心是：你提供的身份信息包括邮箱、信用�
 
 ![Oracle](https://mycc.mcck.ccwu.cc/file/7f0c70f483c44052.png)
 
-启用安全验证：这是第一次登录的必选项目，无法跳过
+启用安全验证：是甲骨文云的安全验证机制，是第一次登录的必选项目，无法跳过
+
+![Oracle](https://mycc.mcck.ccwu.cc/file/7029c5f5e06a411c.png)
+
+点击【启用安全验证】之后，在选择方法界面中，选择【移动应用程序】，然后勾选【脱机模式或使用其他验证程序应用程序】。
+
+![Oracle](https://mycc.mcck.ccwu.cc/file/922836f76bd74267.png)
+
+下载好身份验证器 Oracle Mobile Authenticator 后，打开手机上安装的 Authenticator身份验证器，点击加号，然后用手机扫描Oracle提供的二维码，将甲骨文登录账户添加到验证器中。
+
+![Oracle](https://mycc.mcck.ccwu.cc/file/42c52e3d44034c2c.png)
+
+然后将验证器中生成的验证码填写到 `3.输入应用程序生成的验证码` 输入框中，并点击点【验证】按钮。
+
+![Oracle](https://mycc.mcck.ccwu.cc/file/39e09af2c8924bd0.png)
+
+点【验证】按钮后，会看到 已成功注册 的提示，这代表完成了验证器和Oracle账号的绑定。点击【完成】按钮，系统会自动登录，并跳转到甲骨文云后台中。以后甲骨文登录验证时，就输入这个验证器中产生的码进行验证。
+
+![Oracle](https://mycc.mcck.ccwu.cc/file/9cd64b73405149ee.png)
+
+![Oracle](https://mycc.mcck.ccwu.cc/file/8c83fd7430384a6c.png)
+
+到这里，甲骨文云注册及登录步骤就全部完成了，现在你已经拥有了自己的甲骨文云账户。也不可避免的开启了自己的折腾之旅。
+
+<Warning> 
+除了甲骨文默认的身份验证器，也可用谷歌、微软或其他兼容的验证器，这些验证器同样都可以完成安全验证。但对于国内用户来说，想要在安卓市场和苹果市场都能搜索到可用的身份验证器，就只有选择微软的 `Microsoft Authenticator` !
+
+</Warning>
+
+![Oracle](https://mycc.mcck.ccwu.cc/file/4afb2f88129841c5.png)
+
+![Oracle](https://mycc.mcck.ccwu.cc/file/c650bb339d154e79.png)
