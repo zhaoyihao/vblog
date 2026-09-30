@@ -23,18 +23,20 @@ Oracle Always Free 提供的不只是一台免费服务器，而是一组可以�
 
 | 类型 | 规格 | 说明 |
 | :--- | :--- | :--- |
-| AMD Micro | 最多2台，每台1/8 OCPU + 1GB内存 | 适合轻量应用 |
+| AMD Micro | 最多2台，每台1个OCPU + 1GB内存的小服务器 | 适合轻量应用 |
 | ARM Ampere A1 | 每月1500 OCPU小时 + 9000 GB小时 | 折合每个月持续运行`2个 OCPU + 12GB内存` |
 
+![oracle](https://mycc.mcck.ccwu.cc/file/41fc03afcb8943dc.png)
 
-> 💬重点提示：2026年6月15日起，Oracle将 Always Free 的 ARM Ampere A1 配额从 4 OCPU / 24GB 内存减半至 2 OCPU / 12GB 内存。
+> 💬重点提示：目前可创建3台服务器，两台 Always Free VM (AMD)实例，另外一台是2个OCPU +12G内存的大服务器(ARM)。2026年6月15日起，Oracle将 Always Free 的 ARM Ampere A1 配额从 4 OCPU / 24GB 内存减半至 2 OCPU / 12GB 内存。
 
 1. CPU部分：1,500 ÷ 720小时 ≈ 2.08 OCPU。所以，你刚好可以用 2个OCPU 的配置， 24小时不间断地跑满整个月。
 
 2. 内存部分：9,000 ÷ 720小时 = 12.5 GB。所以，你刚好可以用 12 GB内存 的配置，24小时不间断地跑满整个月。
 
-<Success>所以 Always Free 的 ARM 计算资源等效于 2个 OCPU 和 12GB 内存，因此可以创建一台 2核12G 的实例，或者拆分成两台 1核6G 的实例。</Success>
+<Success>所以 Always Free 的 ARM 计算资源等效于 2个 OCPU 和 12GB 内存，因此可以创建一台 2核12G 的实例，或者拆分成两台 1核6G 的实例，这样可以拆成总共4台小一点的服务器，但这几台免费服务器的200G存储空间是共享的，每个实例的最小启动卷大小是47GB，所以可以拆成至少50G存储空间的4个小服务器。</Success>
 
+![Oracle](https://mycc.mcck.ccwu.cc/file/d95c02c1291a41f3.png)
 
 3. 引导卷和块存储卷的总大小即存储资源：200GB Block Volume
 这是最容易被误解的地方。200GB Block Volume 不是每台服务器送200GB，而是你的整个账户共享一个200GB的存储池。你创建服务器时，从这个池子里分配启动盘空间。
@@ -95,14 +97,20 @@ Oracle 的风控逻辑核心是：你提供的身份信息包括邮箱、信用�
 5. 个人信息一致性
 姓名、手机号、邮箱、地址、信用卡信息，五项尽量保持同一个人的。用中国身份注册，就用中国手机号、中国地址，不要东拼西凑。最低要保证卡号、到期日、安全码真实，姓名、手机号、地址都可以随便填写，但不能有任何一项之前用于注册过甲骨文云！
 
-三、注册流程
+## 三、注册流程
+
 不同区域注册链接不同：
 
-大陆：[https://www.oracle.com/cn/cloud/free/](https://www.oracle.com/cn/cloud/free/)
+大陆：<a href="https://www.oracle.com/cn/cloud/free/" target="_blank" rel="noopener noreferrer">https://www.oracle.com/cn/cloud/free/</a>
 
-美国：[https://www.oracle.com/cloud/free/](https://www.oracle.com/cloud/free/)
+美国：<a href="https://www.oracle.com/cloud/free/" target="_blank" rel="noopener noreferrer">https://www.oracle.com/cloud/free/</a>
 
-日本：[https://www.oracle.com/jp/cloud/free/](https://www.oracle.com/cloud/free/)
+日本：<a href="https://www.oracle.com/jp/cloud/free/" target="_blank" rel="noopener noreferrer">https://www.oracle.com/jp/cloud/free/</a>
+
+韩国：<a href="https://www.oracle.com/kr/cloud/free/" target="_blank" rel="noopener noreferrer">https://www.oracle.com/kr/cloud/free/</a>
+
+新加坡：<a href="https://www.oracle.com/asean/cloud/free/" target="_blank" rel="noopener noreferrer">https://www.oracle.com/asean/cloud/free/</a>
+
 
 步骤1：填写账户信息
 打开中国区注册链接，按顺序填写：国家、名字、姓氏、邮箱，全部按真实信息填写。
