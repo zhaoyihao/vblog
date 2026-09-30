@@ -28,20 +28,24 @@ Oracle Always Free 提供的不只是一台免费服务器，而是一组可以�
 ![oraclefree.png](https://mycc.mcck.ccwu.cc/file/7fd130537b454cf8.png)
 免费计算实例
 
-| 类型 | 规格 | 说明 |
+| 机型 | 配置 | 数量上限|
 | :--- | :--- | :--- |
-| AMD Micro | 最多2台，每台1个OCPU + 1GB内存的小服务器 | 适合轻量应用 |
-| ARM Ampere A1 | 每月1500 OCPU小时 + 9000 GB小时 | 折合每个月持续运行`2个 OCPU + 12GB内存` |
+| AMD Micro | 每台 1/8 OCPU + 1GB 内存的小服务器 | 最多2台，适合轻量应用 |
+| ARM Ampere A1 | 每月1500 OCPU小时 + 9000 GB小时 | 每月可开1台持续运行`2个 OCPU + 12GB内存` 或拆成 2 台各 1 核+6GB内存 |
 
 ![oracle](https://mycc.mcck.ccwu.cc/file/41fc03afcb8943dc.png)
 
-> 💬重点提示：目前可创建3台服务器，两台 Always Free VM (AMD)实例，另外一台是2个OCPU +12G内存的大服务器(ARM)。2026年6月15日起，Oracle将 Always Free 的 ARM Ampere A1 配额从 4 OCPU / 24GB 内存减半至 2 OCPU / 12GB 内存。
+> 💬重点提示：首先两类机器的额度是分开计算的，除了硬盘空间共享外，CPU，内存额度互不占用，所以至少可创建3台服务器，两台 Always Free VM (AMD)实例，和一台2个OCPU +12G内存的大服务器(ARM)，最高可开4 台实例（2 台 A1 + 2 台 Micro），且A1实例性能远强于Micro实例。
+
+<Info>
+2026年6月15日起，Oracle将 Always Free 的 ARM Ampere A1 配额从 4 OCPU / 24GB 内存减半至 2 OCPU / 12GB 内存。
+</Info>
 
 1. CPU部分：1,500 ÷ 720小时 ≈ 2.08 OCPU。所以，你刚好可以用 2个OCPU 的配置， 24小时不间断地跑满整个月。
 
 2. 内存部分：9,000 ÷ 720小时 = 12.5 GB。所以，你刚好可以用 12 GB内存 的配置，24小时不间断地跑满整个月。
 
-<Success>所以 Always Free 的 ARM 计算资源等效于 2个 OCPU 和 12GB 内存，因此可以创建一台 2核12G 的实例，或者拆分成两台 1核6G 的实例，这样可以拆成总共4台小一点的服务器，但这几台免费服务器的200G存储空间是共享的，每个实例的最小启动卷大小是47GB，所以可以拆成至少50G存储空间的4个小服务器。</Success>
+<Success>Always Free 的 ARM 计算资源等效于 2个 OCPU 和 12GB 内存，因此可以创建一台 2核12G 的实例，或者拆分成两台 1核6G 的实例，这样可以拆成总共4台小一点的服务器，但这几台免费服务器的200G存储空间是共享的，每个实例的最小启动卷大小是47GB，所以可以拆成至少50G存储空间的4个小服务器。</Success>
 
 ![Oracle](https://mycc.mcck.ccwu.cc/file/d95c02c1291a41f3.png)
 
@@ -109,15 +113,15 @@ Oracle 的风控逻辑核心是：你提供的身份信息包括邮箱、信用�
 
 不同区域注册链接不同：
 
-大陆：<a href="https://www.oracle.com/cn/cloud/free/" target="_blank" rel="noopener noreferrer">https://www.oracle.com/cn/cloud/free/↗</a>
+大陆：<a href="https://www.oracle.com/cn/cloud/free/" target="_blank" rel="noopener noreferrer">Oracle中国区↗</a>
 
-美国：<a href="https://www.oracle.com/cloud/free/" target="_blank" rel="noopener noreferrer">https://www.oracle.com/cloud/free/↗</a>
+美国：<a href="https://www.oracle.com/cloud/free/" target="_blank" rel="noopener noreferrer">Oracle美国区↗</a>
 
-日本：<a href="https://www.oracle.com/jp/cloud/free/" target="_blank" rel="noopener noreferrer">https://www.oracle.com/jp/cloud/free/↗</a>
+日本：<a href="https://www.oracle.com/jp/cloud/free/" target="_blank" rel="noopener noreferrer">Oracle日本区↗</a>
 
-韩国：<a href="https://www.oracle.com/kr/cloud/free/" target="_blank" rel="noopener noreferrer">https://www.oracle.com/kr/cloud/free/↗</a>
+韩国：<a href="https://www.oracle.com/kr/cloud/free/" target="_blank" rel="noopener noreferrer">Oracle韩国区↗</a>
 
-新加坡：<a href="https://www.oracle.com/asean/cloud/free/" target="_blank" rel="noopener noreferrer">https://www.oracle.com/asean/cloud/free/↗</a>
+新加坡：<a href="https://www.oracle.com/asean/cloud/free/" target="_blank" rel="noopener noreferrer">Oracle新加坡区↗</a>
 
 ![Oracle](https://mycc.mcck.ccwu.cc/file/81f5adf980c74a3c.png)
 
@@ -211,7 +215,7 @@ Oracle 的风控逻辑核心是：你提供的身份信息包括邮箱、信用�
 
 ## 四、登录验证
 
-1. 登录网址：<a href="https://www.oracle.com/cn/cloud/free/" target="_blank" rel="noopener noreferrer">https://www.oracle.com/cn/cloud/free/↗</a>
+1. 登录网址：<a href="https://www.oracle.com/cn/cloud/free/" target="_blank" rel="noopener noreferrer">Oracle中国区↗</a>
 
 2. 输入 Cloud 账户名（注册时填写的 Cloud Account Name）
 
@@ -235,7 +239,7 @@ Oracle 的风控逻辑核心是：你提供的身份信息包括邮箱、信用�
 
 然后将验证器中生成的验证码填写到 `3.输入应用程序生成的验证码` 输入框中，并点击点【验证】按钮。
 
-![Oracle](https://mycc.mcck.ccwu.cc/file/39e09af2c8924bd0.png)
+![Oracle](https://mycc.mcck.ccwu.cc/file/2400835c39ad4358.png)
 
 点【验证】按钮后，会看到 已成功注册 的提示，这代表完成了验证器和Oracle账号的绑定。点击【完成】按钮，系统会自动登录，并跳转到甲骨文云后台中。以后甲骨文登录验证时，就输入这个验证器中产生的码进行验证。
 
