@@ -8,6 +8,7 @@ tags:
   - Oracle
 categories:
   - 注册指南
+badge: ''
 ---
 import Collapse from "../../components/mdx/Collapse.astro";
 import Success from "../../components/mdx/Success.astro";
@@ -16,7 +17,7 @@ import Info from "../../components/mdx/Info.astro";
 甲骨文云（Oracle Cloud Infrastructure）的 Always Free 套餐，是目前市面上唯一能提供长期免费云服务器的平台。注册过程出了名的难，有人一次过，有人折腾大半年。这篇教程整合了注册前准备、填表流程、避坑细节和注册后的注意事项，帮你把能提前做对的事都做对。
 
 ## 一、Oracle 免费资源到底有哪些？
-Oracle Always Free 提供的不只是一台免费服务器，而是一组可以自由分配的免费资源，所有免费资源都必须在主区域内创建。
+Oracle Always Free 提供的不只是一台免费服务器，而是一组可以自由分配的免费资源，所有免费资源都必须在主区域内创建（主区域尽量选欧美。容易申请到实例）。
 ![oraclefree.png](https://mycc.mcck.ccwu.cc/file/7fd130537b454cf8.png)
 免费计算实例
 
@@ -41,15 +42,19 @@ Oracle Always Free 提供的不只是一台免费服务器，而是一组可以�
 
 <Collapse title="终止实例时如何正确删除引导卷">
 
-- 在终止实例时最好勾选 “永久删除附加的引导卷” (Permanently delete the attached boot volume)，重新释放出引导卷空间，不要选择“保留引导卷”。
+1. 在终止实例时最好勾选 “永久删除附加的引导卷” (Permanently delete the attached boot volume)，重新释放出引导卷空间，不要选择“保留引导卷”。
 
-- 如果在终止实例时选择了“保留引导卷”，这些卷不会自动消失，而是会继续占用你的免费存储额度。要释放空间，你需要手动删除这些不再使用的引导卷，其方法是通过控制台手动删除：
+---
 
-1.	导航到引导卷：登录OCI控制台，点击左上角的汉堡菜单，依次进入 “存储” (Storage) -> “块存储” (Block Storage) -> “引导卷” (Boot Volumes)。
+2. 如果在终止实例时选择了“保留引导卷”，这些卷不会自动消失，而是会继续占用你的免费存储额度。要释放空间，你需要手动删除这些不再使用的引导卷，其方法是通过控制台手动删除：
 
-2.	查找并删除：在引导卷列表中，找到状态为 “已分离” (Detached) 的卷（这表示它没有挂载到任何实例上）。
+-	导航到引导卷：登录OCI控制台，点击左上角的汉堡菜单，依次进入 “存储” (Storage) -> “块存储” (Block Storage) -> “引导卷” (Boot Volumes)。
 
-3.	点击该卷右侧的操作菜单（三个点），选择 “终止” (Terminate)。在弹出的确认窗口中确认删除。请注意，此操作不可逆转，数据将永久丢失。
+- 查找并删除：在引导卷列表中，找到状态为 “已分离” (Detached) 的卷（这表示它没有挂载到任何实例上）。
+
+- 点击该卷右侧的操作菜单（三个点），选择 “终止” (Terminate)。在弹出的确认窗口中确认删除。请注意，此操作不可逆转，数据将永久丢失。
+
+---
 
 > 💬重点提示：在甲骨文云里，“已终止”等同于“已删除”。这个卷已经不在运行了，相关的计算资源已经被释放。“已终止”卷，它们不会占用你的免费额度，可以放心。只有状态为“可用”（Available）或“已挂载”（Attached）的卷才会被计入使用量。
 
@@ -82,9 +87,7 @@ Oracle 的风控逻辑核心是：你提供的身份信息包括邮箱、信用�
 3. 支付方式（最关键的一环）
 必须是真实的 Visa 或 Mastercard 信用卡。预付卡、虚拟卡基本会被直接拒绝。添加信用卡验证的地址和名字随便填写，只需保证卡号、到期日、安全码真实，且之前没有用来注册过甲骨文云！
 
-推荐使用招商银行、工商银行、交通银行等主流银行的外币信用卡。社区经验表明，实体 Visa/MC 信用卡成功率最高
-
-注册成功后不要注销这张卡。Oracle 可能在后续进行二次验证扣款（通常为 1.38 新加坡元的预授权验证，验证后会退回），卡失效会导致账号被冻结
+推荐使用招商银行、工商银行、交通银行等主流银行的外币信用卡。注册成功后不要注销这张卡。Oracle 可能在后续进行二次验证扣款（通常为 1.38 新加坡元的预授权验证，验证后会退回），卡失效会导致账号被冻结
 
 4. 手机号
 手机号不是最核心的验证项，随便填一个本人真实在用的国内手机号即可，不要用注册过甲骨文云的号码，不要用虚拟号、临时号。
@@ -95,11 +98,11 @@ Oracle 的风控逻辑核心是：你提供的身份信息包括邮箱、信用�
 三、注册流程
 不同区域注册链接不同：
 
-大陆：https://www.oracle.com/cn/cloud/free/
+大陆：[https://www.oracle.com/cn/cloud/free/](https://www.oracle.com/cn/cloud/free/)
 
-美国：https://www.oracle.com/cloud/free/
+美国：[https://www.oracle.com/cloud/free/](https://www.oracle.com/cloud/free/)
 
-日本：https://www.oracle.com/jp/cloud/free/
+日本：[https://www.oracle.com/jp/cloud/free/](https://www.oracle.com/cloud/free/)
 
 步骤1：填写账户信息
 打开中国区注册链接，按顺序填写：国家、名字、姓氏、邮箱，全部按真实信息填写。
