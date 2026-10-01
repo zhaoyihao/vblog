@@ -41,7 +41,11 @@ Compute(计算) → Instances(实例)
 
 ![Oracle实例](https://mycc.mcck.ccwu.cc/file/a675bd9690264d17.png)
 
-配置区域这里系统默认的是AMD处理器(VM.Standard.E2.1.Micro)，如果想换成高性能的ARM处理器(VM.Standard.A1.Flex)，就要点击 `更改配置` 。
+配置区域这里系统默认的是AMD处理器(VM.Standard.E2.1.Micro)，如果想要创建Micro实例，那么配置这里保持默认的1核1GB内存即可。
+
+![Micro服务器](https://mycc.mcck.ccwu.cc/file/bf115f5278fd4f61.png)
+
+如果想换成高性能的ARM处理器(VM.Standard.A1.Flex)，就要点击 `更改配置` 。
 
 ![Oracle实例](https://mycc.mcck.ccwu.cc/file/618c806c0984464b.png)
 
@@ -78,4 +82,22 @@ Compute(计算) → Instances(实例)
 
 ![Oracle实例](https://mycc.mcck.ccwu.cc/file/f1dab9bcf8904931.png)
 
-进入存储设置后，默认的引导卷(Boot volume)约50GB，这也是 Oracle 允许的最小值。可根据需要自定义存储磁盘的大小，官方给到的免费存储额度总共是 200GB，如果你想创建两台Arm机器每台 50GB，还剩 100GB 留给那两台 Micro 机器，应该够了。
+进入存储设置后，默认的引导卷(Boot volume)大小：46.6GB，这也是 Oracle 允许的最小值。用户可根据需要自定义存储磁盘的大小，官方给到的免费存储额度总共是 200GB，如果你想创建两台Arm机器和两台 Micro 机器，那么每台给到50GB就可以了。
+
+然后引导卷性能(VPU)是为了满足不同负载的要求。10 是默认值，适合大多数工作负载，20 适合 I/O 要求高的负载，30–120适合大型数据库之类的场景。如果要跑的是一般的服务器或代理，10 VPU 就够用了，保持默认即可，以后可以再编辑调整。
+
+![Oracle实例](https://mycc.mcck.ccwu.cc/file/2b20c7d3f1154973.png)
+
+一般来说，不要一次性把引导卷拉满，虽然总存储空间不超过200G还在完全免费额度内，但后面就没空间开 Micro 了，因为A1实例的引导卷空间只能调大，不能调小，一旦开的太高，想降档就没可能了。
+
+调整路径：左上角菜单 ≡ →「存储」→「块存储」→「右侧菜单中选-引导卷」→ 点右边的「⋯」→「编辑」，然后就可以调大引导卷空间。
+
+所有配置确认完，滚动到页面最底部，点 Create（创建）按钮。
+
+![Oracle实例](https://mycc.mcck.ccwu.cc/file/da2080f410af419f.png)
+
+![Oracle实例](https://mycc.mcck.ccwu.cc/file/47a954caefd74e53.png)
+
+顺利的话，页面跳回实例详情页，状态显示正在运行（预配中），一两分钟后变成绿色的 RUNNING（运行中），那么恭喜你，机器到手了。
+
+
