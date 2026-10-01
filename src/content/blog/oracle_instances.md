@@ -7,6 +7,9 @@ tags: []
 categories: []
 badge: ''
 ---
+import Collapse from "../../components/mdx/Collapse.astro";
+import Info from "../../components/mdx/Info.astro";
+
 ## 一、进入Oracle控制台，找到创建实例的入口
 
 浏览器打开登录网址：<a href="https://www.oracle.com/cn/cloud/free/" target="_blank" rel="noopener noreferrer">Oracle中国区↗</a>，输入Oracle Cloud 账户名称，点下一步，再填写登录邮箱和登录密码登录。如果控制台是英文界面，点右上角的头像 →「Language」，切换成简体中文。
@@ -43,7 +46,9 @@ Compute(计算) → Instances(实例)
 
 配置区域这里系统默认的是AMD处理器(VM.Standard.E2.1.Micro)，如果想要创建Micro实例，那么配置这里保持默认的1核1GB内存即可。
 
-![Micro服务器](https://mycc.mcck.ccwu.cc/file/bf115f5278fd4f61.png)
+![Micro实例](https://mycc.mcck.ccwu.cc/file/bf115f5278fd4f61.png)
+
+![Micro实例](https://mycc.mcck.ccwu.cc/file/4bd8c0e006e042fe.png)
 
 如果想换成高性能的ARM处理器(VM.Standard.A1.Flex)，就要点击 `更改配置` 。
 
@@ -76,19 +81,41 @@ Compute(计算) → Instances(实例)
 
 ![Oracle实例](https://mycc.mcck.ccwu.cc/file/3c52488dfeab4762.png)
 
-特别注意：新账户第一次创建实例时 `自动分配公共 IPv4 地址` 这里是灰色的，而且不一定那能开启，如果无法开启，就等创建 VCN完成后，再回到 主要 VNIC 这里，选 「选择虚拟云网络」即可。
+> 💬特别注意：新账户第一次创建实例时 `自动分配公共 IPv4 地址` 这里是灰色的，而且不一定那能开启，如果无法开启，就等该实例创建完成后，再回到该实例去创建一个公共 IPv4地址。
+
+<Collapse title="如何创建公共 IPv4 地址">
+
+![公共 IPv4 地址](https://mycc.mcck.ccwu.cc/file/9256d043f61e4f6b.png)
+
+---
+
+![公共 IPv4 地址](https://mycc.mcck.ccwu.cc/file/76d1ba68236a4481.png)
+
+---
+
+![公共 IPv4 地址](https://mycc.mcck.ccwu.cc/file/7783f913dc0f486d.png)
+
+---
+
+![公共 IPv4 地址](https://mycc.mcck.ccwu.cc/file/54f939b70a45462a.png)
+
+---
+
+![公共 IPv4 地址](https://mycc.mcck.ccwu.cc/file/13f839f31cda455f.png)
+
+</Collapse>
 
 再进行下一步的SSH密钥操作，没有公网 IP和私钥的话，后面就无法SSH访问新建的实例，私钥丢了 = 机器废了，没有找回流程，没有客服能帮你，只能删机重建，所以密钥一定要保存好。
 
 ![Oracle实例](https://mycc.mcck.ccwu.cc/file/f1dab9bcf8904931.png)
 
-进入存储设置后，默认的引导卷(Boot volume)大小：46.6GB，这也是 Oracle 允许的最小值。用户可根据需要自定义存储磁盘的大小，官方给到的免费存储额度总共是 200GB，如果你想创建两台Arm机器和两台 Micro 机器，那么每台给到50GB就可以了。
+进入存储设置后，默认的 `引导卷(Boot volume)` 大小：46.6GB，这也是 Oracle 允许的最小值。用户可根据需要自定义存储磁盘的大小，官方给到的免费存储额度总共是 200GB，如果你想创建两台Arm机器和两台 Micro 机器，那么每台给到50GB就可以了。
 
-然后引导卷性能(VPU)是为了满足不同负载的要求。10 是默认值，适合大多数工作负载，20 适合 I/O 要求高的负载，30–120适合大型数据库之类的场景。如果要跑的是一般的服务器或代理，10 VPU 就够用了，保持默认即可，以后可以再编辑调整。
+然后 `引导卷性能(VPU)` 是为了满足不同负载的要求。10 是默认值，适合大多数工作负载，20 适合 I/O 要求高的负载，30–120适合大型数据库之类的场景。如果要跑的是一般的服务器或代理，10 VPU 就够用了，保持默认即可，以后可以再编辑调整。
 
 ![Oracle实例](https://mycc.mcck.ccwu.cc/file/2b20c7d3f1154973.png)
 
-一般来说，不要一次性把引导卷拉满，虽然总存储空间不超过200G还在完全免费额度内，但后面就没空间开 Micro 了，因为A1实例的引导卷空间只能调大，不能调小，一旦开的太高，想降档就没可能了。
+<Info>一般来说，不要一次性把引导卷拉满，虽然总存储空间不超过200G还在完全免费额度内，但后面就没空间开 Micro 了，因为A1实例的引导卷空间只能调大，不能调小，一旦开的太高，想降档就没可能了。</Info>
 
 调整路径：左上角菜单 ≡ →「存储」→「块存储」→「右侧菜单中选-引导卷」→ 点右边的「⋯」→「编辑」，然后就可以调大引导卷空间。
 
@@ -98,6 +125,6 @@ Compute(计算) → Instances(实例)
 
 ![Oracle实例](https://mycc.mcck.ccwu.cc/file/47a954caefd74e53.png)
 
-顺利的话，页面跳回实例详情页，状态显示正在运行（预配中），一两分钟后变成绿色的 RUNNING（运行中），那么恭喜你，机器到手了。
+顺利的话，页面跳回实例详情页，状态显示正在运行，那么恭喜你，机器到手了。
 
 
