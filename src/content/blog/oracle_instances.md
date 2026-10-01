@@ -47,15 +47,33 @@ Compute(计算) → Instances(实例)
 
 然后弹窗里按顺序操作：
 
+![Oracle实例](https://mycc.mcck.ccwu.cc/file/b596ae9e35a747c5.png)
+
 1. 实例类型保持虚拟机（ Virtual machine）
 
 2. 配置系列选 Ampere ，基于ARM的处理器
 
 3. 配置表里勾选 VM.Standard.A1.Flex
 
-勾上之后，点一下左侧的三角图标，下方右侧会冒出两个三角滑块：Number of OCPUs → OCPU数 和 Amount of memory (GB) → 内存量。上箭头是增加，下箭头是减少。这里你会看到OCPU最大值80，和内存最大值512，就以为可以创建80CPU和512GB内存的机器。千万不要一冲动就使劲加码，这个指的是最大值，Arm免费实例的最高配置就2OCPU和12GB内存，如果选超了钱包缩小的速度，一定大于你选OCPU的速度。
+4. 勾上之后，点一下VM.Standard.A1.Flex左侧的三角图标，然后OCPU数选择2，内存量选择12GB，这是目前ARM免费实例的最高配置。
 
-滑块怎么拉，有讲究：
+![Oracle实例](https://mycc.mcck.ccwu.cc/file/1f79db4f9be549ce.png)
 
-拉满：OCPU = 2，内存 = 12。一台机器吃掉全部额度，性能最好，适合只想要一台主力机的人。
-拉小：OCPU = 1，内存 = 6。剩下的额度留着以后再开第二台。而且——小规格明显更容易申请成功。
+- 拉满：OCPU = 2，内存 = 12。一台机器吃掉全部额度，性能最好，适合只想要一台主力机的人。
+- 拉小：OCPU = 1，内存 = 6。剩下的额度留着以后再开第二台。而且——小规格明显更容易申请成功。
+
+![Oracle实例](https://mycc.mcck.ccwu.cc/file/73ec8fc1ae6f4421.png)
+
+![Oracle实例](https://mycc.mcck.ccwu.cc/file/a32a8b851b4e4a98.png)
+
+进入网络设置，第一步是设置主要 VNIC (Primary VNIC) 区域。
+
+新账号首次创建实例，主要网络选 「创建新虚拟云网络」，子网选 「创建新公共子网」,专用IPv4地址保持默认的「自动分配专用IPv4地址」，然后务必勾上「自动分配公共 IPv4 地址」，没有分配公网 IP 的话，你没法从外网 SSH 连上去。
+
+![Oracle实例](https://mycc.mcck.ccwu.cc/file/3c52488dfeab4762.png)
+
+特别注意：新账户第一次创建实例时 `自动分配公共 IPv4 地址` 这里是灰色的，而且不一定那能开启，如果无法开启，就等创建 VCN完成后，再回到 主要 VNIC 这里，选 「选择虚拟云网络」即可。
+
+再进行下一步的SSH密钥操作，没有公网 IP和私钥的话，后面就无法SSH访问新建的实例。
+
+![Oracle实例](https://mycc.mcck.ccwu.cc/file/f1dab9bcf8904931.png)
