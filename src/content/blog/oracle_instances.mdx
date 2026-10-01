@@ -1,14 +1,21 @@
 ---
-title: 甲骨文创建免费实例全流程
-description: ''
+title: Oracle Cloud 免费 ARM A1 实例创建全流程
+description: 从零开始带你创建一台2 核 12G永久免费的 Oracle ARM Ampere A1 服务器
 pubDate: 2026-09-30T16:53
+image: https://mycc.mcck.ccwu.cc/file/6e9a6568f8dd4b38.jpg
 draft: false
-tags: []
-categories: []
+tags:
+  - Oracle
+  - 甲骨文
+categories:
+  - 使用指南
 badge: ''
 ---
 import Collapse from "../../components/mdx/Collapse.astro";
 import Info from "../../components/mdx/Info.astro";
+import Warning from "../../components/mdx/Warning.astro";
+
+Oracle Cloud 的 Always Free 套餐里，ARM A1 实例一直很受欢迎：2 核 12G 的免费配置，足够跑博客、Docker、反代和各种小服务。但免费机器也有门槛——从选区域、创建实例、分配公网 IP，到开放端口、SSH 连接，再到避免被判定闲置回收，新手很容易踩坑。下面就从零开始，把这台免费 Oracle 服务器完整跑起来，并附上常用检查命令，方便日后维护。
 
 ## 一、进入Oracle控制台，找到创建实例的入口
 
@@ -127,7 +134,30 @@ Compute(计算) → Instances(实例)
 
 顺利的话，页面跳回实例详情页，状态显示正在运行，那么恭喜你，机器到手了。
 
-## 三、如何通过WindTerm进行SSH远程连接
+## 三、如何通过甲骨文Oracle 控制台开放端口
+
+![开放端口](https://mycc.mcck.ccwu.cc/file/9256d043f61e4f6b.png)
+
+![开放端口](https://mycc.mcck.ccwu.cc/file/0dc21a9ccab64ea3.png)
+
+![开放端口](https://mycc.mcck.ccwu.cc/file/0e7a7e21f846400c.png)
+
+![开放端口](https://mycc.mcck.ccwu.cc/file/ef8410e725c54d64.png)
+
+例如要开放8000 端口，填写方式如下：
+
+| 项目 | 值 |
+| :--- | :--- |
+| 源类型（Source Type） | CIDR | 
+| 源 CIDR（Source CIDR） | 0.0.0.0/0 | 
+| IP 协议（IP Protocol） | TCP | 
+| 源端口范围（Source Port Range） | 留空 | 
+| 目的端口范围（Destination Port Range） | 8000 | 
+|描述 |  FastAPI FFmpeg Worker | 
+
+<Warning>重点：源端口范围不要填，因为客户端访问你的服务器时，源端口是随机的。</Warning>
+
+## 四、如何通过WindTerm进行SSH远程连接
 
 【<a href="https://github.com/kingToolbox/WindTerm/releases/tag/2.5.0" target="_blank" rel="noopener noreferrer">官方下载↗</a>】
 
@@ -141,5 +171,62 @@ Compute(计算) → Instances(实例)
 
 ![SSH连接](https://mycc.mcck.ccwu.cc/file/0bb8807c21574257.png)
 
+![SSH连接](https://mycc.mcck.ccwu.cc/file/fca6094e9e1b4738.png)
+
+![SSH连接](https://mycc.mcck.ccwu.cc/file/0eacab6c56bf4f1c.png)
 
 
+## 五、Always Free 资源虽然免费使用，但不代表不会被回收。
+
+官方文档里写得明明白白。判定标准是连续 7 天内同时满足下面三条：
+
+- CPU 利用率（95 百分位）低于 20%
+- 网络利用率低于 20%
+- 内存利用率低于 20%（这一条只针对 A1 机型）
+
+三条必须同时成立才会被判定为闲置。反过来说，只要有任意一条超过 20%，你的机器就是安全的。所以抢到了还得防一手，避免闲置的机器会被收回去
+
+好消息是，这个门槛对 A1 来说其实很好过——内存那一条是最容易满足的。你的机器有 12GB 内存，20% 也就是 2.4GB，随便跑个 Docker、挂个小服务、装个面板，内存占用就上去了，根本不用刻意折腾。
+
+所以真正的规避办法就一句话：抢到之后别晾着，给它找点事做。 建个站、跑个 RSS 订阅器、挂个下载工具、装个 Nginx 反代，什么都行。真的暂时没需求，起一个常驻的轻量服务占住内存也比空转强。
+
+网上有人教你写脚本定时跑满 CPU 来"保活"，我不建议——那属于人为制造无效负载，反倒更容易撞上滥用检测，赔了夫人又折兵。正常用它，就是最好的保活。
+
+另外提一句，被回收的是实例，不是账号。但对你来说结果一样惨：机器没了，想重开就得重新去抢一遍 A1。
+
+## 六、常用服务器检查命令
+
+查看 CPU：
+```
+lscpu
+```
+
+快速看 CPU 数量：
+```
+nproc
+```
+
+查看内存：
+```
+free -h
+```
+
+查看硬盘：
+```
+lsblk
+```
+
+查看磁盘使用量：
+```
+df -h
+```
+
+查看端口监听，例如查看 11850：
+```
+sudo ss -lntp | grep 11850
+```
+
+查看服务器运行状态：
+```
+htop
+```
