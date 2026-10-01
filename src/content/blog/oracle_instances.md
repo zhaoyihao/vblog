@@ -127,4 +127,19 @@ Compute(计算) → Instances(实例)
 
 顺利的话，页面跳回实例详情页，状态显示正在运行，那么恭喜你，机器到手了。
 
+## 三、如何通过WindTerm进行SSH远程连接
+
+【<a href="https://github.com/kingToolbox/WindTerm/releases/tag/2.5.0" target="_blank" rel="noopener noreferrer">官方下载↗</a>】
+
+【<a href="https://mycc.mcck.ccwu.cc/file/e6bcc791ec6c47e4.zip" target="_blank" rel="noopener noreferrer">快速下载↗</a>】
+
+下载好 WindTerm 以后，打开该软件，点开`会话` —— `新建会话` —— `输入公共IPV4地址` ，然后再进行 `验证` —— `身份验证文件` ——`选择该实例的私钥并载入`——`最后点击连接`
+
+![SSH连接](https://mycc.mcck.ccwu.cc/file/3a7a060c89af46cf.png)
+
+![SSH连接](https://mycc.mcck.ccwu.cc/file/df0c730927f845ed.png)
+
+![SSH连接](https://mycc.mcck.ccwu.cc/file/0bb8807c21574257.png)
+
+
 
