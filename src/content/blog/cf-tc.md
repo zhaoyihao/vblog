@@ -195,7 +195,19 @@ CREATE TRIGGER IF NOT EXISTS update_other_data_updated_at
 
 ![API Token](https://imgr2.aitc.ccwu.cc/截图/82dc28aa-fdcb-424b-9178-edc5cac03c7b.png)
 
-2. 获取 Chat ID：创建一个新的频道（Channel），进入该频道后，点击频道头像，将刚刚创建的机器人添加为频道管理员，然后往频道随便发一条内容，再将这条内容转发给这样 @VersaToolsBot ，然后去到@VersaToolsBot 聊天界面，它就会发给你一条消息，这样你就能得到CHAT_ID。
+2. 获取 Chat ID：首先要创建一个你自己的新频道（Channel），然后获取 Chat ID有两种方法，第一种是搜索 `@Getmyid_bot` 机器人，其正确的名称是 `Get My ID` ，然后点击开始，机器人首先会发送给你一个你的Telegram ID，然后点选 `Select channel` ,找到你创建的频道点击发送，机器人就会把该频道的Chat ID发你
+
+![Get My ID](https://mycc.mcck.ccwu.cc/file/e66ce0931f6f4f78.png)
+
+![Get My ID](https://mycc.mcck.ccwu.cc/file/0b27f4cc12ca44b1.png)
+
+![Get My ID](https://mycc.mcck.ccwu.cc/file/c64d14cea1e74789.png)
+
+![Get My ID](https://mycc.mcck.ccwu.cc/file/3075bd347b8e4c88.png)
+
+![Get My ID](https://mycc.mcck.ccwu.cc/file/544f5092e0cd4268.png)
+
+第二种是进入该频道后，点击频道头像，将刚刚创建的机器人添加为频道管理员，然后往频道随便发一条内容，再将这条内容转发给这样 @VersaToolsBot ，然后去到@VersaToolsBot 聊天界面，它就会发给你一条消息，这样你就能得到CHAT_ID。
 
 ![Chat ID](https://imgr2.aitc.ccwu.cc/截图/0de98b02-29a5-42e2-b6a1-4b6fd481232c.png)
 
