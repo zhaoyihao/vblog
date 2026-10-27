@@ -189,6 +189,8 @@ CREATE TRIGGER IF NOT EXISTS update_other_data_updated_at
 
 1. 获取Bot_Token：在Telegram中，向@BotFather发送命令/newbot，根据提示依次输入您的机器人名称和用户名。成功创建机器人后，您将会收到一个BOT_TOKEN，用于与Telegram API进行交互。
 
+![API Token](https://mycc.mcck.ccwu.cc/file/6e66a8ef62d04d49.png)
+
 ![API Token](https://imgr2.aitc.ccwu.cc/截图/af9f15b6-4a5b-4f5a-978c-063bc09efc22.png)
 
 ![API Token](https://imgr2.aitc.ccwu.cc/截图/82dc28aa-fdcb-424b-9178-edc5cac03c7b.png)
