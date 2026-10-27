@@ -195,7 +195,9 @@ CREATE TRIGGER IF NOT EXISTS update_other_data_updated_at
 
 ![API Token](https://imgr2.aitc.ccwu.cc/截图/82dc28aa-fdcb-424b-9178-edc5cac03c7b.png)
 
-2. 获取 Chat ID：首先要创建一个你自己的新频道（Channel），然后获取 Chat ID有两种方法，第一种是搜索 `@Getmyid_bot` 机器人，其正确的名称是 `Get My ID` ，然后点击开始，机器人首先会发送给你一个你的Telegram ID，然后点选 `Select channel` ,找到你创建的频道点击发送，机器人就会把该频道的Chat ID发你
+2. 获取 Chat ID：首先要创建一个你自己的频道（Channel），再将机器人添加为频道管理员，然后才是获取 Chat ID，也就是频道ID。
+
+获取频道ID有两种方法：第一种是搜索 `@Getmyid_bot` 机器人，其正确的名称是 `Get My ID` ，然后点击开始，机器人首先会发送给你一个你的Telegram ID，然后点选 `Select channel` ,找到你创建的频道点击发送，机器人就会把该频道的Chat ID发你
 
 ![Get My ID](https://mycc.mcck.ccwu.cc/file/e66ce0931f6f4f78.png)
 
