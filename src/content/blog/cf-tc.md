@@ -209,7 +209,7 @@ CREATE TRIGGER IF NOT EXISTS update_other_data_updated_at
 
 ![Get My ID](https://mycc.mcck.ccwu.cc/file/544f5092e0cd4268.png)
 
-第二种是进入该频道后，点击频道头像，将刚刚创建的机器人添加为频道管理员，然后往频道随便发一条内容，再将这条内容转发给这样 @VersaToolsBot ，然后去到@VersaToolsBot 聊天界面，它就会发给你一条消息，这样你就能得到CHAT_ID。
+第二种是进入该频道后，点击频道头像，确定已经将机器人添加为频道管理员，然后往频道随便发一条内容，再将这条内容转发给这样 @VersaToolsBot ，然后去到@VersaToolsBot 聊天界面，它就会发给你一条消息，这样你就能得到CHAT_ID。
 
 ![Chat ID](https://imgr2.aitc.ccwu.cc/截图/0de98b02-29a5-42e2-b6a1-4b6fd481232c.png)
 
